@@ -1,0 +1,865 @@
+/* 
+===========================================
+INTERACTIVE COMPARISON SYSTEM STYLES
+===========================================
+*/
+
+.comparison-section {
+    padding: var(--spacing-3xl) 0;
+    background: var(--bg-primary);
+}
+
+.comparison-controls {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.product-selectors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.selector-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: var(--font-size-md);
+}
+
+.product-select {
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: var(--font-size-md);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.product-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.product-select option:disabled {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.comparison-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+}
+
+.comparison-actions .btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    border: none;
+}
+
+.comparison-actions .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.comparison-actions .btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Comparison Results */
+.comparison-results {
+    min-height: 200px;
+}
+
+.comparison-placeholder {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    color: var(--text-secondary);
+}
+
+.comparison-placeholder i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.6;
+}
+
+.comparison-placeholder h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.comparison-placeholder p {
+    font-size: var(--font-size-md);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Comparison Table Wrapper */
+.comparison-table-wrapper {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-header h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.comparison-header p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
+}
+
+/* Product Cards in Comparison */
+.comparison-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-product-card {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.comparison-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.comparison-product-card .product-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-product-card .product-header h4 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.comparison-product-card .product-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.comparison-product-card .rating-score {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.comparison-product-card .rating-stars {
+    color: #fbbf24 !important; /* Always yellow/gold stars regardless of theme */
+}
+
+.comparison-product-card .rating-stars i {
+    color: #fbbf24 !important; /* Ensure individual star icons are yellow/gold */
+}
+
+.comparison-product-card .product-price {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.comparison-product-card .product-price .primary-value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.comparison-product-card .product-price .secondary-value {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.comparison-product-card .product-price .tertiary-value {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    animation: pulse-glow 2s ease-in-out infinite;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+/* Template-specific styling for comparison cards */
+.comparison-product-card .product-price[data-template-type="casino_websites"] .primary-value {
+    color: #fbbf24;
+    text-shadow: 0 1px 2px rgba(251, 191, 36, 0.3);
+}
+
+.comparison-product-card .product-price[data-template-type="casino_websites"] .secondary-value {
+    color: var(--text-secondary);
+}
+
+.comparison-product-card .product-price[data-template-type="casino_websites"] .tertiary-value {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+}
+
+.comparison-product-card .product-highlights h5 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.comparison-product-card .product-highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comparison-product-card .product-highlights li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Dynamic icons from config.js - styled to match theme */
+.comparison-product-card .product-highlights li i {
+    color: var(--accent-color);
+    margin-right: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+}
+
+.comparison-product-card .product-highlights li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.comparison-product-card .product-cta {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+
+/* Comparison Table */
+.comparison-table-container {
+    overflow-x: auto;
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* Comparison Table - Fixed layout for consistent column alignment */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    table-layout: fixed; /* Force consistent column widths */
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    overflow-wrap: break-word; /* Handle long text gracefully */
+    word-wrap: break-word;
+}
+
+.comparison-table th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: var(--font-size-md);
+}
+
+.comparison-table td {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Consistent column widths for perfect alignment */
+.comparison-table .feature-column {
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 25%; /* Fixed width for first column */
+    min-width: 200px;
+}
+
+/* Ensure all data columns have equal width */
+.comparison-table th:not(.feature-column),
+.comparison-table td:not(:first-child) {
+    width: calc(75% / var(--product-count, 3)); /* Distribute remaining width equally */
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+
+/* First column (labels) consistent styling */
+.comparison-table td:first-child {
+    width: 25%;
+    min-width: 200px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-md);
+}
+
+/* Data cells consistent styling */
+.comparison-table td:not(:first-child) {
+    text-align: center;
+    vertical-align: middle;
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+
+/* Section-specific header colors - Add perks header */
+.comparison-table .section-header.basic-header td {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+}
+
+.comparison-table .section-header.perks-header td {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important; /* Orange gradient for perks */
+}
+
+.comparison-table .section-header.features-header td {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+.comparison-table .section-header.specs-header td {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+/* Icon positioning removed - icons now handled by JavaScript */
+
+/* Feature cell alignment - ensure consistent spacing */
+.comparison-table .feature-cell {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.comparison-table .feature-cell i {
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+}
+
+.comparison-table .feature-cell span {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+/* Ensure section rows have consistent spacing */
+.comparison-table .section-row td {
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md);
+}
+
+/* Add spacing after each section */
+.comparison-table .section-row[data-section="basic"]:last-of-type td,
+.comparison-table .section-row[data-section="perks"]:last-of-type td,
+.comparison-table .section-row[data-section="features"]:last-of-type td {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-lg);
+}
+
+/* Header content layout - Fix centering */
+.comparison-table .section-header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    position: relative;
+    width: 100%;
+}
+
+.comparison-table .section-header .header-text {
+    flex: 1;
+    text-align: center;
+}
+
+.comparison-table .section-header .collapse-icon {
+    position: absolute;
+    right: var(--spacing-md);
+    font-size: var(--font-size-md);
+    transition: transform var(--transition-fast);
+    opacity: 0.8;
+}
+
+/* Icon positioning removed - icons now handled by JavaScript */
+
+/* Basic header icon also removed - all icons now handled by JavaScript */
+
+/* Collapse icon styling */
+.comparison-table .section-header:hover .collapse-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Collapsed state styling */
+.comparison-table .section-header.collapsed {
+    opacity: 0.7;
+}
+
+.comparison-table .section-header.collapsed .collapse-icon {
+    transform: rotate(180deg);
+}
+
+/* Remove the old pseudo-element styles that were causing duplicate icons */
+.comparison-table .section-header td::before {
+    display: none !important;
+}
+
+.comparison-table .section-header td::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+}
+
+/* Section row styling for collapsible functionality */
+.comparison-table .section-row {
+    transition: all var(--transition-normal);
+}
+
+/* Ensure consistent column alignment across all sections */
+.comparison-table td {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.comparison-table td:first-child {
+    min-width: 200px;
+    width: 200px;
+}
+
+/* Feature cell alignment */
+.comparison-table .feature-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Section-specific header colors */
+.comparison-table .section-header.features-header td {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+}
+
+.comparison-table .section-header.specs-header td {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+}
+
+.comparison-table .section-header.basic-header td {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+}
+
+.comparison-table .section-header.perks-header td {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+}
+
+/* Hover effect for section headers */
+.comparison-table .section-header td:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Smooth collapse animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        max-height: 1000px;
+    }
+    to {
+        opacity: 0;
+        max-height: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+    }
+}
+
+/* Tooltip for collapsible headers */
+.comparison-table .section-header::after {
+    content: 'Click to expand/collapse section';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    z-index: 1000;
+}
+
+.comparison-table .section-header:hover::after {
+    opacity: 1;
+}
+
+/* Alternative styling for better contrast in dark themes */
+html[data-theme="dark"] .comparison-table .section-header td {
+    border-top: 3px solid rgba(255, 255, 255, 0.5) !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.comparison-table .feature-cell {
+    text-align: center;
+}
+
+.comparison-table .feature-cell i {
+    margin-right: var(--spacing-xs);
+}
+
+.comparison-table .has-feature {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.comparison-table .no-feature {
+    color: var(--error-color);
+    opacity: 0.7;
+}
+
+/* Summary Cards */
+.comparison-summary {
+    margin-top: var(--spacing-2xl);
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.summary-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.summary-card h4 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.9;
+}
+
+.summary-card p {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Clickable Summary Cards */
+.clickable-summary-card {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.clickable-summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.clickable-summary-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-click-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    opacity: 0.7;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(5px);
+}
+
+.clickable-summary-card:hover .card-click-hint {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.card-click-hint i {
+    font-size: var(--font-size-sm);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* Highlight Animation for Scrolled-to Reviews */
+.highlight-animation {
+    animation: highlightPulse 2s ease-out;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes highlightPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
+        transform: scale(1);
+    }
+    25% {
+        box-shadow: 0 0 0 15px rgba(var(--primary-rgb), 0.3);
+        transform: scale(1.02);
+    }
+    50% {
+        box-shadow: 0 0 0 25px rgba(var(--primary-rgb), 0.1);
+        transform: scale(1.01);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1023px) {
+    .comparison-controls {
+        padding: var(--spacing-xl);
+    }
+    
+    .product-selectors {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-table-wrapper {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .comparison-controls {
+        padding: var(--spacing-md);
+        margin: 0 var(--spacing-xs);
+    }
+    
+    .product-selectors {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .product-select {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+    
+    .comparison-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .comparison-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .comparison-table {
+        font-size: var(--font-size-xs);
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: var(--spacing-sm);
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-placeholder {
+        padding: var(--spacing-xl);
+    }
+    
+    .comparison-placeholder i {
+        font-size: 3rem;
+    }
+}
+
+/* Extra small screens - Even more compact select boxes */
+@media (max-width: 480px) {
+    .comparison-controls {
+        padding: var(--spacing-sm);
+        margin: 0 var(--spacing-xs);
+        border-radius: var(--border-radius-md);
+    }
+    
+    .product-selectors {
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .selector-group label {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .product-select {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .comparison-actions {
+        gap: var(--spacing-sm);
+    }
+    
+    .comparison-actions .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+        max-width: 250px;
+    }
+    
+    .comparison-placeholder {
+        padding: var(--spacing-lg);
+    }
+    
+    .comparison-placeholder i {
+        font-size: 2.5rem;
+    }
+}
+
+/* Theme-specific enhancements */
+html[data-theme="dark"] .comparison-controls,
+html[data-theme="dark"] .comparison-table-wrapper {
+    border: 1px solid var(--border-color);
+}
+
+html[data-theme="minimal"] .comparison-product-card {
+    border: 2px solid var(--border-color);
+}
+
+html[data-theme="minimal"] .comparison-product-card:hover {
+    border-color: var(--primary-color);
+}
+
+/* Animation for smooth transitions */
+.comparison-results {
+    transition: all var(--transition-normal);
+}
+
+.comparison-table-wrapper {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.comparison-loading {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--text-secondary);
+}
+
+.comparison-loading i {
+    animation: spin 1s linear infinite;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+} 

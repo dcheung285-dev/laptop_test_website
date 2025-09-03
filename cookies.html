@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Policy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/template_favicon.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 
+    ===========================================
+    NAVIGATION BAR
+    ===========================================
+    Navigation content is loaded dynamically from utils/nav-config.js
+    -->
+    <div id="navigation-container"></div>
+
+    <!-- 
+    ===========================================
+    COOKIES POLICY HERO SECTION
+    ===========================================
+    Hero content is rendered dynamically by cookies-config.js
+    -->
+    <section class="cookies-hero hero-section" id="cookies-hero" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; display: flex; align-items: center; min-height: 15vh;">
+        <div class="hero-container" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: calc(var(--spacing-lg) * 3) var(--spacing-lg);">
+            <div class="hero-content" style="text-align: center; max-width: 600px; margin: 0 auto; transform: translate(15rem, 2rem)">
+                <!-- Hero content will be populated by JavaScript from cookies-config.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    TABLE OF CONTENTS
+    ===========================================
+    TOC is generated dynamically from cookies-config.js sections
+    -->
+    <section class="table-of-contents section-padding">
+        <!-- Table of contents will be populated by JavaScript -->
+    </section>
+
+    <!-- 
+    ===========================================
+    COOKIES POLICY SECTIONS
+    ===========================================
+    Sections will be rendered here dynamically by cookies-config.js
+    -->
+    <div class="cookies-sections">
+        <!-- Loading placeholder -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="loading-placeholder">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading cookies policy...</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 
+    ===========================================
+    NEWSLETTER SECTION
+    ===========================================
+    Newsletter content is loaded dynamically from Configurations/newsletter-config.js
+    -->
+    <div id="newsletter-container"></div>
+
+    <!-- 
+    ===========================================
+    FLOATING ELEMENTS
+    ===========================================
+    -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 
+    ===========================================
+    JAVASCRIPT FILES - LOAD ORDER IS IMPORTANT
+    ===========================================
+    -->
+    
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Cookies Configuration -->
+    <script src="./Configurations/cookies-config.js"></script>
+    
+    <!-- Additional Config Files -->
+    <script src="./Configurations/home-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    
+    <!-- Navigation Configuration -->
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Core Scripts -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Additional Features -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    <script src="./Configurations/enhanced-product-config.js"></script>
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/streaming-config.js"></script>
+    <script src="./utils/analytics.js"></script>
+
+    <!-- Custom Styles for Cookies Policy -->
+    <style>
+        /* Hero Section Styling */
+        .cookies-hero .hero-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cookies-hero .hero-subtitle {
+            font-size: var(--font-size-lg);
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            font-size: var(--font-size-md);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Table of Contents */
+        .table-of-contents {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-xl);
+        }
+        
+        .toc-nav ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-sm);
+        }
+        
+        .toc-link {
+            display: block;
+            padding: var(--spacing-md);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-normal);
+        }
+        
+        .toc-link:hover {
+            background: var(--primary-color);
+            color: var(--text-primary-inverse);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Cookies Policy Sections */
+        .cookies-section {
+            padding: var(--spacing-2xl) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cookies-section:last-child {
+            border-bottom: none;
+        }
+        
+        .cookies-section .section-title {
+            color: var(--primary-color);
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .cookies-section .section-title::before {
+            content: "🍪";
+            font-size: var(--font-size-xl);
+        }
+        
+        .section-content {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .section-content h3 {
+            color: var(--accent-color);
+            font-size: var(--font-size-lg);
+            margin: var(--spacing-xl) 0 var(--spacing-md);
+            font-weight: 600;
+        }
+        
+        .section-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section-content ul, .section-content ol {
+            margin-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .section-content a:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+        
+        /* Cookies Table Styling */
+        .cookies-table {
+            overflow-x: auto;
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cookies-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+        }
+        
+        .cookies-table th {
+            background: var(--primary-color);
+            color: var(--text-primary-inverse);
+            padding: var(--spacing-lg);
+            text-align: left;
+            font-weight: 600;
+            font-size: var(--font-size-md);
+        }
+        
+        .cookies-table td {
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+        
+        .cookies-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .cookies-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Contact Info Styling */
+        .contact-info {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Loading State */
+        .loading-placeholder {
+            text-align: center;
+            padding: var(--spacing-4xl);
+            color: var(--text-secondary);
+        }
+        
+        .loading-placeholder i {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cookies-hero {
+                padding: var(--spacing-2xl) 0;
+            }
+            
+            .cookies-hero .hero-title {
+                font-size: var(--font-size-2xl);
+            }
+            
+            .toc-nav ul {
+                grid-template-columns: 1fr;
+            }
+            
+            .cookies-table {
+                font-size: var(--font-size-sm);
+            }
+            
+            .cookies-table th,
+            .cookies-table td {
+                padding: var(--spacing-md);
+            }
+        }
+        
+        /* Hero content responsive fixes */
+        @media (max-width: 1024px) {
+            .hero-container {
+                padding: calc(var(--spacing-lg) * 2) var(--spacing-md) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(60%, 10%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 12vh !important;
+                padding: var(--spacing-md) 0 !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-xl) var(--spacing-sm) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 20%) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 10vh !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-lg) var(--spacing-xs) !important;
+            }
+
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 10%) !important;
+            }
+        }
+        
+        /* Hero content responsive fixes */
+        @media (max-width: 1024px) {
+            .hero-container {
+                padding: calc(var(--spacing-lg) * 2) var(--spacing-md) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(60%, 10%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 12vh !important;
+                padding: var(--spacing-md) 0 !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-xl) var(--spacing-sm) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 20%) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 10vh !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-lg) var(--spacing-xs) !important;
+            }
+
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 10%) !important;
+            }
+        }
+    </style>
+</body>
+</html> 

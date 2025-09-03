@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Logo Test</title>
+    <link rel="stylesheet" href="styles/popup.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Popup Logo System Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Different Logo Types</h2>
+        <p>Click the buttons below to test different logo configurations:</p>
+        
+        <button class="test-button" onclick="testTextLogoColumn()">Test Text Logo (Column)</button>
+        <button class="test-button" onclick="testTextLogoRow()">Test Text Logo (Row)</button>
+        <button class="test-button" onclick="testImageScale()">Test Image (Scale 2x)</button>
+        <button class="test-button" onclick="testImageNoBackground()">Test Image (No Background)</button>
+        <button class="test-button" onclick="testCombinedColumn()">Test Combined (Column)</button>
+        <button class="test-button" onclick="testCombinedNoBackground()">Test Combined (No Background)</button>
+        <button class="test-button" onclick="testCurrentConfig()">Test Current Config</button>
+        <button class="test-button" onclick="testSpacingConsistency()">Test Spacing Consistency</button>
+        <button class="test-button" onclick="testAnimationScaling()">Test Animation Scale & Float</button>
+        <button class="test-button" onclick="testNewAnimations()">Test New Animations</button>
+        <button class="test-button" onclick="testBorderAndCloseButton()">Test Border & Close Button Colors</button>
+        <button class="test-button" onclick="testHighlightDelays()">Test Highlight Animation Delays</button>
+        <button class="test-button" onclick="resetPopup()">Reset Popup</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Current Configuration</h2>
+        <pre id="current-config">Loading...</pre>
+    </div>
+
+    <script src="Configurations/popup-config.js"></script>
+    <script src="scripts/popup.js"></script>
+    <script>
+        // Test functions
+        function testTextLogoColumn() {
+            window.POPUP_CONFIG.product.name = 'Betpanda'; // This will show
+            window.POPUP_CONFIG.product.logo = {
+                type: 'text',
+                text: {
+                    content: '🐼',
+                    size: '32px',
+                    background: 'transparent',
+                    nameTextSize: '18px',
+                    nameTextColor: '#FFFFFF',
+                    layout: 'column', // One below other
+                    spacing: '12px' // Good spacing
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testTextLogoRow() {
+            window.POPUP_CONFIG.product.name = 'Betpanda'; // This will show
+            window.POPUP_CONFIG.product.logo = {
+                type: 'text',
+                text: {
+                    content: '🐼',
+                    size: '28px',
+                    background: 'transparent',
+                    nameTextSize: '20px',
+                    nameTextColor: '#FFD700', // Gold color
+                    layout: 'row', // Side by side
+                    spacing: '15px' // Custom spacing
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testImageScale() {
+            window.POPUP_CONFIG.product.logo = {
+                type: 'image',
+                image: {
+                    src: 'assets/images/Test_Logo_PopUp.png',
+                    alt: 'Test Logo',
+                    scale: 2.0, // 200% scale
+                    background: 'rgba(255, 255, 255, 0.2)' // With background
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testImageNoBackground() {
+            window.POPUP_CONFIG.product.logo = {
+                type: 'image',
+                image: {
+                    src: 'assets/images/Test_Logo_PopUp.png',
+                    alt: 'Test Logo',
+                    scale: 1.5, // 150% scale
+                    background: 'transparent' // No background
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testCurrentConfig() {
+            // Test the user's current configuration
+            window.POPUP_CONFIG.product.logo = {
+                type: 'image',
+                image: {
+                    src: 'assets/images/Test_Logo_PopUp.png',
+                    alt: 'Logo',
+                    scale: 6.0,
+                    background: 'rgba(255, 255, 255, 0.2)'
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testCombinedColumn() {
+            window.POPUP_CONFIG.product.logo = {
+                type: 'combined',
+                combined: {
+                    imageSrc: 'assets/images/Test_Circle_Icon2.png',
+                    imageAlt: 'Test Icon',
+                    imageWidth: '40px',
+                    imageHeight: '40px',
+                    imageScale: 1.0,
+                    textContent: 'COLUMN LAYOUT',
+                    textSize: '16px',
+                    textColor: '#FFFFFF',
+                    layout: 'column', // One below other
+                    spacing: '10px'
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testCombinedRow() {
+            window.POPUP_CONFIG.product.logo = {
+                type: 'combined',
+                combined: {
+                    imageSrc: 'assets/images/Test_Circle_Icon2.png',
+                    imageAlt: 'Test Icon',
+                    imageWidth: '32px',
+                    imageHeight: '32px',
+                    imageScale: 1.0,
+                    textContent: 'ROW LAYOUT',
+                    textSize: '18px',
+                    textColor: '#FFD700',
+                    layout: 'row', // Side by side
+                    spacing: '15px'
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testCombinedNoBackground() {
+            window.POPUP_CONFIG.product.logo = {
+                type: 'combined',
+                combined: {
+                    imageSrc: 'assets/images/Test_Circle_Icon2.png',
+                    imageAlt: 'Test Icon',
+                    imageWidth: '40px',
+                    imageHeight: '40px',
+                    imageScale: 1.5,
+                    textContent: 'NO BACKGROUND',
+                    textSize: '18px',
+                    textColor: '#FFFFFF',
+                    layout: 'row',
+                    spacing: '15px',
+                    background: 'transparent' // No background
+                }
+            };
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function testOldFormat() {
+            window.POPUP_CONFIG.product.logo = '🎯';
+            showPopup();
+            updateConfigDisplay();
+        }
+
+        function showPopup() {
+            if (window.popupManager) {
+                window.popupManager.forceShow();
+            } else {
+                console.log('Popup manager not ready');
+            }
+        }
+
+        function resetPopup() {
+            if (window.popupManager) {
+                window.popupManager.reset();
+                window.popupManager.closePopup();
+            }
+        }
+
+        function testSpacingConsistency() {
+            console.log('Testing fixed-area spacing consistency between all logo types...');
+            
+            // Test sequence with various sizes to prove consistency
+            
+            setTimeout(() => {
+                console.log('1. Small text logo...');
+                POPUP_CONFIG.product.logo = {
+                    type: 'text',
+                    text: {
+                        content: '🐼',
+                        size: '20px',
+                        background: 'rgba(255, 255, 255, 0.2)',
+                        nameTextSize: '14px',
+                        nameTextColor: '#FFFFFF'
+                    }
+                };
+                showPopup();
+            }, 100);
+            
+            setTimeout(() => {
+                console.log('2. Large image logo (3x scale) - same title position...');
+                POPUP_CONFIG.product.logo = {
+                    type: 'image',
+                    image: {
+                        src: 'assets/images/Test_Logo1.png',
+                        scale: 3.0,
+                        background: 'transparent'
+                    }
+                };
+                showPopup();
+            }, 3000);
+            
+            setTimeout(() => {
+                console.log('3. Large combined logo - same title position...');
+                POPUP_CONFIG.product.logo = {
+                    type: 'combined',
+                    combined: {
+                        imageSrc: 'assets/images/Test_Circle_Icon2.png',
+                        imageWidth: '60px',
+                        imageHeight: '60px',
+                        imageScale: 1.5,
+                        textContent: 'Large Test Logo Text',
+                        textSize: '32px',
+                        textColor: '#000000',
+                        layout: 'column',
+                        spacing: '12px',
+                        background: 'rgba(255, 255, 255, 0.2)'
+                    }
+                };
+                showPopup();
+            }, 6000);
+            
+            setTimeout(() => {
+                console.log('4. Huge text logo (80px) - same title position...');
+                POPUP_CONFIG.product.logo = {
+                    type: 'text',
+                    text: {
+                        content: '🐼',
+                        size: '80px',
+                        background: 'transparent',
+                        nameTextSize: '30px',
+                        nameTextColor: '#FFFFFF'
+                    }
+                };
+                showPopup();
+                console.log('Fixed-area spacing test complete! All content fits in 240x120px area with identical positioning!');
+            }, 9000);
+        }
+
+        function testAnimationScaling() {
+            console.log('Testing animation scale and float height changes...');
+            
+            setTimeout(() => {
+                console.log('1. Small animation (scale 0.5, float 5px)...');
+                POPUP_CONFIG.topAnimation.animation.scale = 0.5;
+                POPUP_CONFIG.topAnimation.animation.floatHeight = '5px';
+                showPopup();
+            }, 100);
+            
+            setTimeout(() => {
+                console.log('2. Large animation (scale 3.0, float 50px)...');
+                POPUP_CONFIG.topAnimation.animation.scale = 3.0;
+                POPUP_CONFIG.topAnimation.animation.floatHeight = '50px';
+                showPopup();
+            }, 3000);
+            
+            setTimeout(() => {
+                console.log('3. Huge animation (scale 5.0, float 80px)...');
+                POPUP_CONFIG.topAnimation.animation.scale = 5.0;
+                POPUP_CONFIG.topAnimation.animation.floatHeight = '80px';
+                showPopup();
+            }, 6000);
+            
+            setTimeout(() => {
+                console.log('4. Reset to normal (scale 1.0, float 15px)...');
+                POPUP_CONFIG.topAnimation.animation.scale = 1.0;
+                POPUP_CONFIG.topAnimation.animation.floatHeight = '15px';
+                showPopup();
+                console.log('Animation scaling test complete! Scale and floatHeight should now work!');
+            }, 9000);
+        }
+
+        function testNewAnimations() {
+            console.log('Testing new animation behaviors...');
+            
+            setTimeout(() => {
+                console.log('1. Gift Box - Shaking animation...');
+                POPUP_CONFIG.topAnimation.animation.type = 'giftBox';
+                POPUP_CONFIG.topAnimation.animation.scale = 2.0;
+                showPopup();
+            }, 100);
+            
+            setTimeout(() => {
+                console.log('2. Coins - Flipping animation (flat/side/flat)...');
+                POPUP_CONFIG.topAnimation.animation.type = 'coins';
+                POPUP_CONFIG.topAnimation.animation.scale = 2.5;
+                showPopup();
+            }, 4000);
+            
+            setTimeout(() => {
+                console.log('3. Trophy - Clean floating animation...');
+                POPUP_CONFIG.topAnimation.animation.type = 'trophy';
+                POPUP_CONFIG.topAnimation.animation.scale = 2.0;
+                showPopup();
+            }, 8000);
+            
+            setTimeout(() => {
+                console.log('New animations test complete!');
+                console.log('🎁 Gift Box: Shakes instead of spinning');
+                console.log('🪙 Coins: Slow flip to show flat/side views (4 seconds)');
+                console.log('🏆 Trophy: Clean floating animation only');
+            }, 12000);
+        }
+
+        function testBorderAndCloseButton() {
+            console.log('Testing customizable border and close button colors...');
+            
+            setTimeout(() => {
+                console.log('1. Gold border with red close button...');
+                POPUP_CONFIG.container.border.color = '#FFD700';
+                POPUP_CONFIG.container.border.width = '4px';
+                POPUP_CONFIG.closeButton.background = 'rgba(255, 0, 0, 0.8)';
+                POPUP_CONFIG.closeButton.color = '#FFFFFF';
+                POPUP_CONFIG.closeButton.hoverBackground = 'rgba(255, 0, 0, 1.0)';
+                showPopup();
+            }, 100);
+            
+            setTimeout(() => {
+                console.log('2. Green border with blue close button...');
+                POPUP_CONFIG.container.border.color = '#00FF88';
+                POPUP_CONFIG.container.border.width = '5px';
+                POPUP_CONFIG.closeButton.background = 'rgba(0, 100, 255, 0.7)';
+                POPUP_CONFIG.closeButton.color = '#FFFFFF';
+                POPUP_CONFIG.closeButton.hoverBackground = 'rgba(0, 100, 255, 1.0)';
+                showPopup();
+            }, 4000);
+            
+            setTimeout(() => {
+                console.log('3. Purple border with orange close button...');
+                POPUP_CONFIG.container.border.color = '#9333EA';
+                POPUP_CONFIG.container.border.width = '6px';
+                POPUP_CONFIG.closeButton.background = 'rgba(255, 165, 0, 0.8)';
+                POPUP_CONFIG.closeButton.color = '#000000';
+                POPUP_CONFIG.closeButton.hoverBackground = 'rgba(255, 165, 0, 1.0)';
+                POPUP_CONFIG.closeButton.hoverColor = '#000000';
+                showPopup();
+            }, 8000);
+            
+            setTimeout(() => {
+                console.log('4. Reset to default styling...');
+                POPUP_CONFIG.container.border.color = 'rgba(255, 255, 255, 0.4)';
+                POPUP_CONFIG.container.border.width = '3px';
+                POPUP_CONFIG.closeButton.background = 'rgba(255, 255, 255, 0.2)';
+                POPUP_CONFIG.closeButton.color = '#FFFFFF';
+                POPUP_CONFIG.closeButton.hoverBackground = 'rgba(255, 255, 255, 0.3)';
+                POPUP_CONFIG.closeButton.hoverColor = '#FFFFFF';
+                showPopup();
+                console.log('Border and close button customization test complete!');
+            }, 12000);
+        }
+
+        function testHighlightDelays() {
+            console.log('Testing highlight animation delays...');
+            console.log('Watch the highlights carefully:');
+            console.log('1. Purple highlight should start pulsing after 0.5 seconds');
+            console.log('2. Green highlight should start pulsing after 3 seconds');
+            console.log('This creates a staggered animation effect!');
+            
+            // Use current configuration but show popup
+            showPopup();
+            
+            setTimeout(() => {
+                console.log('✅ Highlight delay test complete!');
+                console.log('The highlights should now animate with proper delays:');
+                console.log('- First highlight: 0.5s delay (after popup appears)');
+                console.log('- Second highlight: 3s delay (much later)');
+                console.log('- Both have 4s animation cycles for better visibility');
+            }, 8000);
+        }
+
+        function updateConfigDisplay() {
+            const config = window.POPUP_CONFIG.product.logo;
+            document.getElementById('current-config').textContent = 
+                JSON.stringify(config, null, 2);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateConfigDisplay();
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <h1>Navigation Configuration Test</h1>
+    <p>This page tests if navigation changes from nav-config.js are working.</p>
+    
+    <div style="margin: 20px 0;">
+        <h2>Current Navigation Links:</h2>
+        <div id="nav-status">Loading...</div>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h2>Test Commands:</h2>
+        <button onclick="testAddLink()">Add Test Link</button>
+        <button onclick="testRemoveLink()">Remove Test Link</button>
+        <button onclick="showConfig()">Show Config</button>
+    </div>
+    
+    <!-- Brand Configuration -->
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- JavaScript Files -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Nav Loader -->
+    <script src="./utils/nav-loader.js"></script>
+    
+    <script>
+        function testAddLink() {
+            if (window.NavConfig) {
+                NavConfig.addLink('Test', '#test');
+                updateStatus();
+            }
+        }
+        
+        function testRemoveLink() {
+            if (window.NavConfig) {
+                NavConfig.removeLink('Test');
+                updateStatus();
+            }
+        }
+        
+        function showConfig() {
+            if (window.NavConfig) {
+                console.log('Navigation Config:', NavConfig.getConfig());
+                updateStatus();
+            }
+        }
+        
+        function updateStatus() {
+            setTimeout(() => {
+                const navMenu = document.querySelector('.nav-menu');
+                const statusDiv = document.getElementById('nav-status');
+                
+                if (navMenu) {
+                    const links = Array.from(navMenu.querySelectorAll('a')).map(a => ({
+                        text: a.textContent,
+                        href: a.href
+                    }));
+                    
+                    statusDiv.innerHTML = `
+                        <p><strong>Navigation found:</strong> ✅</p>
+                        <p><strong>Current links:</strong></p>
+                        <ul>
+                            ${links.map(link => `<li>${link.text} → ${link.href}</li>`).join('')}
+                        </ul>
+                    `;
+                } else {
+                    statusDiv.innerHTML = '<p><strong>Navigation not found:</strong> ❌</p>';
+                }
+            }, 500);
+        }
+        
+        // Initial status check
+        setTimeout(updateStatus, 2000);
+    </script>
+</body>
+</html> 

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Contact Us - Get in Touch</title> 
+    <meta name="description" content="Contact us for questions about our reviews, suggestions, or partnerships. We're here to help you find the best products.">
+    <meta name="keywords" content="contact, support, questions, reviews, help">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Contact Us - Get in Touch">
+    <meta property="og:description" content="Contact us for questions about our reviews, suggestions, or partnerships.">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+    <meta property="og:url" content="https://yoursite.com/contact">
+    <meta property="og:type" content="website">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css?v=2.3">
+    <link rel="stylesheet" href="./styles/components.css?v=2.3">
+    <link rel="stylesheet" href="./styles/responsive.css?v=2.3">
+    <link rel="stylesheet" href="styles/popup.css">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation will be loaded dynamically by nav-loader.js -->
+    
+    <!-- 
+    ===========================================
+    CONTACT HERO SECTION
+    ===========================================
+    -->
+    
+    <section class="hero-section" id="contact-hero" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; display: flex; align-items: center; min-height: 15vh;">
+        <div class="hero-container" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: calc(var(--spacing-lg) * 3) var(--spacing-lg);">
+            <div class="hero-content" style="text-align: center; max-width: 600px; margin: 0 auto; transform: translate(15rem, 2rem)"> <!-- Translate to move the text -->
+                <h1 class="hero-title">Get in Touch</h1> <!--- this is default text which gets changed from contact-faq-config.js -->
+                <p class="hero-subtitle">
+                    Have questions about our reviews? Need help choosing the right product? <!--- this is default text which gets changed from contact-faq-config.js -->
+                    We're here to help you make the best decision. <!--- this is default text which gets changed from contact-faq-config.js -->
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    CONTACT FORM SECTION
+    ===========================================
+    -->
+    <section class="contact-section" style="padding: var(--spacing-5xl) 0;">
+        <div class="container">
+            <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-6xl); align-items: start;">
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 style="margin-bottom: var(--spacing-2xl); padding-top: var(--spacing-xl);">Send us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                            <label for="name" style="display: block; margin-bottom: var(--spacing-sm); font-weight: 500;">Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   style="width: 100%; padding: var(--spacing-md); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); font-size: var(--font-size-base);">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                            <label for="email" style="display: block; margin-bottom: var(--spacing-sm); font-weight: 500;">Email *</label>
+                            <input type="email" id="email" name="email" required 
+                                   style="width: 100%; padding: var(--spacing-md); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); font-size: var(--font-size-base);">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                            <label for="subject" style="display: block; margin-bottom: var(--spacing-sm); font-weight: 500;">Subject *</label>
+                            <select id="subject" name="subject" required 
+                                    style="width: 100%; padding: var(--spacing-md); padding-right: var(--spacing-3xl); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); font-size: var(--font-size-base); background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 12 8&quot;><path fill=&quot;%23666&quot; d=&quot;M6 8L0 2h12z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 20px center; background-size: 12px; -webkit-appearance: none; -moz-appearance: none; appearance: none;">
+                                <option value="">Select a topic</option>
+                                <!-- Options will be loaded dynamically from contact-faq-config.js -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                            <label for="message" style="display: block; margin-bottom: var(--spacing-sm); font-weight: 500;">Message *</label>
+                            <textarea id="message" name="message" rows="6" required 
+                                      style="width: 100%; padding: var(--spacing-md); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); font-size: var(--font-size-base); resize: vertical;"
+                                      placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%; margin-bottom: var(--spacing-2xl);">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info-container" style="margin-left: var(--spacing-2xl);">
+                    <h2 style="margin-bottom: var(--spacing-2xl); padding-top: var(--spacing-xl);">Contact Information</h2>
+                    
+                    <div class="contact-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl) var(--spacing-2xl);">
+                        <!-- Row 1, Column 1 -->
+                        <div class="contact-info-item">
+                            <div class="contact-icon" style="background: var(--primary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 style="margin-bottom: var(--spacing-sm);">Email</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">Send us an email anytime</p>
+                            <a href="#" id="contact-email" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Loading...</a>
+                        </div>
+                        
+                        <!-- Row 1, Column 2 -->
+                        <div class="contact-info-item">
+                            <div class="contact-icon" style="background: var(--secondary-color); color: white; width: 50px; height: 50px; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 style="margin-bottom: var(--spacing-sm);">Phone</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">Call us during business hours</p>
+                            <a href="#" id="contact-phone" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Loading...</a>
+                        </div>
+                        
+                        <!-- Row 2, Column 1 -->
+                        <div class="contact-info-item">
+                            <div class="contact-icon" style="background: var(--accent-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 style="margin-bottom: var(--spacing-sm);">Address</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">Our office location</p>
+                            <p id="contact-address" style="font-weight: 500;">Loading...</p>
+                        </div>
+                        
+                        <!-- Row 2, Column 2 -->
+                        <div class="contact-info-item">
+                            <div class="contact-icon" style="background: var(--warning-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 style="margin-bottom: var(--spacing-sm);">Response Time</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">We typically respond within</p>
+                            <p style="font-weight: 500;">24 hours</p>
+                        </div>
+                        
+                        <!-- Row 3, Column 1 (spans both columns) -->
+                        <div class="contact-info-item" style="grid-column: 1 / -1;">
+                            <div class="contact-icon" style="background: var(--success-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 style="margin-bottom: var(--spacing-sm);">Social Media</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">Follow us for updates</p>
+                            <div class="social-links" id="contact-social" style="display: flex; gap: var(--spacing-sm);">
+                                <!-- Social links will be loaded from config -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    FAQ SECTION
+    ===========================================
+    -->
+    <section class="faq-section" id="faq" style="background: var(--bg-secondary); padding: var(--spacing-6xl) 0;">
+        <!--
+        ┌─────────────────────────────────────────────┐
+        │  ← Top padding (spacing-6xl + spacing-2xl)  │
+        │                                             │
+        │        Frequently Asked Questions           │
+        │                                             │
+        │            [FAQ Items Grid]                 │
+        │                                             │
+        │ ← Bottom padding (spacing-6xl + spacing-2xl)│
+        └─────────────────────────────────────────────┘
+        -->
+        <div class="container" style="padding-top: var(--spacing-2xl); padding-bottom: var(--spacing-2xl);">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--spacing-4xl);">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Quick answers to common questions</p>
+            </div>
+            
+            <div class="faq-grid" style="display: grid; gap: var(--spacing-xl); max-width: 800px; margin: 0 auto; margin-bottom: var(--spacing-3xl);">
+                <div class="faq-item" style="background: white; padding: var(--spacing-xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: var(--spacing-md); color: var(--primary-color);">
+                        <i class="fas fa-question-circle"></i>
+                        How do you test products?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        We thoroughly test each product for weeks, evaluating performance, durability, features, and value. 
+                        Our reviews are based on real-world usage, not just specifications.
+                    </p>
+                </div>
+                
+                <div class="faq-item" style="background: white; padding: var(--spacing-xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: var(--spacing-md); color: var(--primary-color);">
+                        <i class="fas fa-question-circle"></i>
+                        Are your reviews unbiased?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Yes, our reviews are completely honest and unbiased. We only recommend products we genuinely believe in, 
+                        regardless of affiliate commissions. Our reputation depends on your trust.
+                    </p>
+                </div>
+                
+                <div class="faq-item" style="background: white; padding: var(--spacing-xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: var(--spacing-md); color: var(--primary-color);">
+                        <i class="fas fa-question-circle"></i>
+                        Can you review a specific product?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Absolutely! We love hearing from our readers. Send us your suggestions using the form above, 
+                        and we'll consider it for our next review cycle.
+                    </p>
+                </div>
+                
+                <div class="faq-item" style="background: white; padding: var(--spacing-xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: var(--spacing-md); color: var(--primary-color);">
+                        <i class="fas fa-question-circle"></i>
+                        Do you offer partnerships?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        We're always open to partnerships with quality brands that align with our values. 
+                        Please reach out using the partnership inquiry option above.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top 10 CTA -->
+    <section class="cta-section" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: var(--spacing-3xl) 0;">
+        <div class="container">
+            <div class="cta-content" style="text-align: center;" id="contact-cta-box">
+                <!-- CTA content will be populated by JavaScript from contact-faq-config.js -->
+                <h2 style="margin-bottom: var(--spacing-md);">
+                    <i class="fas fa-trophy"></i>
+                    Ready to Find the Best Products?
+                </h2>
+                <p style="margin-bottom: var(--spacing-lg); opacity: 0.9;">
+                    Check out our expertly curated Top 10 list!
+                </p>
+                <a href="./index.html#top10" class="btn btn-secondary" style="background: white; color: var(--primary-color);">
+                    <i class="fas fa-star"></i>
+                    View Our Top 10 Rankings
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    NEWSLETTER SECTION
+    ===========================================
+    Newsletter content is loaded dynamically from Configurations/newsletter-config.js
+    -->
+    <div id="newsletter-container"></div>
+
+    <!-- 
+    ===========================================
+    FOOTER CONTAINER
+    ===========================================
+    Footer content is loaded dynamically from components/footer.html
+    -->
+    <div id="footer-container"></div>
+
+    <!-- 
+    ===========================================
+    JAVASCRIPT FILES
+    ===========================================
+    -->
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./utils/component-colours-examples.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    
+    <!-- Brand Configuration -->
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Contact and FAQ Configuration -->
+    <script src="./Configurations/contact-faq-config.js"></script>
+    
+    <!-- Additional Configurations -->
+    <script src="./Configurations/home-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    
+    <!-- Navigation Configuration -->
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Core Template Renderer -->
+    <script src="./utils/template-renderer.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Newsletter Configuration -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Product Configuration -->
+    <script src="./Configurations/enhanced-product-config.js"></script>
+    
+    
+    
+    <!-- Animated Banner Configuration -->
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/streaming-config.js"></script>
+    
+    <!-- Analytics -->
+    <script src="./utils/analytics.js"></script>
+    
+    <!-- Main scripts -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    
+    <!-- Navigation Loader - Must load after main.js -->
+    <script src="./utils/nav-loader.js"></script>
+    
+    <!-- Popup system -->
+    <script src="utils/popup-config.js"></script>
+    <script src="scripts/popup.js"></script>
+    
+    <!-- Component loaders -->
+    <script src="./utils/footer-loader.js"></script>
+    
+    <!-- Additional functionality -->
+    <script src="./scripts/product-sync.js"></script>
+    <script src="./scripts/comparison.js"></script>
+    <script src="./utils/analytics.js"></script>
+    <script src="./utils/tracking.js"></script>
+    
+    <!-- Contact Form Functionality -->
+    <script>
+        // Contact form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                const loadingText = window.CONTACT_FORM ? window.CONTACT_FORM.loadingText : 'Sending...';
+                const successText = window.CONTACT_FORM ? window.CONTACT_FORM.successText : 'Message Sent!';
+                
+                submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${loadingText}`;
+                submitBtn.disabled = true;
+                
+                // If using a real form service, submit the data
+                if (window.CONTACT_FORM && window.CONTACT_FORM.actionUrl && !window.CONTACT_FORM.actionUrl.includes('YOUR_FORM_ID')) {
+                    // Submit to actual form service
+                    fetch(window.CONTACT_FORM.actionUrl, {
+                        method: window.CONTACT_FORM.method || 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            submitBtn.innerHTML = `<i class="fas fa-check"></i> ${successText}`;
+                            submitBtn.style.background = 'var(--success-color)';
+                            this.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Form submission error:', error);
+                        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error - Please try again';
+                        submitBtn.style.background = 'var(--error-color)';
+                    })
+                    .finally(() => {
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                        }, 3000);
+                    });
+                } else {
+                    // Demo mode - simulate form submission
+                    setTimeout(() => {
+                        // Show success message
+                        submitBtn.innerHTML = `<i class="fas fa-check"></i> ${successText}`;
+                        submitBtn.style.background = 'var(--success-color)';
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                        }, 3000);
+                    }, 1500);
+                }
+                
+                // Track form submission
+                if (typeof trackEvent === 'function') {
+                    trackEvent('contact', 'form_submit', data.subject);
+                }
+            });
+        });
+        
+        // Initialize CTA box with configuration
+        function initializeCTABox() {
+            if (typeof window.CONTACT_CTA_BOX !== 'undefined') {
+                const ctaBox = document.getElementById('contact-cta-box');
+                if (ctaBox) {
+                    const config = window.CONTACT_CTA_BOX;
+                    
+                    // Build the CTA content
+                    let ctaHTML = '';
+                    
+                    // Title with optional icon
+                    ctaHTML += `<h2 style="margin-bottom: var(--spacing-md);">`;
+                    if (config.showTitleIcon && config.titleIcon) {
+                        ctaHTML += `<i class="${config.titleIcon}"></i> `;
+                    }
+                    ctaHTML += `${config.title}</h2>`;
+                    
+                    // Subtitle
+                    ctaHTML += `<p style="margin-bottom: var(--spacing-lg); opacity: 0.9;">${config.subtitle}</p>`;
+                    
+                    // Button with optional icon
+                    ctaHTML += `<a href="${config.buttonLink}" class="btn btn-secondary" style="background: white; color: var(--primary-color);">`;
+                    if (config.showButtonIcon && config.buttonIcon) {
+                        ctaHTML += `<i class="${config.buttonIcon}"></i> `;
+                    }
+                    ctaHTML += `${config.buttonText}</a>`;
+                    
+                    // Update the CTA box
+                    ctaBox.innerHTML = ctaHTML;
+                    
+                    console.log('✅ CTA box initialized with configuration');
+                } else {
+                    console.warn('❌ CTA box element not found');
+                }
+            } else {
+                console.warn('❌ CONTACT_CTA_BOX configuration not found');
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCTABox);
+        } else {
+            initializeCTABox();
+        }
+        
+        // Handle smooth scrolling to FAQ section when page loads with #faq hash
+        function handleAnchorScrolling() {
+            if (window.location.hash === '#faq') {
+                const faqSection = document.getElementById('faq');
+                if (faqSection) {
+                    // Add a small delay to ensure page is fully loaded
+                    setTimeout(() => {
+                        // Use the same scroll offset system as index.html to account for animated ad banner
+                        if (window.scrollToElement && window.CONFIG) {
+                            scrollToElement(faqSection, CONFIG.scrollOffset);
+                            console.log('✅ Scrolled to FAQ section with offset:', CONFIG.scrollOffset);
+                        } else {
+                            // Fallback with manual offset calculation
+                            const elementPosition = faqSection.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - 200; // 200px offset for ad banner
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            console.log('✅ Scrolled to FAQ section with manual offset: 200px');
+                        }
+                    }, 100);
+                }
+            }
+        }
+        
+        // Handle anchor scrolling on page load
+        window.addEventListener('load', handleAnchorScrolling);
+        
+        // Handle anchor scrolling when hash changes (for navigation within the page)
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash === '#faq') {
+                const faqSection = document.getElementById('faq');
+                if (faqSection) {
+                    // Use the same scroll offset system as index.html to account for animated ad banner
+                    if (window.scrollToElement && window.CONFIG) {
+                        scrollToElement(faqSection, CONFIG.scrollOffset);
+                        console.log('✅ Scrolled to FAQ section via hash change with offset:', CONFIG.scrollOffset);
+                    } else {
+                        // Fallback with manual offset calculation
+                        const elementPosition = faqSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - 200; // 200px offset for ad banner
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        console.log('✅ Scrolled to FAQ section via hash change with manual offset: 200px');
+                    }
+                }
+            }
+        });
+    </script>
+    
+    <!-- Responsive Styles -->
+    <style>
+        /* Ensure proper scroll position for FAQ section */
+        #faq {
+            scroll-margin-top: 2rem; /* Adds space above the section when scrolled to */
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--spacing-2xl) !important;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .hero-section {
+                padding: var(--spacing-2xl) 0 !important;
+            }
+            
+            .contact-section, .faq-section, .cta-section {
+                padding: var(--spacing-2xl) 0 !important;
+            }
+        }
+        
+        /* Hero content responsive fixes */
+        @media (max-width: 1024px) {
+            .hero-container {
+                padding: calc(var(--spacing-lg) * 2) var(--spacing-md) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(60%, 10%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 12vh !important;
+                padding: var(--spacing-md) 0 !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-xl) var(--spacing-sm) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 20%) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 10vh !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-lg) var(--spacing-xs) !important;
+            }
+
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 10%) !important;
+            }
+        }
+        
+        /* Hero content responsive fixes */
+        @media (max-width: 1024px) {
+            .hero-container {
+                padding: calc(var(--spacing-lg) * 2) var(--spacing-md) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(60%, 10%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 12vh !important;
+                padding: var(--spacing-md) 0 !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-xl) var(--spacing-sm) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 20%) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 10vh !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-lg) var(--spacing-xs) !important;
+            }
+
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 10%) !important;
+            }
+        }
+    </style>
+</body>
+</html> 

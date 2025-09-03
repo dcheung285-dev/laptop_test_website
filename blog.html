@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>{{NICHE}} Blog - Expert Reviews and Buying Guides | {{BRAND_NAME_TEXT}}</title>
+    <meta name="description" content="Expert articles, reviews, and buying guides for {{PRODUCT_TYPE}}. Stay updated with the latest trends and recommendations.">
+    <meta name="keywords" content="{{NICHE}} blog, {{PRODUCT_TYPE}} reviews, buying guides, expert advice">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{NICHE}} Blog - Expert Reviews and Buying Guides">
+    <meta property="og:description" content="Expert articles, reviews, and buying guides for {{PRODUCT_TYPE}}.">
+    <meta property="og:image" content="./assets/images/blog-og-image.jpg">
+    <meta property="og:url" content="https://yoursite.com/blog.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css?v=2.3">
+    <link rel="stylesheet" href="./styles/components.css?v=2.3">
+    <link rel="stylesheet" href="./styles/responsive.css?v=2.3">
+    <link rel="stylesheet" href="./styles/popup.css?v=2.3">
+    <link rel="stylesheet" href="./styles/comparison.css?v=2.3">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation will be loaded dynamically by nav-loader.js -->
+    
+    <!-- 
+    ===========================================
+    BLOG HERO SECTION
+    ===========================================
+    -->
+
+    <section class="hero-section" id="blog-hero" style="display: flex; align-items: center; min-height: 15vh;">
+        <div class="hero-container" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: calc(var(--spacing-lg) * 3) var(--spacing-lg);">
+            <div class="hero-content" style="text-align: center; max-width: 600px; margin: 0 auto; transform: translate(15rem, 2rem)"> <!-- Translate to move the text -->
+                <h1 class="hero-title">{{NICHE}} Blog</h1>
+                <p class="hero-subtitle">
+                    Expert reviews, buying guides, and the latest trends in {{PRODUCT_TYPE}}. 
+                    Get insider knowledge to make the best purchasing decisions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    BLOG CONTENT SECTION
+    ===========================================
+    This section contains sample blog posts with internal links back to the top 10 page
+    -->
+    <section class="blog-section">
+        <div class="container">
+            <!-- 
+            ===========================================
+            INTERNAL LINKING BANNER
+            ===========================================
+            This banner appears on every page and links back to the top 10
+            -->
+            <div class="top10-ad-box" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: var(--spacing-lg); border-radius: var(--border-radius-lg); text-align: center; margin-bottom: var(--spacing-2xl);">
+                <h3 style="margin-bottom: var(--spacing-sm);">
+                    <i class="fas fa-star"></i>
+                    Looking for the Best {{PRODUCT_TYPE}}?
+                </h3>
+                <p style="margin-bottom: var(--spacing-md); opacity: 0.9;">
+                    Don't waste hours researching. We've already done the work for you!
+                </p>
+                <a href="./index.html#top10" class="btn btn-secondary" style="background: white; color: var(--primary-color);">
+                    <i class="fas fa-trophy"></i>
+                    View Our Top 10 Ranked List
+                </a>
+            </div>
+
+            <!-- 
+            ===========================================
+            DYNAMIC BLOG POSTS GRID
+            ===========================================
+            Blog posts are now generated dynamically from Configurations/blog-config.js
+            Each post can be individually configured with:
+            - Custom title, excerpt, and content
+            - Dynamic images (using blog_test_image1-6.webp)
+            - Custom categories with color coding
+            - Individual badges and tags
+            - Personalized CTA messages
+            -->
+            <div class="blog-grid">
+                <!-- Blog posts are now generated dynamically from Configurations/blog-config.js -->
+                <div id="blogPosts">
+                    <div class="loading-placeholder">
+                        <div class="loading-spinner"></div>
+                    <p>Loading blog posts...</p>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    NEWSLETTER SECTION
+    ===========================================
+    Newsletter content is loaded dynamically from Configurations/newsletter-config.js
+    -->
+    <div id="newsletter-container"></div>
+
+    <!-- 
+    ===========================================
+    FLOATING ELEMENTS
+    ===========================================
+    -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Floating CTA linking back to Top 10 -->
+    <div class="floating-cta" id="floatingCTA">
+        <a href="./index.html#top10" class="floating-cta-link">
+            <i class="fas fa-trophy"></i>
+            <span>🔟 Top 10 {{NICHE}}</span>
+        </a>
+    </div>
+
+    <!-- 
+    ===========================================
+    FOOTER CONTAINER
+    ===========================================
+    Footer content is loaded dynamically from components/footer.html
+    -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    
+    <!-- Animated Banner and Additional Config -->
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/streaming-config.js"></script>
+    
+    <script src="./Configurations/nav-config.js"></script>
+    <!-- Page-specific examples available in ./utils/page-specific-examples.js -->
+    <script src="./utils/component-colours-examples.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    
+    <!-- Brand Configuration -->
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Blog Configuration -->
+    <script src="./Configurations/blog-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Main JavaScript - Must load before nav-loader -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/product-sync.js"></script>
+    
+    <!-- Popup System -->
+    <script src="Configurations/popup-config.js"></script>
+    <script src="scripts/popup.js"></script>
+    
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Newsletter Configuration -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Product Configuration -->
+    <script src="./Configurations/enhanced-product-config.js"></script>
+    
+    <!-- Analytics -->
+    <script src="./utils/analytics.js"></script>
+    
+    <!-- Blog Content Initialization -->
+    <script>
+        // Remove loading placeholder once blog content is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait a moment for blog content to load
+            setTimeout(function() {
+                const loadingPlaceholder = document.querySelector('.loading-placeholder');
+                if (loadingPlaceholder) {
+                    // Check if blog posts were actually loaded
+                    const blogPosts = document.querySelectorAll('.blog-post');
+                    if (blogPosts.length > 0) {
+                        loadingPlaceholder.remove();
+                        console.log('✅ Blog posts loaded successfully:', blogPosts.length, 'posts');
+                    } else {
+                        // Show error message if posts didn't load
+                        loadingPlaceholder.innerHTML = `
+                            <div style="text-align: center; color: var(--text-secondary);">
+                                <i class="fas fa-exclamation-triangle" style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); color: #f59e0b;"></i>
+                                <p>Blog posts are loading...</p>
+                                <p style="font-size: var(--font-size-sm); opacity: 0.7;">If this persists, check browser console for errors.</p>
+                            </div>
+                        `;
+                        console.warn('⚠️ Blog posts not loaded - check blog-config.js');
+                    }
+                }
+            }, 500);
+        });
+    </script>
+    
+    <!-- Additional styles for blog layout -->
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-2xl);
+        }
+        
+        .blog-post {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-normal);
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-post-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-post-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+        
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-content {
+            padding: var(--spacing-xl);
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .blog-category {
+            background: var(--primary-color);
+            color: var(--text-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .blog-post-title {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .blog-post-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            line-height: 1.3;
+            display: block;
+        }
+        
+        .blog-post-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .blog-post-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .blog-cta-inline {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-md);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .blog-cta-inline p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+        }
+        
+        .blog-post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: var(--spacing-lg);
+            gap: var(--spacing-lg);
+        }
+        
+        .blog-post-tags {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            align-items: center;
+            flex: 1;
+            margin-right: var(--spacing-md);
+        }
+        
+        /* Badge System */
+        .badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        
+        .badge-primary {
+            background: var(--primary-color);
+            color: var(--text-white);
+        }
+        
+        .badge-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .badge-accent {
+            background: var(--accent-color);
+            color: var(--text-white);
+        }
+        
+        .badge-success {
+            background: #22c55e;
+            color: white;
+        }
+        
+        .badge-warning {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .badge-danger {
+            background: #ef4444;
+            color: white;
+        }
+        
+        /* Loading placeholder */
+        .loading-placeholder {
+            opacity: 0.7;
+        }
+        
+        .loading-placeholder .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Newsletter section */
+        .newsletter-section {
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .newsletter-note {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        /* CTA Banner Base Styles */
+        .top10-ad-box {
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .top10-ad-box h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+        }
+        
+        .top10-ad-box p {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+            font-size: var(--font-size-md);
+        }
+        
+        .top10-ad-box .btn {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+            font-weight: 600;
+        }
+        
+        .top10-ad-box .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        /* Background Type Variations */
+        .top10-ad-box-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            animation: subtle-glow 3s ease-in-out infinite alternate;
+        }
+        
+        .top10-ad-box-solid {
+            background: var(--primary-color);
+        }
+        
+        .top10-ad-box-image {
+            /* Image size and position handled by JavaScript from config */
+            background-attachment: fixed;
+        }
+        
+        .top10-ad-box-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .top10-ad-box-image > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .top10-ad-box-scaled {
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Responsive Hero Adjustments */
+        @media (max-width: 1024px) {
+            .hero-container {
+                padding: calc(var(--spacing-lg) * 2) var(--spacing-md) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(60%, 10%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 12vh !important;
+                padding: var(--spacing-md) 0 !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-xl) var(--spacing-sm) !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                transform: translate(0, 20%) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 10vh !important;
+            }
+            
+            .hero-container {
+                padding: var(--spacing-lg) var(--spacing-xs) !important;
+            }
+
+            .hero-content {
+            text-align: center !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            transform: translate(0, 10%) !important;
+        }
+        }
+        
+        /* Animation Keyframes */
+        @keyframes subtle-glow {
+            from { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+            to { box-shadow: 0 0 30px rgba(37, 99, 235, 0.5); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr); /* Force exactly 2 columns on tablet */
+                gap: var(--spacing-xl);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            
+            .blog-post-footer {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+                align-items: stretch;
+            }
+            
+            .blog-post-tags {
+                justify-content: center;
+                order: 2;
+            }
+            
+            .btn.btn-outline {
+                order: 1;
+                align-self: center;
+                min-width: 120px;
+            }
+            
+            .blog-post-content {
+                padding: var(--spacing-lg);
+            }
+            
+            .blog-post-image img {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-post-image img {
+                height: 160px;
+            }
+            
+            .blog-post-content {
+                padding: var(--spacing-md);
+            }
+            
+            .blog-post-title a {
+                font-size: var(--font-size-lg);
+            }
+            
+            .badge {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</body>
+</html> 

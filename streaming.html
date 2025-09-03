@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle"></title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/template_favicon.png">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/streaming.css">
+    <link rel="stylesheet" href="./styles/streaming_fixes.css">
+    <link rel="stylesheet" href="./styles/popup.css">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Watch live streams, gaming content, and exclusive video series across multiple platforms including Twitch, YouTube, and more.">
+    <meta name="keywords" content="live streams, gaming, videos, twitch, youtube, streaming, content">
+    <meta name="author" content="DC's Top 10">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Live Streams & Videos | DC's Top 10">
+    <meta property="og:description" content="Watch live crypto casino streams, gaming content, and exclusive video series across multiple platforms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./streaming.html">
+    <meta property="og:image" content="./assets/images/Test_website_image1.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Live Streams & Videos | DC's Top 10">
+    <meta name="twitter:description" content="Watch live crypto casino streams, gaming content, and exclusive video series across multiple platforms.">
+    <meta name="twitter:image" content="./assets/images/Test_website_image1.png">
+</head>
+
+<body class="streaming-page">
+    <!-- Navigation will be loaded dynamically -->
+    
+    <!-- Hero Section -->
+    <section class="hero streaming-hero" style="
+        background: var(--hero-bg-color);
+        color: var(--hero-text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transform: translateY(var(--nav-height, 80px));
+    ">
+        <div class="hero-container" style="
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        ">
+            <div class="hero-content">
+                <!-- Logo will be populated by JavaScript -->
+                <div class="hero-logo"></div>
+                
+                <!-- Subtitle will be populated by JavaScript -->
+                <p class="hero-subtitle"></p>
+                
+                <!-- Description will be populated by JavaScript -->
+                <p class="hero-description"></p>
+                
+                <!-- Hero Actions -->
+                <div class="hero-actions">
+                    <a href="https://twitch.tv" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Watch Live Streams
+                        <div class="corner-highlight top-left"></div>
+                        <div class="corner-highlight top-right"></div>
+                        <div class="corner-highlight bottom-left"></div>
+                        <div class="corner-highlight bottom-right"></div>
+                    </a>
+                    <a href="#streamingPlatforms" class="btn btn-secondary">
+                        View All Platforms
+                        <div class="corner-highlight top-left"></div>
+                        <div class="corner-highlight top-right"></div>
+                        <div class="corner-highlight bottom-left"></div>
+                        <div class="corner-highlight bottom-right"></div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero video section will be added dynamically by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Streaming Stats Section -->
+    <section class="streaming-stats">
+        <div class="container">
+            <div id="streamingStats">
+                <!-- Stats will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Top Categories Section -->
+    <section class="top-categories">
+        <div class="container">
+            <div id="topCategories">
+                <!-- Top categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Streams Section -->
+    <section class="featured-streams">
+        <div class="container">
+            <div id="featuredStreams">
+                <!-- Featured streams will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Platform Links Section -->
+    <section class="streaming-platforms">
+        <div class="container">
+            <div id="streamingPlatforms">
+                <!-- Platform links will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stream Categories Section -->
+    <section class="stream-categories">
+        <div class="container">
+            <div id="streamingCategories">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section (Dynamic) -->
+    <section class="newsletter-section">
+        <!-- Newsletter content is loaded dynamically from Configurations/newsletter-config.js -->
+        <div id="newsletter-container">
+            <!-- Newsletter will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Footer (Dynamic) -->
+    <footer id="footerContainer">
+        <!-- Footer will be loaded dynamically -->
+    </footer>
+    
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./Configurations/brand-config.js"></script>
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Streaming Configuration -->
+    <script src="./Configurations/streaming-config.js"></script>
+    <script src="./Configurations/animated-banner-config.js"></script>
+    
+    <!-- Additional Config Files -->
+    <script src="./Configurations/blog-config.js"></script>
+    <script src="./Configurations/disclaimer-config.js"></script>
+    <script src="./Configurations/home-config.js"></script>
+    <script src="./Configurations/privacy-config.js"></script>
+    <script src="./Configurations/contact-faq-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/cookies-config.js"></script>
+    
+    <!-- Footer and Newsletter Configuration -->
+    <script src="./Configurations/footer-loader.js"></script>
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    
+    <!-- Navigation Loader - Must load after main.js -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./utils/analytics.js"></script>
+    
+    <!-- Page Initialization -->
+    <script>
+        // Page-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎬 Streaming page DOM loaded');
+            
+            // Update page title - Let streaming-config.js handle this
+            // Removed duplicate title setting to avoid conflicts with StreamingPageManager
+            
+            // Newsletter will be loaded automatically by newsletter-config.js
+            
+            console.log('✅ Streaming page initialization complete');
+        });
+        
+
+
+
+        // DEBUG: Check logo scaling after 3 seconds
+        setTimeout(() => {
+            console.log('🔍 DEBUG: Checking logo scaling...');
+            const logoText = document.querySelector('.streaming-hero .hero-logo .logo-text');
+            const logoImage = document.querySelector('.streaming-hero .hero-logo .logo-image');
+            
+            if (logoText) {
+                const computedStyle = window.getComputedStyle(logoText);
+                console.log('Logo text computed font-size:', computedStyle.fontSize);
+                console.log('Logo text inline style:', logoText.style.fontSize);
+            }
+            
+            if (logoImage) {
+                const computedStyle = window.getComputedStyle(logoImage);
+                console.log('Logo image computed height:', computedStyle.height);
+                console.log('Logo image inline style:', logoImage.style.height);
+            }
+            
+            console.log('Current STREAMING_HERO config:', window.STREAMING_HERO);
+        }, 3000);
+        // Animated banner will be loaded automatically by animated-banner-config.js
+    </script>
+</body>
+</html> 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Debug</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <h1>Navigation Debug</h1>
+    
+    <div id="debug-info">
+        <h2>Debug Information:</h2>
+        <div id="debug-output"></div>
+    </div>
+    
+    <script src="./utils/brand-config.js"></script>
+    <script src="./utils/nav-config.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./utils/nav-loader.js"></script>
+    
+    <script>
+        function debugNavigation() {
+            const debugOutput = document.getElementById('debug-output');
+            
+            setTimeout(() => {
+                const navMenu = document.querySelector('.nav-menu');
+                const navContainer = document.querySelector('.nav-container');
+                const stickyNav = document.querySelector('.sticky-nav');
+                
+                let output = '<h3>DOM Elements:</h3>';
+                output += `<p>Sticky Nav: ${stickyNav ? '✅ Found' : '❌ Not found'}</p>`;
+                output += `<p>Nav Container: ${navContainer ? '✅ Found' : '❌ Not found'}</p>`;
+                output += `<p>Nav Menu: ${navMenu ? '✅ Found' : '❌ Not found'}</p>`;
+                
+                if (navMenu) {
+                    const links = navMenu.querySelectorAll('a');
+                    output += `<p>Navigation Links: ${links.length} found</p>`;
+                    if (links.length > 0) {
+                        output += '<ul>';
+                        links.forEach(link => {
+                            output += `<li>${link.textContent} → ${link.href}</li>`;
+                        });
+                        output += '</ul>';
+                    }
+                } else {
+                    output += '<p>❌ Cannot check links - nav menu not found</p>';
+                }
+                
+                output += '<h3>Navigation Config:</h3>';
+                if (window.NavConfig) {
+                    output += '<p>✅ NavConfig available</p>';
+                    try {
+                        const config = window.NavConfig.getConfig();
+                        output += `<p>Configured Links: ${config.links.length}</p>`;
+                        output += '<ul>';
+                        config.links.forEach(link => {
+                            output += `<li>${link.text} → ${link.href}</li>`;
+                        });
+                        output += '</ul>';
+                    } catch (e) {
+                        output += `<p>❌ Error getting config: ${e.message}</p>`;
+                    }
+                } else {
+                    output += '<p>❌ NavConfig not available</p>';
+                }
+                
+                debugOutput.innerHTML = output;
+            }, 1000);
+        }
+        
+        // Run debug after everything loads
+        setTimeout(debugNavigation, 2000);
+    </script>
+</body>
+</html> 

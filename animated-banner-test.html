@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Banner Test</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-nav {
+            background: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            height: 50px;
+        }
+        
+        .test-content {
+            margin-top: 200px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .test-section {
+            background: white;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls {
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+        
+        .config-display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: left;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fake Navigation Bar -->
+    <div class="test-nav">
+        <h3>Test Navigation Bar (Fixed Position)</h3>
+        <p>The animated banner should appear below this navigation bar</p>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="test-content">
+        <div class="test-section">
+            <h1>🎯 Animated Banner Test Page</h1>
+            <p>This page tests the animated banner functionality. The banner should appear at the top, below the navigation bar.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>Banner Controls</h2>
+            <div class="controls">
+                <button class="btn" onclick="toggleBanner()">Toggle Banner On/Off</button>
+                <button class="btn" onclick="testCloseBanner()">Test Close Button</button>
+                <button class="btn" onclick="restartAnimation()">Restart Animation</button>
+                <button class="btn" onclick="testImageScale()">Test Image Scale</button>
+                <button class="btn" onclick="testTextColor()">Test Text Color</button>
+                <button class="btn" onclick="testSpacing()">Test Spacing</button>
+                <button class="btn" onclick="testPosition()">Test Left Position</button>
+                <button class="btn" onclick="testWordLengths()">Test Word Lengths</button>
+                <button class="btn" onclick="testEntranceAnimation()">Test Entrance Animation</button>
+                <button class="btn" onclick="showConfig()">Show Current Config</button>
+                <button class="btn" onclick="testPageBanners()">Test Page Banners</button>
+                <button class="btn" onclick="testContactBanner()">Test Contact Banner</button>
+                <button class="btn" onclick="testDefaultBanner()">Test Default Banner</button>
+                <button class="btn" onclick="testCustomImageBanner()">Test Custom Image Banner</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Expected Behavior</h2>
+            <ol>
+                <li><strong>Banner Position:</strong> Fixed at top, below navigation (80px from top)</li>
+                <li><strong>Logo:</strong> Image + text on the left side</li>
+                <li><strong>Animated Text:</strong> Words appear one by one, then pull back</li>
+                <li><strong>CTA Button:</strong> Green "JOIN NOW" button on the right</li>
+                <li><strong>Responsive:</strong> Should adapt to mobile screens</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h2>Animation Sequence</h2>
+            <p>Watch the center text area for this sequence:</p>
+            <ol>
+                <li>First set: "Anonymous" → "No limits" → "VPN Friendly"</li>
+                <li>Display together for 2 seconds</li>
+                <li>All words pull back and disappear</li>
+                <li>Second set: "Provably Fair" → "Instant Play" → "Crypto Only"</li>
+                <li>Pattern repeats through all word sets</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h2>Current Configuration</h2>
+            <div id="configDisplay" class="config-display">
+                Loading configuration...
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Test Different Sizes</h2>
+            <p>Test the banner responsiveness by resizing your browser window:</p>
+            <ul>
+                <li><strong>Desktop (>768px):</strong> Full size banner</li>
+                <li><strong>Tablet (≤768px):</strong> Adjusted sizing</li>
+                <li><strong>Mobile (≤480px):</strong> Compact layout</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Configuration Files -->
+    <script src="./utils/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./utils/brand-config.js"></script>
+    
+    <!-- Animated Banner System -->
+    <script src="./utils/animated-banner-config.js"></script>
+    
+    <script>
+        // Test functions
+        function toggleBanner() {
+            if (window.animatedBannerManager) {
+                const banner = document.getElementById('animated-banner-container');
+                if (banner) {
+                    // Destroy and recreate banner
+                    window.animatedBannerManager.destroy();
+                    
+                    // Toggle config
+                    window.ANIMATED_BANNER_CONFIG.enabled = !window.ANIMATED_BANNER_CONFIG.enabled;
+                    
+                    // Recreate manager
+                    setTimeout(() => {
+                        window.animatedBannerManager = new AnimatedBannerManager();
+                    }, 100);
+                    
+                    console.log('Banner toggled:', window.ANIMATED_BANNER_CONFIG.enabled);
+                } else {
+                    window.ANIMATED_BANNER_CONFIG.enabled = true;
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }
+            }
+        }
+        
+        function restartAnimation() {
+            if (window.animatedBannerManager) {
+                window.animatedBannerManager.currentSetIndex = 0;
+                window.animatedBannerManager.isAnimating = false;
+                window.animatedBannerManager.startAnimation();
+                console.log('Animation restarted');
+            }
+        }
+        
+        function testImageScale() {
+            if (window.ANIMATED_BANNER_CONFIG) {
+                // Toggle between scale values
+                const currentScale = window.ANIMATED_BANNER_CONFIG.logo.image.scale || 1.0;
+                const newScale = currentScale >= 4.0 ? 1.0 : currentScale + 1.0;
+                
+                window.ANIMATED_BANNER_CONFIG.logo.image.scale = newScale;
+                window.ANIMATED_BANNER_CONFIG.logo.combined.scale = newScale;
+                
+                // Recreate banner
+                window.animatedBannerManager.destroy();
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }, 100);
+                
+                console.log('Image scale changed to:', newScale);
+            }
+        }
+        
+        function testTextColor() {
+            if (window.ANIMATED_BANNER_CONFIG) {
+                // Cycle through colors
+                const colors = ['#FFFFFF', '#FFD700', '#FF6B35', '#00C853', '#2196F3'];
+                const currentColor = window.ANIMATED_BANNER_CONFIG.logo.text.textColor || '#FFFFFF';
+                const currentIndex = colors.indexOf(currentColor);
+                const newColor = colors[(currentIndex + 1) % colors.length];
+                
+                window.ANIMATED_BANNER_CONFIG.logo.text.textColor = newColor;
+                window.ANIMATED_BANNER_CONFIG.logo.combined.textColor = newColor;
+                
+                // Recreate banner
+                window.animatedBannerManager.destroy();
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }, 100);
+                
+                console.log('Text color changed to:', newColor);
+            }
+        }
+        
+        function testSpacing() {
+            if (window.ANIMATED_BANNER_CONFIG) {
+                // Cycle through spacing values
+                const spacings = ['5px', '10px', '20px', '50px', '100px'];
+                const currentSpacing = window.ANIMATED_BANNER_CONFIG.logo.text.spacing || '8px';
+                const currentIndex = spacings.indexOf(currentSpacing);
+                const newSpacing = spacings[(currentIndex + 1) % spacings.length];
+                
+                window.ANIMATED_BANNER_CONFIG.logo.text.spacing = newSpacing;
+                window.ANIMATED_BANNER_CONFIG.logo.combined.spacing = newSpacing;
+                
+                // Recreate banner
+                window.animatedBannerManager.destroy();
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }, 100);
+                
+                console.log('Spacing changed to:', newSpacing);
+            }
+        }
+        
+        function testPosition() {
+            if (window.ANIMATED_BANNER_CONFIG) {
+                // Cycle through left position values
+                const positions = ['0px', '20px', '50px', '100px', '-20px', '-50px'];
+                const currentLeft = window.ANIMATED_BANNER_CONFIG.logo.image.left || '0px';
+                const currentIndex = positions.indexOf(currentLeft);
+                const newLeft = positions[(currentIndex + 1) % positions.length];
+                
+                window.ANIMATED_BANNER_CONFIG.logo.text.left = newLeft;
+                window.ANIMATED_BANNER_CONFIG.logo.image.left = newLeft;
+                window.ANIMATED_BANNER_CONFIG.logo.combined.left = newLeft;
+                
+                // Recreate banner
+                window.animatedBannerManager.destroy();
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }, 100);
+                
+                console.log('Left position changed to:', newLeft);
+            }
+        }
+        
+        function testWordLengths() {
+            if (window.ANIMATED_BANNER_CONFIG) {
+                // Test different word length combinations
+                const wordSets = [
+                    // Short words
+                    [
+                        ['Fast', 'Easy', 'Safe'],
+                        ['New', 'Top', 'Best'],
+                        ['Win', 'Play', 'Join']
+                    ],
+                    // Medium words
+                    [
+                        ['Anonymous', 'No limits', 'VPN Friendly'],
+                        ['Provably Fair', 'Instant Play', 'Crypto Only'],
+                        ['24/7 Support', 'Fast Payouts', 'Mobile Ready']
+                    ],
+                    // Long words
+                    [
+                        ['Extraordinarily Amazing', 'Unbelievably Fantastic', 'Remarkably Outstanding'],
+                        ['Revolutionary Technology', 'Advanced Security Features', 'Premium Customer Experience'],
+                        ['Industry Leading Innovation', 'World Class Performance', 'Cutting Edge Solutions']
+                    ],
+                    // Mixed lengths
+                    [
+                        ['Quick', 'Super Fast Processing', 'Go'],
+                        ['Professional Service', 'Easy', 'Advanced Security'],
+                        ['Start Now', 'Complete Solutions Available', 'Begin']
+                    ]
+                ];
+                
+                // Get current test set index
+                const currentWords = JSON.stringify(window.ANIMATED_BANNER_CONFIG.animatedText.wordSets);
+                let testIndex = 0;
+                
+                // Find current set or start at 0
+                for (let i = 0; i < wordSets.length; i++) {
+                    if (JSON.stringify(wordSets[i]) === currentWords) {
+                        testIndex = (i + 1) % wordSets.length;
+                        break;
+                    }
+                }
+                
+                window.ANIMATED_BANNER_CONFIG.animatedText.wordSets = wordSets[testIndex];
+                
+                // Recreate banner
+                window.animatedBannerManager.destroy();
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                }, 100);
+                
+                const testNames = ['Short Words', 'Medium Words', 'Long Words', 'Mixed Lengths'];
+                console.log('Word length test changed to:', testNames[testIndex]);
+            }
+        }
+        
+        function testEntranceAnimation() {
+            if (window.animatedBannerManager) {
+                // Destroy and recreate to test entrance animation
+                window.animatedBannerManager.destroy();
+                
+                setTimeout(() => {
+                    window.animatedBannerManager = new AnimatedBannerManager();
+                    console.log('Entrance animation triggered');
+                }, 200);
+            }
+        }
+        
+        function showConfig() {
+            const configDisplay = document.getElementById('configDisplay');
+            if (window.ANIMATED_BANNER_CONFIG) {
+                configDisplay.textContent = JSON.stringify(window.ANIMATED_BANNER_CONFIG, null, 2);
+            } else {
+                configDisplay.textContent = 'Configuration not loaded';
+            }
+        }
+        
+        // Auto-show config when page loads
+        setTimeout(() => {
+            showConfig();
+            console.log('Animated Banner Test Page Loaded');
+            console.log('Banner Manager:', window.animatedBannerManager);
+            console.log('Banner Config:', window.ANIMATED_BANNER_CONFIG);
+        }, 1000);
+        
+        // Monitor banner status
+        setInterval(() => {
+            const banner = document.getElementById('animated-banner-container');
+            const status = banner ? 'Visible' : 'Hidden';
+            document.title = `Animated Banner Test - ${status}`;
+        }, 2000);
+
+        // Test different page banners
+        function testPageBanners() {
+            console.log('🎯 Testing different page banner configurations...');
+            
+            // Test Blog Banner
+            ANIMATED_BANNER_CONFIG.pageSettings['blog.html'] = {
+                enabled: true,
+                useDefault: false,
+                customBanner: {
+                    logo: {
+                        type: 'text',
+                        text: {
+                            content: '📰',
+                            brandText: 'Blog News',
+                            fontSize: '28px',
+                            textColor: '#FFFFFF',
+                            spacing: '8px',
+                            left: '0px'
+                        }
+                    },
+                    animatedText: {
+                        wordSets: [
+                            ['Latest News', 'Expert Tips', 'Industry Insights'],
+                            ['How-To Guides', 'Reviews', 'Tutorials'],
+                            ['Stay Updated', 'Learn More', 'Read Now']
+                        ]
+                    },
+                    ctaButton: {
+                        text: 'READ BLOG',
+                        url: './blog.html',
+                        styling: {
+                            backgroundColor: '#2196f3',
+                            hoverBackgroundColor: '#1976d2',
+                            textColor: '#FFFFFF',
+                            fontSize: '16px'
+                        }
+                    },
+                    background: {
+                        type: 'gradient',
+                        gradientStart: '#1976d2',
+                        gradientEnd: '#42a5f5',
+                        gradientDirection: '90deg',
+                        opacity: 0.95
+                    }
+                }
+            };
+            
+            // Simulate blog page by updating location
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/blog.html' },
+                writable: true
+            });
+            
+            // Restart banner with new config
+            restartBanner();
+        }
+        
+        function testContactBanner() {
+            console.log('📞 Testing contact page banner...');
+            
+            // Test Contact Banner
+            ANIMATED_BANNER_CONFIG.pageSettings['contact.html'] = {
+                enabled: true,
+                useDefault: false,
+                customBanner: {
+                    logo: {
+                        type: 'text',
+                        text: {
+                            content: '📞',
+                            brandText: 'Contact Us',
+                            fontSize: '28px',
+                            textColor: '#FFFFFF',
+                            spacing: '8px',
+                            left: '0px'
+                        }
+                    },
+                    animatedText: {
+                        wordSets: [
+                            ['24/7 Support', 'Quick Response', 'Expert Help'],
+                            ['Live Chat', 'Email Support', 'Phone Support'],
+                            ['Get Help Now', 'Contact Us', 'We\'re Here']
+                        ]
+                    },
+                    ctaButton: {
+                        text: 'CONTACT NOW',
+                        url: '#contact-form',
+                        styling: {
+                            backgroundColor: '#ff9800',
+                            hoverBackgroundColor: '#f57c00',
+                            textColor: '#FFFFFF',
+                            fontSize: '16px'
+                        }
+                    },
+                    background: {
+                        type: 'gradient',
+                        gradientStart: '#ff9800',
+                        gradientEnd: '#ffb74d',
+                        gradientDirection: '90deg',
+                        opacity: 0.95
+                    }
+                }
+            };
+            
+            // Simulate contact page
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/contact.html' },
+                writable: true
+            });
+            
+            // Restart banner with new config
+            restartBanner();
+        }
+        
+        function testDefaultBanner() {
+            console.log('🏠 Testing default banner...');
+            
+            // Reset to default
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/home.html' },
+                writable: true
+            });
+            
+            // Restart banner with default config
+            restartBanner();
+        }
+        
+        function testCustomImageBanner() {
+            console.log('🖼️ Testing custom image banner...');
+            
+            // Test custom image banner
+            ANIMATED_BANNER_CONFIG.pageSettings['test.html'] = {
+                enabled: true,
+                useDefault: false,
+                customBanner: {
+                    logo: {
+                        type: 'image',
+                        image: {
+                            src: 'assets/images/Test_Logo1.png',
+                            width: '40px',
+                            height: '40px',
+                            scale: '1.5',
+                            left: '0px'
+                        }
+                    },
+                    animatedText: {
+                        wordSets: [
+                            ['Custom Image', 'Logo Test', 'Working Great'],
+                            ['Scalable', 'Flexible', 'Dynamic']
+                        ]
+                    },
+                    ctaButton: {
+                        text: 'TRY NOW',
+                        url: '#test',
+                        styling: {
+                            backgroundColor: '#9c27b0',
+                            hoverBackgroundColor: '#7b1fa2',
+                            textColor: '#FFFFFF',
+                            fontSize: '16px'
+                        }
+                    },
+                    background: {
+                        type: 'gradient',
+                        gradientStart: '#9c27b0',
+                        gradientEnd: '#ba68c8',
+                        gradientDirection: '90deg',
+                        opacity: 0.95
+                    }
+                }
+            };
+            
+            // Simulate test page
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/test.html' },
+                writable: true
+            });
+            
+            // Restart banner with new config
+            restartBanner();
+        }
+        
+        function testCloseBanner() {
+            // Test the close button functionality
+            const banner = document.getElementById('animated-banner-container');
+            if (banner) {
+                console.log('Banner found - testing close animation');
+                animatedBannerManager.closeBanner();
+                console.log('Close banner triggered - banner should slide up and disappear');
+                
+                // Show message after banner closes
+                setTimeout(() => {
+                    console.log('Banner should be removed now. You can use "Toggle Banner On/Off" to bring it back.');
+                }, 700);
+            } else {
+                console.log('No banner found - make sure banner is enabled first');
+                alert('No banner found. Please turn on the banner first using "Toggle Banner On/Off"');
+            }
+        }
+    </script>
+</body>
+</html> 

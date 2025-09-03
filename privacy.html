@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Privacy Policy | {{BRAND_NAME_TEXT}}</title>
+    <meta name="description" content="Privacy Policy for {{BRAND_NAME_TEXT}} - How we collect, use, and protect your personal information.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="stylesheet" href="./styles/main.css?v=2.3">
+    <link rel="stylesheet" href="./styles/components.css?v=2.3">
+    <link rel="stylesheet" href="./styles/responsive.css?v=2.3">
+    <link rel="stylesheet" href="./styles/comparison.css?v=2.3">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation will be loaded dynamically by nav-loader.js -->
+    
+    <!-- 
+    ===========================================
+    MAIN CONTENT
+    ===========================================
+    -->
+    <main class="legal-page">
+        <div class="container">
+            <div class="legal-content">
+                <h1 id="page-title">Privacy Policy</h1>
+                <p class="last-updated" id="last-updated">Last updated: December 2024</p>
+
+                <!-- Dynamic Sections Container -->
+                <div id="privacy-sections">
+                    <!-- Sections will be rendered here dynamically by privacy-config.js -->
+                    <div class="loading-placeholder" style="text-align: center; padding: var(--spacing-xl); color: var(--text-secondary);">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading privacy policy sections...</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Back to Top 10 CTA -->
+                <div class="legal-cta" id="legal-cta">
+                    <div class="top10-ad-box" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: var(--spacing-xl); border-radius: var(--border-radius-lg); text-align: center; margin: var(--spacing-2xl) 0;">
+                        <h3 style="margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-star"></i>
+                            Ready to Find the Best {{PRODUCT_TYPE}}?
+                        </h3>
+                        <p style="margin-bottom: var(--spacing-md); opacity: 0.9;">
+                            Check out our expertly curated Top 10 list!
+                        </p>
+                        <a href="./index.html#top10" class="btn btn-secondary" style="background: white; color: var(--primary-color);">
+                            <i class="fas fa-trophy"></i>
+                            View Our Top 10 {{NICHE}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 
+    ===========================================
+    NEWSLETTER SECTION
+    ===========================================
+    Newsletter content is loaded dynamically from Configurations/newsletter-config.js
+    -->
+    <div id="newsletter-container"></div>
+
+    <!-- 
+    ===========================================
+    FOOTER CONTAINER
+    ===========================================
+    Footer content is loaded dynamically from components/footer.html
+    -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <!-- Page-specific examples available in ./utils/page-specific-examples.js -->
+    <script src="./utils/component-colours-examples.js"></script>
+    
+    <script src="./Configurations/theme-config.js"></script>
+    
+    <!-- Brand Configuration -->
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Other Configuration Files -->
+    <script src="./Configurations/blog-config.js"></script>
+    <script src="./Configurations/disclaimer-config.js"></script>
+    <script src="./Configurations/home-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    
+    <!-- Navigation Configuration -->
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Core Template Renderer -->
+    <script src="./utils/template-renderer.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    
+    <!-- Loading Placeholder Remover -->
+    <script>
+        // Remove loading placeholder once content loads
+        setTimeout(() => {
+            const placeholder = document.querySelector('.loading-placeholder');
+            if (placeholder) {
+                placeholder.remove();
+            }
+        }, 500);
+    </script>
+
+    <!-- Privacy Page Configuration -->
+    <script src="./Configurations/contact-faq-config.js"></script>
+    <script src="./Configurations/privacy-config.js"></script>
+    
+    <!-- Footer Loader -->
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Additional Features -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    <script src="./Configurations/enhanced-product-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/streaming-config.js"></script>
+    
+    <!-- Analytics -->
+    <script src="./utils/analytics.js"></script>
+    
+
+
+</body>
+</html> 

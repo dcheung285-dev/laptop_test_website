@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast | Template - Top 10</title>
+    <meta name="description" content="Listen to top conversations shaping the crypto space with expert commentary and industry insights">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/podcast.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/popup.css">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/template_favicon.png">
+    
+    <style>
+        /* Page-specific hero styling to match other pages */
+        .podcast-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            min-height: 15vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .podcast-hero .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-lg) * 3) var(--spacing-lg);
+        }
+        
+        .podcast-hero .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translate(15rem, 2rem); /* Move content to account for nav and banner */
+        }
+        
+        /* Ensure content doesn't overlap with navigation */
+        .podcast-content {
+            margin-top: var(--spacing-lg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (dynamically loaded) -->
+    
+    <!-- Animated Banner (dynamically loaded) -->
+    
+    <!-- Hero Section -->
+    <section class="podcast-hero hero-section" id="podcast-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Hero content will be populated by JavaScript from podcast-config.js -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="podcast-content">
+        <!-- Featured/Latest Episodes Section -->
+        <section class="featured-section">
+            <div class="container">
+                <div id="featured-episodes">
+                    <!-- Featured episodes will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Category Showcases Section -->
+        <section class="categories-section">
+            <div class="container">
+                <div id="category-showcases">
+                    <!-- Category showcases will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pagination Section (if needed) -->
+        <section class="pagination-section">
+            <div class="container">
+                <div id="episode-pagination">
+                    <!-- Pagination will be added if needed -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Newsletter Section (dynamically loaded) -->
+    <section class="newsletter-section">
+        <!-- Newsletter content is loaded dynamically from Configurations/newsletter-config.js -->
+        <div id="newsletter-container">
+            <!-- Newsletter will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Footer (dynamically loaded) -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./Configurations/brand-config.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Animated Banner Configuration -->
+    <script src="./Configurations/animated-banner-config.js"></script>
+    
+    <!-- Navigation Configuration -->
+    <script src="./Configurations/nav-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Podcast Configuration -->
+    <script src="./Configurations/podcast-config.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎧 PODCAST DEBUG: Page DOMContentLoaded fired');
+            
+            // Check if scripts are loading
+            console.log('🎧 PODCAST DEBUG: window.animatedBannerManager exists:', !!window.animatedBannerManager);
+            console.log('🎧 PODCAST DEBUG: ANIMATED_BANNER_CONFIG exists:', !!window.ANIMATED_BANNER_CONFIG);
+            
+            // Multiple debug checks at different intervals
+            setTimeout(() => {
+                console.log('🎧 PODCAST DEBUG: 1s - animatedBannerManager exists:', !!window.animatedBannerManager);
+                if (window.animatedBannerManager) {
+                    console.log('🎧 PODCAST DEBUG: 1s - config loaded:', !!window.animatedBannerManager.config);
+                    console.log('🎧 PODCAST DEBUG: 1s - current page:', window.animatedBannerManager.getCurrentPageName());
+                }
+            }, 1000);
+            
+            setTimeout(() => {
+                console.log('🎧 PODCAST DEBUG: 3s - animatedBannerManager exists:', !!window.animatedBannerManager);
+                const bannerElement = document.getElementById('animated-banner-container');
+                console.log('🎧 PODCAST DEBUG: 3s - banner element exists:', !!bannerElement);
+                if (bannerElement) {
+                    console.log('🎧 PODCAST DEBUG: 3s - banner content:', bannerElement.innerHTML.substring(0, 200));
+                } else {
+                    console.log('🎧 PODCAST DEBUG: 3s - No banner element found in DOM');
+                }
+            }, 3000);
+            
+            setTimeout(() => {
+                console.log('🎧 PODCAST DEBUG: 5s - Final check');
+                if (window.animatedBannerManager && window.animatedBannerManager.activeConfig) {
+                    console.log('🎧 PODCAST DEBUG: 5s - activeConfig:', window.animatedBannerManager.activeConfig);
+                    console.log('🎧 PODCAST DEBUG: 5s - logo config:', window.animatedBannerManager.activeConfig.logo);
+                    console.log('🎧 PODCAST DEBUG: 5s - components config:', window.animatedBannerManager.activeConfig.components);
+                    console.log('🎧 PODCAST DEBUG: 5s - background config:', window.animatedBannerManager.activeConfig.background);
+                    
+                    // Test component visibility
+                    console.log('🎧 PODCAST DEBUG: 5s - shouldShowComponent logoSection:', window.animatedBannerManager.shouldShowComponent('logoSection'));
+                    console.log('🎧 PODCAST DEBUG: 5s - shouldShowComponent textSection:', window.animatedBannerManager.shouldShowComponent('textSection'));
+                    console.log('🎧 PODCAST DEBUG: 5s - shouldShowComponent ctaButton:', window.animatedBannerManager.shouldShowComponent('ctaButton'));
+                    
+                    // Test logo HTML generation
+                    console.log('🎧 PODCAST DEBUG: 5s - generateLogoHTML:', window.animatedBannerManager.generateLogoHTML());
+                    
+                    // If banner exists but components are missing, try recreating
+                    const bannerElement = document.getElementById('animated-banner-container');
+                    if (bannerElement) {
+                        const logoSection = bannerElement.querySelector('.banner-logo-section');
+                        const textSection = bannerElement.querySelector('.banner-text-section');
+                        console.log('🎧 PODCAST DEBUG: 5s - logoSection exists:', !!logoSection);
+                        console.log('🎧 PODCAST DEBUG: 5s - textSection exists:', !!textSection);
+                        
+                        // If sections are missing, recreate banner
+                        if (!logoSection || !textSection) {
+                            console.log('🎧 PODCAST DEBUG: 5s - Missing sections, recreating banner...');
+                            bannerElement.remove();
+                            window.animatedBannerManager.createBannerHTML();
+                            window.animatedBannerManager.applyStyles();
+                        } else {
+                            // Log the actual HTML content for comparison
+                            console.log('🎧 PODCAST DEBUG: 5s - Banner HTML structure:');
+                            console.log('🎧 PODCAST DEBUG: 5s - Full banner HTML:', bannerElement.outerHTML.substring(0, 500) + '...');
+                            console.log('🎧 PODCAST DEBUG: 5s - Logo section HTML:', logoSection.outerHTML);
+                            console.log('🎧 PODCAST DEBUG: 5s - Text section HTML:', textSection.outerHTML);
+                            
+                            // Check if styles are applied
+                            const styles = document.getElementById('animated-banner-styles');
+                            console.log('🎧 PODCAST DEBUG: 5s - Styles element exists:', !!styles);
+                            if (styles) {
+                                console.log('🎧 PODCAST DEBUG: 5s - Styles content:', styles.textContent.substring(0, 300) + '...');
+                            }
+                        }
+                    }
+                } else {
+                    console.log('🎧 PODCAST DEBUG: 5s - No activeConfig found');
+                }
+            }, 5000);
+            
+            // Force banner recreation after 7 seconds to ensure correct config is applied
+            setTimeout(() => {
+                console.log('🎧 PODCAST DEBUG: 7s - Force banner recreation');
+                if (window.animatedBannerManager) {
+                    const existingBanner = document.getElementById('animated-banner-container');
+                    if (existingBanner) {
+                        console.log('🎧 PODCAST DEBUG: 7s - Removing existing banner');
+                        existingBanner.remove();
+                    }
+                    
+                    const existingStyles = document.getElementById('animated-banner-styles');
+                    if (existingStyles) {
+                        console.log('🎧 PODCAST DEBUG: 7s - Removing existing styles');
+                        existingStyles.remove();
+                    }
+                    
+                    console.log('🎧 PODCAST DEBUG: 7s - Creating fresh banner with current config');
+                    window.animatedBannerManager.setup();
+                }
+            }, 7000);
+            
+            // Navigation will be loaded automatically by nav-loader.js
+            // Animated banner will be loaded automatically by animated-banner-config.js
+            // Newsletter will be loaded automatically by newsletter-config.js
+            
+            // Load other components
+            if (typeof loadFooter === 'function') {
+                loadFooter();
+            }
+            
+            console.log('🎧 All components initialized');
+        });
+    </script>
+</body>
+</html> 

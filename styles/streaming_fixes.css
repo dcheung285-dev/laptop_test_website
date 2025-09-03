@@ -1,0 +1,1050 @@
+/* STREAMING PAGE FIXES */
+
+/* Fix 1: Hero logo visibility and display */
+.streaming-hero {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Extend hero background to cover stats section */
+.streaming-stats {
+    background: var(--hero-bg-color) !important;
+    color: var(--hero-text-color) !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+
+/* Add diagonal bottom edge to streaming hero with matching angle */
+.streaming-hero::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 800px !important;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff"><polygon points="0,0 1000,20 1000,100 0,100"/></svg>') !important;
+    background-size: cover !important;
+    background-position: bottom !important;
+    z-index: 1 !important;
+    opacity: 0.1 !important;
+}
+
+
+/* Ensure stats content is above diagonal */
+.streaming-stats .container,
+.streaming-stats #streamingStats {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: 5rem !important;
+}
+
+
+
+.streaming-hero .hero-logo {
+    display: block !important;
+    visibility: visible !important;
+    min-height: 3rem;
+}
+
+.streaming-hero .hero-container,
+.streaming-hero .hero-content,
+.streaming-hero .hero-logo {
+    position: relative !important;
+    z-index: 2 !important; /* Above the diagonal effect */
+}
+
+.streaming-hero .hero-logo .logo-wrapper {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.streaming-hero .hero-logo .logo-text {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+.streaming-hero .hero-logo .logo-image {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Fix 2: Thumbnail overlay row layout on mobile/extra small */
+@media (max-width: 768px) {
+    .hero-video-thumbnails {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+        flex-wrap: wrap;
+    }
+}
+
+/* Fix 3: Stats grid 2 columns on extra small instead of 1 */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--spacing-sm) !important;
+    }
+}
+
+/* Fix 4: Hero video stream info display */
+.hero-video-main {
+    background: var(--streaming-card-bg, var(--bg-card, var(--background-color))) !important;
+    border-radius: var(--border-radius) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-lg, 0 10px 40px rgba(0,0,0,0.3)) !important;
+}
+
+.main-stream-container {
+    position: relative !important;
+    aspect-ratio: 16/9 !important;
+    overflow: hidden !important;
+}
+
+.main-stream-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.main-stream-info {
+    padding: var(--spacing-lg) !important;
+    color: var(--streaming-card-text, var(--text-primary, var(--text-color))) !important;
+    background: var(--streaming-info-bg, var(--bg-card, var(--background-color))) !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.main-stream-info .stream-title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--streaming-title-color, var(--text-primary, var(--text-color))) !important;
+}
+
+.main-stream-info .stream-meta {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-md) !important;
+    margin-bottom: var(--spacing-sm) !important;
+    flex-wrap: wrap !important;
+    color: var(--streaming-card-text, var(--text-secondary, var(--text-muted))) !important;
+}
+
+.main-stream-info .stream-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: var(--spacing-xs) !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+.main-stream-info .stream-tags .tag {
+    background: transparent !important;
+    color: var(--streaming-tag-text, var(--text-primary, var(--text-color))) !important;
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--accent-color, #22c55e) !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.main-stream-info .stream-actions {
+    margin-top: var(--spacing-md) !important;
+}
+
+.main-stream-info .watch-now-btn {
+    background: var(--accent-color, #22c55e) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-xs) !important;
+}
+
+.main-stream-info .watch-now-btn:hover {
+    background: var(--accent-hover, #16a34a) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Hero buttons corner highlight effects */
+.streaming-hero .hero-actions .btn {
+    position: relative !important;
+}
+
+.streaming-hero .hero-actions .btn .corner-highlight.top-left {
+    top: 0 !important;
+    left: 0 !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-top-left-radius: 6px !important;
+}
+
+.streaming-hero .hero-actions .btn .corner-highlight.top-right {
+    top: 0 !important;
+    right: 0 !important;
+    border-left: none !important;
+    border-bottom: none !important;
+    border-top-right-radius: 6px !important;
+}
+
+.streaming-hero .hero-actions .btn .corner-highlight.bottom-left {
+    bottom: 0 !important;
+    left: 0 !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+.streaming-hero .hero-actions .btn .corner-highlight.bottom-right {
+    bottom: 0 !important;
+    right: 0 !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.streaming-hero .hero-actions .btn:hover .corner-highlight {
+    opacity: 1 !important;
+}
+
+/* Watch Now button corner highlights */
+.main-stream-info .watch-now-btn {
+    position: relative !important;
+}
+
+.main-stream-info .watch-now-btn .corner-highlight {
+    position: absolute !important;
+    width: 16px !important;
+    height: 16px !important;
+    border: 2px solid var(--accent-color, #22c55e) !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    z-index: 15 !important;
+    pointer-events: none !important;
+}
+
+.main-stream-info .watch-now-btn .corner-highlight.top-left {
+    top: 6px !important;
+    left: 6px !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-top-left-radius: 4px !important;
+}
+
+.main-stream-info .watch-now-btn .corner-highlight.top-right {
+    top: 6px !important;
+    right: 6px !important;
+    border-left: none !important;
+    border-bottom: none !important;
+    border-top-right-radius: 4px !important;
+}
+
+.main-stream-info .watch-now-btn .corner-highlight.bottom-left {
+    bottom: 6px !important;
+    left: 6px !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+.main-stream-info .watch-now-btn .corner-highlight.bottom-right {
+    bottom: 6px !important;
+    right: 6px !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.main-stream-info .watch-now-btn:hover .corner-highlight {
+    opacity: 1 !important;
+}
+
+/* Fix 5: Logo positioning enhancements */
+.streaming-hero .hero-logo .logo-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-right: 100px !important;
+}
+
+.streaming-hero .hero-logo .logo-text,
+.streaming-hero .hero-logo .logo-image {
+    transition: transform 0.3s ease !important;
+}
+
+/* Fix 6: Top Live Categories Layout (1-10 numbered cards) */
+.top-categories {
+    background: transparent !important;
+    padding: calc(var(--spacing-lg) + 30px) 0 var(--spacing-lg) 0 !important; /* Extra top padding for hover */
+    overflow: visible !important; /* Allow overflow for hover effects */
+}
+
+.top-categories .container {
+    background: transparent !important;
+    overflow: visible !important; /* Allow overflow for hover effects */
+}
+
+/* Base section header styles */
+.section-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: var(--spacing-lg) !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Default padding for most sections */
+.section-header {
+    padding: 0 var(--spacing-lg) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+/* No padding for Top Live Categories and Featured Content */
+.top-categories .section-header,
+.featured-streams .section-header {
+    padding: 0 !important;
+}
+
+/* Ensure section actions in featured streams align with cards */
+.featured-streams .section-actions {
+    margin-right: var(--spacing-lg) !important; /* Add right margin to match card grid padding */
+}
+
+/* Ensure section actions in top categories align with cards */
+.top-categories .section-actions {
+    margin-right: var(--spacing-lg) !important; /* Add right margin to match card grid padding */
+}
+
+/* Mobile and Extra Small View All Button Positioning */
+@media (max-width: 768px) {
+    /* All View All buttons - Right indented */
+    .featured-streams .section-actions {
+        text-align: right !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .top-categories .section-header .section-actions,
+    .featured-streams .section-actions {
+        text-align: right !important;
+        width: 100% !important;
+        padding-right: var(--spacing-lg) !important;
+        margin: 0 !important;
+    }
+    
+    /* Featured Content - Right indent description */
+    .featured-streams .section-description,
+    .stream-category .category-description {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* All View All buttons - Right indented */
+    .top-categories .section-header .section-actions,
+    .featured-streams .section-actions {
+        text-align: right !important;
+        width: 100% !important;
+        padding: var(--spacing-lg) !important;
+        margin: 0 !important;
+    }
+    .stream-category .section-actions {
+        text-align: right !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Featured Content - Right indent description */
+    .featured-streams .section-description,
+    .stream-category .category-description {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+}
+
+/* Note: Streaming hero responsive fixes moved to streaming.css to avoid conflicts */
+
+/* Specific padding for platform section */
+.streaming-platforms .section-header {
+    padding: 0 var(--spacing-lg) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+.section-header h2 {
+    margin: 0 !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+}
+
+.section-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: var(--spacing-xs) !important;
+    text-align: right !important;
+    flex-shrink: 0 !important;
+    margin-left: 0 !important; /* Remove left margin to align with cards */
+}
+
+.section-actions p {
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.4 !important;
+}
+
+.section-actions .view-all-link {
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    margin-top: var(--spacing-xs) !important;
+}
+
+.section-actions .view-all-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Top Categories Horizontal Scroll Container */
+.top-categories-container {
+    position: relative !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--spacing-lg) !important;
+    overflow: visible !important; /* Allow overflow for hover effects */
+}
+
+.top-categories-scroll-wrapper {
+    position: relative !important;
+    overflow: visible !important; /* Allow all overflow for hover effects and scroll */
+    padding: 0 60px !important;
+    margin-top: 25px !important; /* Even more space for hover lift effect */
+    margin-bottom: 20px !important; /* Extra bottom space too */
+}
+
+/* Create extra space above the grid for hover effects */
+.top-categories-scroll-wrapper::before {
+    content: '' !important;
+    display: block !important;
+    height: 15px !important; /* Extra space for hover */
+    width: 100% !important;
+}
+
+/* Scroll navigation arrows */
+.scroll-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(0,0,0,0.7) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    color: #ffffff !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.scroll-arrow:hover {
+    background: rgba(0,0,0,0.9) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.scroll-arrow.disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+}
+
+.scroll-arrow.disabled:hover {
+    transform: translateY(-50%) !important;
+    background: rgba(0,0,0,0.7) !important;
+}
+
+.scroll-arrow-left {
+    left: 10px !important;
+}
+
+.scroll-arrow-right {
+    right: 10px !important;
+}
+
+.top-categories-grid {
+    display: flex !important;
+    gap: var(--spacing-md) !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important; /* Allow vertical overflow for hover */
+    scroll-behavior: smooth !important;
+    padding: 15px 0 15px 0 !important; /* More padding for hover effect */
+    margin-bottom: var(--spacing-xl) !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+.top-categories-grid::-webkit-scrollbar {
+    display: none !important; /* Chrome, Safari, Opera */
+}
+
+/* Specific targeting for the actual grid element */
+#topCategoriesGrid {
+    margin-top: -10px !important; /* Pull up slightly to create natural top space */
+    padding-top: 20px !important; /* But add padding back for hover space */
+}
+
+/* Horizontal landscape cards for top categories */
+.top-category-card {
+    flex: 0 0 280px !important; /* Fixed width for horizontal cards */
+    height: 160px !important; /* Fixed height for landscape */
+    background: var(--bg-card, var(--background-color)) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.2)) !important;
+}
+
+.top-category-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: var(--shadow-lg, 0 12px 30px rgba(0,0,0,0.4)) !important;
+    z-index: 10 !important; /* Bring hovered card to front */
+}
+
+/* Live category rank number */
+.live-category-rank {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    background: var(--accent-color, #22c55e) !important;
+    color: #ffffff !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    z-index: 5 !important;
+    line-height: 1 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* Live category background image */
+.live-category-background {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, var(--primary-color, #3b82f6), var(--accent-color, #22c55e)) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Removed the test overlay - now shows actual background images */
+
+.live-category-icon {
+    font-size: 3rem !important;
+    color: rgba(255,255,255,0.3) !important;
+    z-index: 2 !important;
+    position: relative !important;
+}
+
+/* Live category overlay with stream info */
+.live-category-overlay {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), transparent) !important;
+    padding: 16px !important;
+    z-index: 4 !important;
+}
+
+.live-category-info {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 16px !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), transparent) !important;
+    color: #ffffff !important;
+    z-index: 4 !important;
+}
+
+.live-category-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+}
+
+.live-category-name {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    margin: 0 0 4px 0 !important;
+    color: #ffffff !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+.live-category-stats {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+}
+
+.live-category-viewers {
+    font-size: 0.8rem !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+.live-category-watching {
+    font-size: 0.7rem !important;
+    color: rgba(255,255,255,0.8) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+.live-category-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+}
+
+.live-category-tags .tag {
+    background: rgba(34, 197, 94, 0.2) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--accent-color, #22c55e) !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+    font-size: 0.6rem !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+    backdrop-filter: blur(2px) !important;
+}
+
+.live-category-viewer-count {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Fix 7: Enhanced Section Dividers */
+.section-divider {
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, var(--border-color, #e5e5e5), transparent) !important;
+    margin: calc(var(--spacing-xl) * 1.5) 0 !important;
+    opacity: 0.6 !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative !important;
+}
+
+.section-divider::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 80px !important;
+    height: 4px !important;
+    background: var(--primary-color, #3b82f6) !important;
+    border-radius: 2px !important;
+}
+
+/* Fix 9: Content Grid Alignment */
+.featured-streams-grid,
+.streams-grid,
+.top-categories-grid {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--spacing-lg) !important;
+}
+
+.featured-streams-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    padding: 0 var(--spacing-lg) !important; /* Add padding to match section actions alignment */
+}
+
+.streams-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+/* Category headers for stream sections */
+.stream-category .category-header {
+    max-width: 1200px !important;
+    padding: 0 var(--spacing-lg) !important;
+    padding-left: 1.5rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+}
+
+.stream-category .category-info {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: var(--spacing-md) !important;
+}
+
+.stream-category .category-title {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+}
+
+.stream-category .category-badge {
+    background: var(--accent-color, #3b82f6) !important;
+    color: #ffffff !important;
+    padding: 4px 8px !important;
+    border-radius: 12px !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    flex-shrink: 0 !important;
+}
+
+.stream-category .category-description {
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Fix 8: Colorful Platform Section */
+.streaming-platforms {
+    background: transparent !important;
+    padding: var(--spacing-xl) 0 !important;
+}
+
+.platforms-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.platform-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-md) !important;
+    padding: var(--spacing-md) !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid transparent !important;
+}
+
+.platform-link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    border-color: var(--platform-color) !important;
+}
+
+.platform-icon {
+    width: 48px !important;
+    height: 48px !important;
+    background: var(--platform-color) !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+.platform-icon i {
+    font-size: 24px !important;
+    color: #ffffff !important;
+}
+
+.platform-info {
+    flex: 1 !important;
+}
+
+.platform-info h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 2px 0 !important;
+    color: var(--platform-color) !important;
+}
+
+.platform-followers {
+    font-size: 0.85rem !important;
+    color: var(--text-secondary, #666666) !important;
+    margin: 0 0 4px 0 !important;
+    font-weight: 500 !important;
+}
+
+.platform-info p {
+    font-size: 0.9rem !important;
+    color: var(--text-secondary, #666666) !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Platform-specific colors */
+.platform-link[href*="twitch"] {
+    --platform-color: #9146ff !important;
+}
+
+.platform-link[href*="youtube"] {
+    --platform-color: #ff0000 !important;
+}
+
+.platform-link[href*="discord"] {
+    --platform-color: #5865f2 !important;
+}
+
+.platform-link[href*="kick"] {
+    --platform-color: #53fc18 !important;
+}
+
+.platform-link[href*="x.com"] {
+    --platform-color: #ffffff !important;
+}
+
+.platform-link[href*="x.com"] .platform-icon {
+    background: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+.platform-link[href*="x.com"] .platform-icon i {
+    color: #ffffff !important;
+}
+
+/* Fallback for X icon if FontAwesome doesn't load */
+.platform-link[href*="x.com"] .platform-icon i:before {
+    content: "𝕏" !important;
+    font-family: serif !important;
+    font-weight: bold !important;
+    font-size: 40px !important;
+}
+
+/* Alternative fallback using simple X */
+.platform-link[href*="x.com"] .platform-icon i.fa-twitter:before,
+.platform-link[href*="x.com"] .platform-icon i.fa-x-twitter:before {
+    content: "X" !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 24px !important;
+}
+
+.platform-link[href*="instagram"] {
+    --platform-color: #e4405f !important;
+}
+
+.platform-link[href*="tiktok"] {
+    --platform-color: #fe2c55 !important;
+}
+
+.platform-link[href*="rumble"] {
+    --platform-color: #85c742 !important;
+}
+
+/* Responsive platforms */
+@media (max-width: 768px) {
+    .platforms-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    .platform-link {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    .platform-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .platform-icon i {
+        font-size: 20px !important;
+    }
+    
+    .platform-info h3 {
+        font-size: 1rem !important;
+    }
+    
+    .platform-followers {
+        font-size: 0.8rem !important;
+    }
+    
+    .platform-info p {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Mobile section headers */
+    .section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--spacing-sm) !important;
+    }
+    
+    .section-actions {
+        margin-left: 0 !important;
+        text-align: left !important;
+    }
+    
+    .stream-category .category-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: var(--spacing-sm) !important;
+    }
+    
+    .stream-category .category-info {
+        flex-wrap: wrap !important;
+        gap: var(--spacing-sm) !important;
+    }
+    
+    .stream-category .category-title {
+        font-size: 1.2rem !important;
+    }
+    
+    .stream-category .category-badge {
+        font-size: 0.6rem !important;
+        padding: 3px 6px !important;
+    }
+}
+
+/* Universal tag styling fix */
+.tag {
+    background: transparent !important;
+    border: 1px solid var(--accent-color, #22c55e) !important;
+    color: var(--text-primary, #ffffff) !important;
+}
+
+/* Fix hero subtitle color */
+.streaming-hero .hero-subtitle {
+    color: var(--text-secondary, #9ca3af) !important;
+}
+
+/* Responsive adjustments for top categories horizontal scroll */
+@media (max-width: 768px) {
+    .top-category-card {
+        flex: 0 0 250px !important;
+        height: 140px !important;
+    }
+    
+    .live-category-rank {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 14px !important;
+    }
+    
+    .live-category-name {
+        font-size: 0.9rem !important;
+    }
+    
+    .live-category-viewers {
+        font-size: 0.75rem !important;
+    }
+    
+    .live-category-watching {
+        font-size: 0.65rem !important;
+    }
+    
+    .live-category-tags .tag {
+        font-size: 0.55rem !important;
+        padding: 1px 4px !important;
+    }
+    
+    .scroll-arrow {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-category-card {
+        flex: 0 0 220px !important;
+        height: 120px !important;
+    }
+    
+    .live-category-rank {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 12px !important;
+        top: 8px !important;
+        left: 8px !important;
+    }
+    
+    .live-category-info {
+        padding: 12px !important;
+    }
+    
+    .live-category-name {
+        font-size: 0.8rem !important;
+    }
+    
+    .live-category-viewers {
+        font-size: 0.7rem !important;
+    }
+    
+    .live-category-watching {
+        font-size: 0.6rem !important;
+    }
+    
+    .live-category-tags .tag {
+        font-size: 0.5rem !important;
+        padding: 1px 3px !important;
+    }
+    
+    .scroll-arrow {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 14px !important;
+    }
+    
+    .scroll-arrow-left {
+        left: 5px !important;
+    }
+    
+    .scroll-arrow-right {
+        right: 5px !important;
+    }
+    
+    .top-categories-scroll-wrapper {
+        padding: 0 45px !important;
+    }
+}
+

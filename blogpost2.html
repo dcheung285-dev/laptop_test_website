@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>{{POST_TITLE}} | {{BRAND_NAME}}</title>
+    <meta name="description" content="{{POST_EXCERPT}}">
+    <meta name="keywords" content="{{POST_KEYWORDS}}">
+    <meta name="author" content="{{BRAND_NAME}}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{POST_TITLE}}">
+    <meta property="og:description" content="{{POST_EXCERPT}}">
+    <meta property="og:image" content="{{POST_IMAGE}}">
+    <meta property="og:url" content="https://yoursite.com/blogpost2.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{POST_TITLE}}">
+    <meta name="twitter:description" content="{{POST_EXCERPT}}">
+    <meta name="twitter:image" content="{{POST_IMAGE}}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css?v=2.3">
+    <link rel="stylesheet" href="./styles/components.css?v=2.3">
+    <link rel="stylesheet" href="./styles/responsive.css?v=2.3">
+    <link rel="stylesheet" href="./styles/popup.css?v=2.3">
+    <link rel="stylesheet" href="./styles/comparison.css?v=2.3">
+    <link rel="stylesheet" href="./styles/blogpost.css?v=2.4">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation will be loaded dynamically by nav-loader.js -->
+    
+    <!-- 
+    ===========================================
+    BLOG POST HERO SECTION
+    ===========================================
+    -->
+    <section class="hero-section blog-post-hero" id="blogpost-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Breadcrumb Navigation -->
+                <nav class="breadcrumb">
+                    <a href="blog.html">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Blog
+                    </a>
+                </nav>
+                
+                <!-- Post Category Badge -->
+                <div class="post-category-badge">
+                    <span class="badge" id="category-badge">{{POST_CATEGORY}}</span>
+                </div>
+                
+                <!-- Post Title -->
+                <h1 class="hero-title" id="post-title">
+                    {{POST_TITLE}}
+                </h1>
+                
+                <!-- Post Meta Information -->
+                <div class="post-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="post-date">{{POST_DATE}}</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="read-time">{{READ_TIME}} min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-user"></i>
+                        <span id="post-author">{{POST_AUTHOR}}</span>
+                    </div>
+                </div>
+                
+                <!-- Post Excerpt -->
+                <p class="hero-subtitle" id="post-excerpt">
+                    {{POST_EXCERPT}}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ===========================================
+    BLOG POST CONTENT SECTION
+    ===========================================
+    -->
+    <main class="blog-post-content" style="padding: var(--spacing-xl) 0;">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 var(--spacing-lg);">
+            
+            <!-- Featured Image -->
+            <div class="featured-image" style="margin-bottom: var(--spacing-xl); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
+                <img id="featured-image" src="{{POST_IMAGE}}" alt="{{POST_IMAGE_ALT}}" style="width: 100%; height: auto; display: block;">
+            </div>
+            
+            <!-- Article Content -->
+            <article class="article-content" id="article-content">
+                <!-- Content will be populated by JavaScript -->
+            </article>
+            
+            <!-- Post Tags -->
+            <div class="post-tags" style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color);">
+                <h3 style="margin-bottom: var(--spacing-md); color: var(--text-primary);">Tags:</h3>
+                <div class="tags-container" id="tags-container" style="display: flex; flex-wrap: wrap; gap: var(--spacing-sm);">
+                    <!-- Tags will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="post-cta" style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: var(--background-secondary); border-radius: var(--border-radius-lg); text-align: center;">
+                <div id="post-cta-content">
+                    <!-- CTA content will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Related Posts -->
+            <div class="related-posts" style="margin-top: var(--spacing-xl);">
+                <h3 style="margin-bottom: var(--spacing-lg); color: var(--text-primary); text-align: center;">Related Articles</h3>
+                <div class="related-posts-grid" id="related-posts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-lg);">
+                    <!-- Related posts will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <!-- 
+    ===========================================
+    NEWSLETTER SECTION
+    ===========================================
+    Newsletter content is loaded dynamically from Configurations/newsletter-config.js
+    -->
+    <div id="newsletter-container"></div>
+
+    <!-- 
+    ===========================================
+    FLOATING ELEMENTS
+    ===========================================
+    -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Floating CTA linking back to Top 10 -->
+    <div class="floating-cta" id="floatingCTA">
+        <a href="./index.html#top10" class="floating-cta-link">
+            <i class="fas fa-trophy"></i>
+            <span>🔟 Top 10 {{NICHE}}</span>
+        </a>
+    </div>
+
+    <!-- 
+    ===========================================
+    FOOTER CONTAINER
+    ===========================================
+    Footer content is loaded dynamically from components/footer.html
+    -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    <script src="./Configurations/menu-config.js"></script>
+    
+    <!-- Animated Banner and Additional Config -->
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/podcast-config.js"></script>
+    <script src="./Configurations/streaming-config.js"></script>
+    
+    <script src="./Configurations/nav-config.js"></script>
+    <!-- Page-specific examples available in ./utils/page-specific-examples.js -->
+    <script src="./utils/component-colours-examples.js"></script>
+    <script src="./Configurations/theme-config.js"></script>
+    
+    <!-- Brand Configuration -->
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Blog Configuration -->
+    <script src="./Configurations/blog-config.js"></script>
+    
+    <!-- Utility Functions - Must load before main scripts -->
+    <script src="./Configurations/utilities.js"></script>
+    
+    <!-- Main JavaScript - Must load before nav-loader -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/product-sync.js"></script>
+    
+    <!-- Popup System -->
+    <script src="Configurations/popup-config.js"></script>
+    <script src="scripts/popup.js"></script>
+    
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+    
+    <!-- Newsletter Configuration -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Product Configuration -->
+    <script src="./Configurations/enhanced-product-config.js"></script>
+    
+    <!-- Analytics -->
+    <script src="./utils/analytics.js"></script>
+
+
+    <!-- 
+    ===========================================
+    SCRIPTS
+    ===========================================
+    -->
+    
+    <!-- Configuration Scripts -->
+    <script src="Configurations/brand-config.js"></script>
+    <script src="Configurations/config.js"></script>
+    <script src="Configurations/blogpost2-config.js"></script>
+    
+    <!-- Core Scripts -->
+    <script src="scripts/nav-loader.js"></script>
+    <script src="scripts/footer-loader.js"></script>
+    
+    <!-- Initialize -->
+    <script>
+        // Initialize page after all scripts are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎯 Blog Post 2 page loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Slider Test - Casino Sliders</title>
+    
+    <!-- Main site styles -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Auto Slider CSS -->
+    <link rel="stylesheet" href="styles/auto-slider.css">
+    
+    <style>
+        /* Test page specific styles */
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-white);
+        }
+        
+        .test-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .test-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .slider-section {
+            margin: 3rem 0;
+        }
+        
+        .slider-title {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .slider-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Custom slider container styling for test */
+        .auto-slider-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls-info {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-white);
+        }
+        
+        .controls-info h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .controls-info ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .controls-info li {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+        
+        .integration-info {
+            background: rgba(var(--primary-color-rgb), 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            color: var(--text-white);
+        }
+        
+        .integration-info h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff88;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 1rem;
+            }
+            
+            .test-header h1 {
+                font-size: 2rem;
+            }
+            
+            .test-header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <!-- Header -->
+        <div class="test-header">
+            <h1>Auto Slider System Test</h1>
+            <p>Testing the modular auto slider system with casino text logos, promotional images, and crypto icons. Three sliders with different content and directions.</p>
+        </div>
+
+        <!-- Slider 1 - Moving Left -->
+        <div class="slider-section">
+            <h2 class="slider-title">Slider 1 - Casino Text Logos (Moving Left)</h2>
+            <p class="slider-description">
+                Thin slider with casino text logos moving from right to left. Features brand logos like Stake, Roobet, BC.Game, and more.
+            </p>
+            
+            <!-- Auto Slider 1 Container -->
+            <div id="auto-slider-1" class="auto-slider-container auto-slider-left"></div>
+        </div>
+
+        <!-- Slider 2 - Moving Right -->
+        <div class="slider-section">
+            <h2 class="slider-title">Slider 2 - Casino Images (Moving Right)</h2>
+            <p class="slider-description">
+                Bigger slider with casino promotional images moving from left to right. Larger images with more visual impact.
+            </p>
+            
+            <!-- Auto Slider 2 Container -->
+            <div id="auto-slider-2" class="auto-slider-container auto-slider-right"></div>
+        </div>
+
+        <!-- Slider 3 - Moving Left -->
+        <div class="slider-section">
+            <h2 class="slider-title">Slider 3 - Crypto Icons (Moving Left)</h2>
+            <p class="slider-description">
+                Crypto currency icons slider featuring Bitcoin, Ethereum, Tether, Solana, Dogecoin, and Litecoin moving from right to left.
+            </p>
+            
+            <!-- Auto Slider 3 Container -->
+            <div id="auto-slider-3" class="auto-slider-container auto-slider-left"></div>
+        </div>
+
+        <!-- Controls Information -->
+        <div class="controls-info">
+            <h3>🎮 Interactive Features</h3>
+            <ul>
+                <li><strong>Hover to Pause:</strong> Move your mouse over any slider to pause the animation</li>
+                <li><strong>Hover Images:</strong> Individual images will scale and enhance on hover</li>
+                <li><strong>Responsive Design:</strong> Sliders adapt to different screen sizes automatically</li>
+                <li><strong>Accessibility:</strong> Respects user's reduced motion preferences</li>
+                <li><strong>Performance:</strong> Optimized with hardware acceleration and efficient animations</li>
+            </ul>
+        </div>
+
+        <!-- Integration Information -->
+        <div class="integration-info">
+            <h3>🔧 How to Integrate into Your Pages</h3>
+            
+            <p><strong>1. Include the required files in your HTML:</strong></p>
+            <div class="code-block">
+&lt;!-- CSS --&gt;<br>
+&lt;link rel="stylesheet" href="styles/auto-slider.css"&gt;<br><br>
+
+&lt;!-- JavaScript (in order) --&gt;<br>
+&lt;script src="Configurations/auto-slider-config.js"&gt;&lt;/script&gt;<br>
+&lt;script src="scripts/auto-slider.js"&gt;&lt;/script&gt;
+            </div>
+
+            <p><strong>2. Add slider containers to your HTML:</strong></p>
+            <div class="code-block">
+&lt;!-- For Slider 1 - Casino Text Logos --&gt;<br>
+&lt;div id="auto-slider-1" class="auto-slider-container auto-slider-left"&gt;&lt;/div&gt;<br><br>
+
+&lt;!-- For Slider 2 - Casino Images --&gt;<br>
+&lt;div id="auto-slider-2" class="auto-slider-container auto-slider-right"&gt;&lt;/div&gt;<br><br>
+
+&lt;!-- For Slider 3 - Crypto Icons --&gt;<br>
+&lt;div id="auto-slider-3" class="auto-slider-container auto-slider-left"&gt;&lt;/div&gt;
+            </div>
+
+            <p><strong>3. The sliders will initialize automatically when the page loads!</strong></p>
+
+            <p><strong>Configuration:</strong> Modify <code>Configurations/auto-slider-config.js</code> to:</p>
+            <ul>
+                <li>Change images, speeds, and directions</li>
+                <li>Adjust responsive breakpoints</li>
+                <li>Customize styling and animations</li>
+                <li>Enable/disable controls and hover effects</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Auto Slider Configuration -->
+    <script src="Configurations/auto-slider-config.js"></script>
+    
+    <!-- Auto Slider JavaScript -->
+    <script src="scripts/auto-slider.js"></script>
+
+    <!-- Test page JavaScript -->
+    <script>
+        // Additional test functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Auto Slider Test Page Loaded');
+            
+            // Log when sliders are ready
+            setTimeout(() => {
+                if (window.autoSliderManager) {
+                    console.log('Auto Slider Manager:', window.autoSliderManager);
+                    console.log('Active Sliders:', window.autoSliderManager.sliders.size);
+                }
+            }, 1000);
+        });
+
+        // Test functions for debugging
+        window.pauseAllSliders = function() {
+            if (window.autoSliderManager) {
+                window.autoSliderManager.pauseAll();
+                console.log('All sliders paused');
+            }
+        };
+
+        window.playAllSliders = function() {
+            if (window.autoSliderManager) {
+                window.autoSliderManager.playAll();
+                console.log('All sliders resumed');
+            }
+        };
+
+        // Log responsive changes
+        window.addEventListener('resize', function() {
+            console.log('Window resized:', window.innerWidth + 'x' + window.innerHeight);
+        });
+    </script>
+</body>
+</html>

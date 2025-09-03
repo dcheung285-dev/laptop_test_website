@@ -1,0 +1,622 @@
+/* ===================================================================
+   PODCAST PAGE STYLES
+   ===================================================================
+   Styles for the dynamic podcast page with episode cards, categories,
+   and streaming platform integration. Uses theme-config colors.
+*/
+
+/* ===================================================================
+   HERO SECTION
+   ===================================================================*/
+.podcast-hero .podcast-logo {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+    border-radius: 12px;
+}
+
+/* Logo Type Layouts */
+.podcast-logo-text-layout,
+.podcast-logo-combined-layout {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Combined layout base styles */
+.podcast-logo-combined-layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.podcast-logo-icon,
+.podcast-logo-brand-text,
+.podcast-logo-combined-text {
+    line-height: 1;
+}
+
+.podcast-logo-combined-image {
+    max-width: 80px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.podcast-hero .hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.9;
+}
+
+.podcast-hero .hero-description {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Streaming Platforms */
+.streaming-platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.stream-label {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.platform-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.platform-btn:hover {
+    background: var(--platform-color, var(--accent-color)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================================================
+   SECTION LAYOUTS
+   ===================================================================*/
+.featured-section,
+.categories-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-description {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===================================================================
+   CATEGORY SHOWCASES
+   ===================================================================*/
+.category-showcase {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.category-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--badge-color, var(--primary-color));
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-right: 2px;
+}
+
+.view-all-btn {
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.category-description {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+/* ===================================================================
+   EPISODES GRID
+   ===================================================================*/
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* ===================================================================
+   EPISODE CARDS
+   ===================================================================*/
+.episode-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid var(--border-color, #dee2e6);
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Episode Thumbnail */
+.episode-thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.episode-card:hover .episode-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Play Overlay */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.episode-card:hover .play-overlay {
+    opacity: 1;
+}
+
+/* Play Button */
+.play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Episode Number Badge */
+.episode-number {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Episode Duration Badge */
+.episode-duration {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Episode Content */
+.episode-content {
+    padding: var(--spacing-md);
+}
+
+.episode-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Guest Information */
+.guest-info {
+    margin-bottom: var(--spacing-sm);
+}
+
+.guest-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.guest-title {
+    font-size: 0.9rem;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Episode Meta */
+.episode-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+}
+
+.episode-date {
+    font-size: 0.9rem;
+}
+
+/* Tags */
+.episode-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ===================================================================
+   PAGINATION
+   ===================================================================*/
+.pagination-section {
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.pagination {
+    display: inline-flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.pagination-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color, #dee2e6);
+    background: var(--background-color, #ffffff);
+    color: var(--text-color, #333333);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover,
+.pagination-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   ===================================================================*/
+@media (max-width: 1024px) {
+    .episodes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .category-showcase {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 1024px) {
+    .podcast-hero {
+        text-align: center !important;
+    }
+    
+    .podcast-hero .hero-container {
+        display: block !important;
+        text-align: center !important;
+        max-width: 800px !important;
+        margin: 0 auto !important;
+    }
+    
+    .podcast-hero .hero-content {
+        text-align: center !important;
+        transform: none !important;
+        margin: 0 auto !important;
+    }
+    
+    .podcast-hero .streaming-platforms {
+        justify-content: center !important;
+    }
+    
+    .podcast-hero .platform-buttons {
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .podcast-hero {
+        text-align: center !important;
+    }
+    
+    .podcast-hero .hero-container {
+        text-align: center !important;
+        margin: 0 auto !important;
+    }
+    
+    .podcast-hero .hero-content {
+        text-align: center !important;
+        transform: none !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Mobile podcast logo adjustments */
+    .podcast-logo-combined-layout {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: var(--spacing-xs) !important;
+        margin-top: -10rem  !important;
+    }
+    
+    .podcast-logo-combined-image {
+        /* Use transform scale override instead of max-width to work with config scaling */
+        transform: scale(0.5) !important;
+        transform-origin: center !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .podcast-logo-combined-text {
+        text-align: center !important;
+        font-size: 2.5rem !important;
+        margin-top: -7rem !important;
+    }
+    
+    .podcast-hero .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .podcast-hero .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .episodes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .streaming-platforms {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .platform-buttons {
+        justify-content: center;
+    }
+
+    .category-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .podcast-hero {
+        text-align: center !important;
+    }
+    
+    .podcast-hero .hero-container {
+        text-align: center !important;
+        margin: 0 auto !important;
+    }
+    
+    .podcast-hero .hero-content {
+        text-align: center !important;
+        transform: none !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Extra small podcast logo adjustments */
+    .podcast-logo-combined-layout {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 4px !important;
+        margin-bottom: var(--spacing-sm) !important;
+        margin-top: -5rem !important;
+    }
+    
+    .podcast-logo-combined-image {
+        /* Use transform scale override for extra small screens */
+        transform: scale(0.4) !important;
+        transform-origin: center !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .podcast-logo-combined-text {
+        text-align: center !important;
+        font-size: 2.0rem !important;
+        margin-top: -5rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .podcast-hero .hero-title {
+        font-size: 2rem;
+    }
+    
+    .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .episode-card {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+    
+    .category-showcase {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .category-header {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+
+    .category-description {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+
+    .category-badge {
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* ===================================================================
+   LOADING STATES
+   ===================================================================*/
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ===================================================================
+   ACCESSIBILITY
+   ===================================================================*/
+.play-btn:focus,
+.view-all-btn:focus,
+.platform-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.episode-card:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .episode-card,
+    .play-btn,
+    .platform-btn,
+    .view-all-btn {
+        transition: none;
+    }
+    
+    .episode-card:hover {
+        transform: none;
+    }
+    
+    .loading-skeleton {
+        animation: none;
+    }
+} 

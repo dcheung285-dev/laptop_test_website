@@ -1,0 +1,1523 @@
+/* 
+===========================================
+RESPONSIVE DESIGN CSS
+===========================================
+This file handles all responsive breakpoints to ensure your affiliate site
+looks perfect on mobile, tablet, and desktop devices.
+
+BREAKPOINTS:
+- Mobile: 320px - 767px
+- Tablet: 768px - 1023px  
+- Desktop: 1024px+
+
+CUSTOMIZATION TIP:
+You can adjust these breakpoints based on your analytics data
+to match your audience's most common screen sizes.
+*/
+
+/* 
+===========================================
+MOBILE FIRST APPROACH
+===========================================
+We start with mobile styles and enhance for larger screens.
+This ensures fast loading on mobile devices.
+*/
+
+/* 
+===========================================
+EXTRA SMALL DEVICES (320px - 479px)
+===========================================
+Phones in portrait mode
+*/
+@media (max-width: 479px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        justify-content: center;
+        text-align: center;
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    /* Reset and center image containers - extra small - target actual HTML structure */
+    div#hero-image-box.hero-image-box.shadow-large.animation-float,
+    #hero-image-box.hero-image-box,
+    div#hero-image-box,
+    .hero-image-box.shadow-large,
+    .hero-media {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 85% !important;
+        max-width: 320px !important;
+        min-width: auto !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+    
+    /* Override inline styles that might be set by JavaScript - extra small */
+    div#hero-image-box[style*="width"],
+    div#hero-image-box[style*="height"],
+    .hero-image-box[style] {
+        width: 85% !important;
+        max-width: 320px !important;
+        min-width: auto !important;
+        height: auto !important;
+    }
+    
+    /* Direct image styling - extra small */
+    .hero-image,
+    .hero-media img,
+    .hero-section img,
+    #hero-image-box img,
+    .hero-image-box img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: block !important;
+        transform: scale(0.7) !important;
+        transform-origin: center !important;
+    }
+    
+    /* Ensure hero layout centers the image container */
+    #hero-layout,
+    .hero-layout {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .hero-content {
+        text-align: center !important;
+        order: 2 !important;
+        /* top: -2vh !important; - order is key so had to move this down so that it would work for the extra small version */
+    }
+    
+    /* Ensure hero section and containers are full width */
+    .hero-section,
+    .hero-container,
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Force single column mobile layout - extra small */
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    /* Ensure image comes first, content second - extra small */
+    #hero-image-box,
+    .hero-image-box,
+    .hero-media {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: var(--spacing-md) !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+    
+    /* Additional centering for image containers - extra small */
+    .hero-media,
+    #hero-media {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .hero-content {
+        order: 2 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .trust-indicators {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .top-pick-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        justify-items: center; /* Center grid items */
+        margin: 0 auto; /* Center the grid container */
+    }
+    
+    /* Ensure product cards are centered and have proper max-width on extra small */
+    .products-grid:not(.list-view) .product-card {
+        width: 100%;
+        max-width: 350px; /* Slightly smaller max-width for extra small screens */
+        margin: 0 auto; /* Additional centering */
+    }
+    
+    .product-cta {
+        flex-direction: column;
+    }
+    
+    .review-pros-cons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* 
+===========================================
+GLOBAL AD CARD OVERRIDES
+===========================================
+Remove grid layout from home config ad cards on all screen sizes
+*/
+
+/* Override home.css ad-card grid layout on all screen sizes */
+.ad-card,
+.ad-card.bounce-glow-rotate,
+.ad-card.hover-lift-glow-shake,
+.ad-card.position-left,
+.ad-card.position-right,
+.ad-card.position-center {
+    display: block !important;
+    grid-template-columns: none !important;
+    grid: none !important;
+    gap: 0 !important;
+}
+
+/* Support home config positioning on all screen sizes */
+.ad-card[class*="position-left"] {
+    text-align: left !important;
+}
+
+.ad-card[class*="position-right"] {
+    text-align: right !important;
+}
+
+.ad-card[class*="position-center"] {
+    text-align: center !important;
+}
+
+/* Force all content elements to inherit positioning */
+.ad-card[class*="position-left"] .ad-card-content,
+.ad-card[class*="position-left"] .ad-title,
+.ad-card[class*="position-left"] .ad-subtitle,
+.ad-card[class*="position-left"] .ad-description,
+.ad-card[class*="position-left"] .ad-cta-btn {
+    text-align: left !important;
+}
+
+.ad-card[class*="position-right"] .ad-card-content,
+.ad-card[class*="position-right"] .ad-title,
+.ad-card[class*="position-right"] .ad-subtitle,
+.ad-card[class*="position-right"] .ad-description,
+.ad-card[class*="position-right"] .ad-cta-btn {
+    text-align: right !important;
+}
+
+.ad-card[class*="position-center"] .ad-card-content,
+.ad-card[class*="position-center"] .ad-title,
+.ad-card[class*="position-center"] .ad-subtitle,
+.ad-card[class*="position-center"] .ad-description,
+.ad-card[class*="position-center"] .ad-cta-btn {
+    text-align: center !important;
+}
+
+/* Button alignment for positioning */
+.ad-card[class*="position-left"] .ad-cta-btn {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    display: inline-block !important;
+}
+
+.ad-card[class*="position-right"] .ad-cta-btn {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    display: inline-block !important;
+}
+
+.ad-card[class*="position-center"] .ad-cta-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-block !important;
+}
+
+/* 
+===========================================
+SMALL DEVICES (480px - 767px)
+===========================================
+Phones in landscape mode and small tablets
+*/
+@media (max-width: 768px) {
+    /* Navigation for mobile */
+    .nav-container {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .nav-brand {
+        margin-right: var(--spacing-md);
+    }
+    
+    .logo-img {
+        height: 28px;
+    }
+    
+    .logo-text {
+        font-size: var(--font-size-lg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        transition: transform var(--transition-normal);
+        z-index: var(--z-dropdown);
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: var(--spacing-md);
+        margin: var(--spacing-xs) 0;
+        border-radius: var(--border-radius-md);
+        width: 100%;
+    }
+    
+    /* Search bar mobile adjustments */
+    .nav-search-container {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .nav-search-input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .nav-search-close {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Controls mobile */
+    .nav-controls {
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-search-btn,
+    .nav-menu-btn {
+        width: 36px;
+        height: 36px;
+        font-size: var(--font-size-base);
+    }
+    
+    /* Hero section mobile adjustments */
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-section {
+        padding: calc(60px + var(--spacing-xl)) 0 var(--spacing-xl) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Section spacing adjustments */
+    .section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .section-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    /* Top pick section mobile */
+    .top-pick-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
+    }
+    
+    .top-pick-badge {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .top-pick-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .top-pick-cta {
+        flex-direction: column;
+    }
+    
+    /* Products grid mobile */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        justify-items: center; /* Center grid items */
+        margin: 0 auto; /* Center the grid container */
+    }
+    
+    /* Ensure product cards are centered and have proper max-width on mobile */
+    .products-grid:not(.list-view) .product-card {
+        width: 100%;
+        max-width: 400px; /* Prevent cards from getting too wide */
+        margin: 0 auto; /* Additional centering */
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+    }
+    
+    .view-toggle {
+        order: 2;
+    }
+    
+    .sort-controls {
+        order: 1;
+    }
+    
+    .sort-select {
+        width: 100%;
+    }
+    
+    /* Product cards mobile */
+    .product-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .product-cta {
+        flex-direction: column;
+    }
+    
+    .product-cta .btn {
+        justify-content: center;
+    }
+    
+    /* Review section mobile */
+    .review-item {
+        padding: var(--spacing-lg);
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+    }
+    
+    .review-product-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .review-pros-cons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* Comparison table mobile */
+    .comparison-table-wrapper {
+        font-size: var(--font-size-sm);
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Floating elements mobile */
+    .floating-cta {
+        left: var(--spacing-sm);
+        right: var(--spacing-sm);
+        bottom: var(--spacing-sm);
+    }
+    
+    .floating-cta-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+        justify-content: center;
+    }
+    
+    .back-to-top {
+        bottom: 80px; /* Move above floating CTA */
+        right: var(--spacing-md);
+        width: 44px;
+        height: 44px;
+    }
+    
+    /* Hero section mobile adjustments */
+    /* Reset and center image containers - target actual HTML structure */
+    div#hero-image-box.hero-image-box.shadow-large.animation-float,
+    #hero-image-box.hero-image-box,
+    div#hero-image-box,
+    .hero-image-box.shadow-large,
+    .hero-media {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 90% !important;
+        max-width: 400px !important;
+        min-width: auto !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        transform: translateY(-3rem) !important;
+    }
+    
+    /* Override inline styles that might be set by JavaScript */
+    div#hero-image-box[style*="width"],
+    div#hero-image-box[style*="height"],
+    .hero-image-box[style] {
+        width: 90% !important;
+        max-width: 400px !important;
+        min-width: auto !important;
+        height: auto !important;
+    }
+    
+    /* Direct image styling */
+    .hero-image,
+    .hero-media img,
+    .hero-section img,
+    #hero-image-box img,
+    .hero-image-box img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: block !important;
+        transform: scale(0.8) !important;
+        transform-origin: center !important;
+    }
+    
+    /* Ensure hero layout centers the image container */
+    #hero-layout,
+    .hero-layout {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .hero-content {
+        text-align: center !important;
+        top: 4vh !important;
+    }
+    
+    /* Hero section height adjustments for mobile */
+    .hero-section {
+        min-height: 80vh !important;
+        height: auto !important;
+    }
+    
+    .hero-container {
+        min-height: 70vh !important;
+        height: auto !important;
+    }
+    
+    /* Image container height adjustments for mobile */
+    #hero-image-box,
+    .hero-image-box,
+    .hero-media {
+        min-height: 35vh !important;
+        height: auto !important;
+    }
+    
+    /* Ensure hero section and containers are full width */
+    .hero-section,
+    .hero-container,
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Force single column mobile layout */
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    /* Ensure image comes first, content second */
+    #hero-image-box,
+    .hero-image-box,
+    .hero-media {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: var(--spacing-lg) !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+    
+    /* Additional centering for image containers */
+    .hero-media,
+    #hero-media {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .hero-content {
+        order: 2 !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .hero-cta .btn {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    /* Animated ad banner mobile adjustments - preserve home config animations */
+    .ad-banner:not([class*="bounce-glow"]):not([class*="hover-lift"]):not([class*="animated-gradient"]),
+    .pulse-glow-slide:not([class*="rotating-gradient"]):not([class*="sparkle"]) {
+        padding: var(--spacing-sm) !important;
+        margin: var(--spacing-sm) 0 !important;
+    }
+    
+    /* Reduce container padding but preserve special effects */
+    .ad-banner .container,
+    .pulse-glow-slide .container {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    /* Ensure home config animations are preserved with proper spacing */
+    div[class*="bounce-glow-rotate"],
+    div[class*="hover-lift-glow-shake"],
+    div[class*="crypto-circuit"],
+    div[class*="rotating-gradient"],
+    div[class*="sparkle"] {
+        margin: var(--spacing-md) 0 !important;
+        /* Don't override padding for these special banners */
+    }
+    
+    /* Remove column/grid layout and force single unified banner */
+    .ad-banner,
+    .ad-card,
+    .ad-card.bounce-glow-rotate,
+    .ad-card.hover-lift-glow-shake,
+    .ad-card.position-left,
+    .ad-card.position-right,
+    .ad-card.position-center,
+    div[class*="ad-"],
+    div[class*="bounce-glow"],
+    div[class*="hover-lift"] {
+        display: block !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        grid-template-areas: none !important;
+        grid: none !important;
+        columns: none !important;
+        column-count: 1 !important;
+        grid-template: none !important;
+    }
+    
+    /* Override home.css ad-card grid layout */
+    .ad-card,
+    .ad-card.bounce-glow-rotate,
+    .ad-card.hover-lift-glow-shake,
+    .ad-card.position-left,
+    .ad-card.position-right,
+    .ad-card.position-center {
+        display: block !important;
+        grid-template-columns: none !important;
+        grid: none !important;
+        gap: 0 !important;
+    }
+    
+    /* Support home config positioning - single unified box */
+    .ad-banner[class*="position-left"],
+    .ad-card[class*="position-left"],
+    div[class*="position-left"] {
+        text-align: left !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .ad-banner[class*="position-right"],
+    .ad-card[class*="position-right"],
+    div[class*="position-right"] {
+        text-align: right !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .ad-banner[class*="position-center"],
+    .ad-card[class*="position-center"],
+    div[class*="position-center"] {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Force all content elements to inherit positioning - mobile */
+    .ad-card[class*="position-left"] .ad-card-content,
+    .ad-card[class*="position-left"] .ad-title,
+    .ad-card[class*="position-left"] .ad-subtitle,
+    .ad-card[class*="position-left"] .ad-description,
+    .ad-card[class*="position-left"] .ad-cta-btn {
+        text-align: left !important;
+    }
+    
+    .ad-card[class*="position-right"] .ad-card-content,
+    .ad-card[class*="position-right"] .ad-title,
+    .ad-card[class*="position-right"] .ad-subtitle,
+    .ad-card[class*="position-right"] .ad-description,
+    .ad-card[class*="position-right"] .ad-cta-btn {
+        text-align: right !important;
+    }
+    
+    .ad-card[class*="position-center"] .ad-card-content,
+    .ad-card[class*="position-center"] .ad-title,
+    .ad-card[class*="position-center"] .ad-subtitle,
+    .ad-card[class*="position-center"] .ad-description,
+    .ad-card[class*="position-center"] .ad-cta-btn {
+        text-align: center !important;
+    }
+    
+    /* Button alignment for positioning - mobile */
+    .ad-card[class*="position-left"] .ad-cta-btn {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: inline-block !important;
+    }
+    
+    .ad-card[class*="position-right"] .ad-cta-btn {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        display: inline-block !important;
+    }
+    
+    .ad-card[class*="position-center"] .ad-cta-btn {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: inline-block !important;
+    }
+    
+    /* Force banner content to follow positioning */
+    .ad-banner .container,
+    .ad-banner .ad-card-content,
+    div[class*="position-left"] .container,
+    div[class*="position-right"] .container,
+    div[class*="position-center"] .container {
+        width: 100% !important;
+        display: block !important;
+        text-align: inherit !important;
+        grid: none !important;
+        columns: none !important;
+    }
+    
+    /* Remove any video/media columns */
+    .ad-banner .media,
+    .ad-banner .video,
+    .ad-banner .image-section,
+    div[class*="ad-"] .media,
+    div[class*="ad-"] .video {
+        display: none !important;
+    }
+}
+
+@media (max-width: 479px) {
+    .hero-content {
+        top: 2vh !important;
+    }
+    
+    /* Hero section height adjustments for extra small */
+    .hero-section {
+        min-height: 85vh !important;
+        height: auto !important;
+    }
+    
+    .hero-container {
+        min-height: 75vh !important;
+        height: auto !important;
+    }
+    
+    /* Image container height adjustments */
+    #hero-image-box,
+    .hero-image-box,
+    .hero-media {
+        min-height: 30vh !important;
+        height: auto !important;
+    }
+    
+    /* Animated ad banner extra small adjustments - preserve home config animations */
+    .ad-banner:not([class*="bounce-glow"]):not([class*="hover-lift"]):not([class*="animated-gradient"]),
+    .pulse-glow-slide:not([class*="rotating-gradient"]):not([class*="sparkle"]) {
+        padding: var(--spacing-xs) !important;
+        margin: var(--spacing-xs) 0 !important;
+    }
+    
+    /* Preserve home config special banners with appropriate spacing */
+    div[class*="bounce-glow-rotate"],
+    div[class*="hover-lift-glow-shake"],
+    div[class*="crypto-circuit"],
+    div[class*="rotating-gradient"],
+    div[class*="sparkle"] {
+        margin: var(--spacing-sm) 0 !important;
+        /* Preserve original styling for special banners */
+    }
+    
+    /* Remove column/grid layout and force single unified banner - extra small */
+    .ad-banner,
+    .ad-card,
+    .ad-card.bounce-glow-rotate,
+    .ad-card.hover-lift-glow-shake,
+    .ad-card.position-left,
+    .ad-card.position-right,
+    .ad-card.position-center,
+    div[class*="ad-"],
+    div[class*="bounce-glow"],
+    div[class*="hover-lift"] {
+        display: block !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        grid-template-areas: none !important;
+        grid: none !important;
+        columns: none !important;
+        column-count: 1 !important;
+        grid-template: none !important;
+    }
+    
+    /* Override home.css ad-card grid layout - extra small */
+    .ad-card,
+    .ad-card.bounce-glow-rotate,
+    .ad-card.hover-lift-glow-shake,
+    .ad-card.position-left,
+    .ad-card.position-right,
+    .ad-card.position-center {
+        display: block !important;
+        grid-template-columns: none !important;
+        grid: none !important;
+        gap: 0 !important;
+    }
+    
+    /* Support home config positioning - extra small - single unified box */
+    .ad-banner[class*="position-left"],
+    .ad-card[class*="position-left"],
+    div[class*="position-left"] {
+        text-align: left !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .ad-banner[class*="position-right"],
+    .ad-card[class*="position-right"],
+    div[class*="position-right"] {
+        text-align: right !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .ad-banner[class*="position-center"],
+    .ad-card[class*="position-center"],
+    div[class*="position-center"] {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Force all content elements to inherit positioning - extra small */
+    .ad-card[class*="position-left"] .ad-card-content,
+    .ad-card[class*="position-left"] .ad-title,
+    .ad-card[class*="position-left"] .ad-subtitle,
+    .ad-card[class*="position-left"] .ad-description,
+    .ad-card[class*="position-left"] .ad-cta-btn {
+        text-align: left !important;
+    }
+    
+    .ad-card[class*="position-right"] .ad-card-content,
+    .ad-card[class*="position-right"] .ad-title,
+    .ad-card[class*="position-right"] .ad-subtitle,
+    .ad-card[class*="position-right"] .ad-description,
+    .ad-card[class*="position-right"] .ad-cta-btn {
+        text-align: right !important;
+    }
+    
+    .ad-card[class*="position-center"] .ad-card-content,
+    .ad-card[class*="position-center"] .ad-title,
+    .ad-card[class*="position-center"] .ad-subtitle,
+    .ad-card[class*="position-center"] .ad-description,
+    .ad-card[class*="position-center"] .ad-cta-btn {
+        text-align: center !important;
+    }
+    
+    /* Button alignment for positioning - extra small */
+    .ad-card[class*="position-left"] .ad-cta-btn {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: inline-block !important;
+    }
+    
+    .ad-card[class*="position-right"] .ad-cta-btn {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        display: inline-block !important;
+    }
+    
+    .ad-card[class*="position-center"] .ad-cta-btn {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: inline-block !important;
+    }
+    
+    /* Force banner content to follow positioning - extra small */
+    .ad-banner .container,
+    .ad-banner .ad-card-content,
+    div[class*="position-left"] .container,
+    div[class*="position-right"] .container,
+    div[class*="position-center"] .container {
+        width: 100% !important;
+        display: block !important;
+        text-align: inherit !important;
+        grid: none !important;
+        columns: none !important;
+    }
+    
+    /* Remove any video/media columns - extra small */
+    .ad-banner .media,
+    .ad-banner .video,
+    .ad-banner .image-section,
+    div[class*="ad-"] .media,
+    div[class*="ad-"] .video {
+        display: none !important;
+    }
+    
+    .ad-banner .container,
+    .pulse-glow-slide .container {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    .ad-banner h2,
+    .ad-banner h3,
+    .pulse-glow-slide h2,
+    .pulse-glow-slide h3 {
+        font-size: var(--font-size-2xl) !important;
+        margin: var(--spacing-xs) 0 !important;
+    }
+    
+    .ad-banner p,
+    .pulse-glow-slide p {
+        font-size: var(--font-size-sm) !important;
+        margin: var(--spacing-xs) 0 !important;
+    }
+}
+
+/* 
+===========================================
+MEDIUM DEVICES (768px - 1023px)
+===========================================
+Tablets and small laptops
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 0 var(--spacing-xl);
+    }
+    
+    /* Navigation adjustments */
+    .nav-container {
+        padding: var(--spacing-md) var(--spacing-xl);
+    }
+    
+    .nav-menu {
+        gap: var(--spacing-lg);
+    }
+    
+    /* Hero section tablet */
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Trust indicators tablet */
+    .trust-indicators {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    
+    /* Top pick section tablet */
+    .top-pick-content {
+        grid-template-columns: 1fr 1.5fr;
+        gap: var(--spacing-xl);
+    }
+    
+    /* Products grid tablet */
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        justify-content: center; /* Center grid items */
+        margin: 0 auto; /* Center the grid container */
+    }
+    
+    /* Ensure grid items are centered and don't stretch too wide on tablet */
+    .products-grid:not(.list-view) {
+        justify-items: center; /* Center individual grid items */
+    }
+    
+    .products-grid:not(.list-view) .product-card {
+        width: 100%;
+        max-width: 400px; /* Prevent cards from getting too wide on tablet */
+    }
+    
+    /* Filter controls tablet */
+    .filter-controls {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    /* Review section tablet */
+    .review-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .review-product-info {
+        flex-direction: row;
+    }
+    
+    .review-pros-cons {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Comparison table tablet */
+    .comparison-table {
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Footer tablet */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xl);
+    }
+}
+
+/* 
+===========================================
+LARGE DEVICES (1024px - 1199px)
+===========================================
+Small desktops and laptops
+*/
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .container {
+        max-width: 1000px;
+        padding: 0 var(--spacing-xl);
+    }
+    
+    /* Hero section desktop */
+    .hero-container {
+        grid-template-columns: 1.2fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Products grid desktop */
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--spacing-xl);
+    }
+    
+    /* Top pick section desktop */
+    .top-pick-content {
+        grid-template-columns: 1fr 2fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    /* Footer desktop */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+    }
+}
+
+/* 
+===========================================
+EXTRA LARGE DEVICES (1200px+)
+===========================================
+Large desktops and wide screens
+*/
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 var(--spacing-lg);
+    }
+    
+    /* Hero section large desktop */
+    .hero-container {
+        grid-template-columns: 1.3fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Products grid large desktop */
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-xl);
+    }
+    
+    /* Top pick section large desktop */
+    .top-pick-content {
+        grid-template-columns: 1fr 2fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    /* Footer large desktop */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-2xl);
+    }
+}
+
+/* 
+===========================================
+ULTRA WIDE SCREENS (1400px+)
+===========================================
+Ultra-wide monitors and large displays
+*/
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    /* Hero section ultra-wide */
+    .hero-container {
+        grid-template-columns: 1.5fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+    
+    /* Products grid ultra-wide */
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: var(--spacing-2xl);
+    }
+    
+    /* Top pick section ultra-wide */
+    .top-pick-content {
+        grid-template-columns: 1fr 2.5fr;
+        gap: var(--spacing-3xl);
+    }
+}
+
+/* 
+===========================================
+PRINT STYLES
+===========================================
+Clean styles for when users print your pages
+*/
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .sticky-nav,
+    .floating-cta,
+    .back-to-top,
+    .mobile-menu-toggle,
+    .btn-animated::before {
+        display: none !important;
+    }
+    
+    .hero-section,
+    .top-pick-section,
+    .reviews-section,
+    .comparison-section {
+        page-break-inside: avoid;
+    }
+    
+    .product-card,
+    .review-item {
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+    
+    .hero-title,
+    .section-title,
+    .product-title,
+    .review-product-title {
+        page-break-after: avoid;
+    }
+    
+    .btn {
+        border: 1px solid #ddd;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    
+    .btn::after {
+        content: " (" attr(href) ")";
+        font-size: 12px;
+        color: #666;
+    }
+    
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    .footer {
+        page-break-before: always;
+    }
+}
+
+/* 
+===========================================
+REDUCED MOTION ACCESSIBILITY
+===========================================
+Respect users' preference for reduced motion
+*/
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .btn-animated {
+        animation: none;
+    }
+    
+    .btn-animated:hover {
+        animation: none;
+    }
+    
+    .btn-animated::before {
+        display: none;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* 
+===========================================
+HIGH CONTRAST MODE
+===========================================
+Enhanced accessibility for users with visual impairments
+*/
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0066cc;
+        --primary-hover: #0052a3;
+        --text-primary: #000000;
+        --text-secondary: #333333;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f5f5f5;
+        --border-color: #333333;
+        --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .btn-primary {
+        border: 2px solid var(--primary-color);
+    }
+    
+    .btn-secondary {
+        border: 2px solid var(--text-primary);
+    }
+    
+    .product-card,
+    .review-item,
+    .top-pick-card {
+        border: 2px solid var(--border-color);
+    }
+}
+
+/* 
+===========================================
+DARK MODE SUPPORT
+===========================================
+Automatic dark mode based on system preference
+*/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #3b82f6;
+        --primary-hover: #2563eb;
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-light: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-dark: #000000;
+        --bg-card: #1f2937;
+        --border-color: #374151;
+        --border-light: #4b5563;
+    }
+    
+    .hero-section {
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+    
+    .sticky-nav {
+        background: rgba(17, 24, 39, 0.95);
+    }
+    
+    .sticky-nav.scrolled {
+        background: rgba(17, 24, 39, 0.98);
+    }
+    
+    .product-card:hover,
+    .review-item {
+        background: var(--bg-card);
+    }
+    
+    .comparison-table th {
+        background: var(--bg-secondary);
+    }
+    
+    .pros {
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .cons {
+        background: rgba(239, 68, 68, 0.2);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+}
+
+/* 
+===========================================
+FOCUS STYLES FOR ACCESSIBILITY
+===========================================
+Enhanced focus indicators for keyboard navigation
+*/
+.btn:focus,
+.nav-link:focus,
+.sort-select:focus,
+.mobile-menu-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 
+===========================================
+CUSTOM SCROLLBAR STYLING
+===========================================
+Beautiful scrollbars for webkit browsers
+*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+
+/* 
+===========================================
+LOADING STATES
+===========================================
+Skeleton loading animations for better UX
+*/
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* 
+===========================================
+RESPONSIVE HELPER CLASSES
+===========================================
+Utility classes for responsive design
+*/
+@media (max-width: 768px) {
+    .hide-mobile { display: none !important; }
+    .show-mobile { display: block !important; }
+}
+
+@media (min-width: 768px) {
+    .hide-desktop { display: none !important; }
+    .show-desktop { display: block !important; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hide-tablet { display: none !important; }
+    .show-tablet { display: block !important; }
+}
+
+/* 
+===========================================
+RESPONSIVE TYPOGRAPHY
+===========================================
+Fluid typography that scales with screen size
+*/
+@media (min-width: 320px) and (max-width: 1200px) {
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+    }
+    
+    .product-title {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+    }
+}
+
+/* 
+===========================================
+RESPONSIVE SPACING
+===========================================
+Fluid spacing that adapts to screen size
+*/
+@media (min-width: 320px) and (max-width: 1200px) {
+    .section {
+        padding: clamp(2rem, 8vw, 4rem) 0;
+    }
+    
+    .container {
+        padding: 0 clamp(1rem, 4vw, 1.5rem);
+    }
+} 

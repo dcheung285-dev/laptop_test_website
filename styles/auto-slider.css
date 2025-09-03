@@ -1,0 +1,428 @@
+/**
+ * AUTO SLIDER CSS
+ * 
+ * Modular CSS for the auto slider system.
+ * Can be included on any page that uses the slider.
+ */
+
+/* ===================================================================
+   SLIDER CONTAINER STYLES
+   =================================================================== */
+
+.auto-slider-container {
+    overflow: hidden;
+    background: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /* Mask for fade-in/fade-out edges */
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 150px,
+        #000 calc(100% - 150px),
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 150px,
+        #000 calc(100% - 150px),
+        transparent
+    );
+}
+
+.auto-slider-wrapper {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+.auto-slider-wrapper.paused {
+    animation-play-state: paused !important;
+}
+
+/* ===================================================================
+   SLIDER ITEMS
+   =================================================================== */
+
+.auto-slider-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-right is now set dynamically by JavaScript based on image scaling */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.auto-slider-item img {
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+    filter: grayscale(20%) brightness(0.9);
+    transform-origin: center;
+}
+
+.auto-slider-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
+/* ===================================================================
+   ANIMATION KEYFRAMES
+   =================================================================== */
+
+/* Left sliding animation */
+@keyframes slideLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Right sliding animation */
+@keyframes slideRight {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ===================================================================
+   SLIDER DIRECTIONS
+   =================================================================== */
+
+.auto-slider-left .auto-slider-wrapper {
+    animation-name: slideLeft;
+}
+
+.auto-slider-right .auto-slider-wrapper {
+    animation-name: slideRight;
+}
+
+/* ===================================================================
+   CONTROLS (OPTIONAL)
+   =================================================================== */
+
+.auto-slider-controls {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.auto-slider-container:hover .auto-slider-controls {
+    opacity: 1;
+}
+
+.auto-slider-control-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auto-slider-control-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.auto-slider-control-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   =================================================================== */
+
+/* Desktop (default) */
+.auto-slider-container {
+    --slider-gap: 30px;
+}
+
+/* Slider 2 gaps are set dynamically from config */
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .auto-slider-container {
+        /* Adjust mask for tablet */
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 100px,
+            #000 calc(100% - 100px),
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 100px,
+            #000 calc(100% - 100px),
+            transparent
+        );
+    }
+    
+    /* Slider 2 gaps are set dynamically from config */
+    
+    .auto-slider-item img {
+        border-radius: 6px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .auto-slider-container {
+        /* Adjust mask for mobile */
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 60px,
+            #000 calc(100% - 60px),
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 60px,
+            #000 calc(100% - 60px),
+            transparent
+        );
+    }
+    
+    /* Slider 2 gaps are set dynamically from config */
+    
+    .auto-slider-item img {
+        border-radius: 4px;
+    }
+    
+    .auto-slider-controls {
+        right: 10px;
+    }
+    
+    .auto-slider-control-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+}
+
+/* Extra Small */
+@media (max-width: 480px) {
+    .auto-slider-container {
+        /* Adjust mask for extra small screens */
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 40px,
+            #000 calc(100% - 40px),
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 40px,
+            #000 calc(100% - 40px),
+            transparent
+        );
+    }
+    
+    /* Slider 2 gaps are set dynamically from config */
+    
+    .auto-slider-item img {
+        border-radius: 3px;
+    }
+    
+    .auto-slider-controls {
+        right: 5px;
+    }
+    
+    .auto-slider-control-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
+/* ===================================================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================================================== */
+
+.auto-slider-wrapper {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.auto-slider-item img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* ===================================================================
+   ACCESSIBILITY
+   =================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .auto-slider-wrapper {
+        animation: none !important;
+    }
+    
+    .auto-slider-item img {
+        transition: none;
+    }
+}
+
+/* Focus styles for accessibility */
+.auto-slider-item:focus-within {
+    outline: 2px solid var(--primary-color, #007bff);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.auto-slider-control-btn:focus {
+    outline: 2px solid var(--primary-color, #007bff);
+    outline-offset: 2px;
+}
+
+/* ===================================================================
+   LOADING STATES
+   =================================================================== */
+
+.auto-slider-item img[data-loading="true"] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.auto-slider-item img[data-loaded="true"] {
+    opacity: 1;
+    filter: grayscale(20%) brightness(0.9);
+}
+
+/* ===================================================================
+   SPECIFIC SLIDER CONFIGURATIONS
+   =================================================================== */
+
+/* Slider 1 - Casino Text Logos */
+#auto-slider-1 {
+    height: 120px; /* Default desktop height */
+    background: transparent;
+    border-radius: 12px;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+/* Slider 2 - Casino Images (Bigger) */
+#auto-slider-2 {
+    height: 360px; /* Default desktop height */
+    background: transparent;
+    border-radius: 12px;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+/* Slider 3 - Crypto Icons (Same as Slider 1) */
+#auto-slider-3 {
+    height: 120px; /* Default desktop height */
+    background: transparent;
+    border-radius: 12px;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+/* Ensure crypto coin images have transparent backgrounds and full color */
+#auto-slider-3 .auto-slider-item img {
+    background: transparent !important;
+    background-color: transparent !important;
+    filter: grayscale(0%) brightness(1) !important; /* Override the default grayscale filter */
+}
+
+/* Keep full color on crypto coins even when not hovered */
+#auto-slider-3 .auto-slider-item img[data-loaded="true"] {
+    filter: grayscale(0%) brightness(1) !important;
+}
+
+/* Also override any loading states for crypto coins */
+#auto-slider-3 .auto-slider-item img[data-loading="true"] {
+    opacity: 1 !important;
+    filter: grayscale(0%) brightness(1) !important;
+}
+
+/* Ensure hover state maintains full color for crypto coins */
+#auto-slider-3 .auto-slider-item:hover img {
+    filter: grayscale(0%) brightness(1.1) !important; /* Slightly brighter on hover */
+}
+
+/* Responsive Heights for Slider 1 & 3 (Text Logos & Crypto Icons) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    #auto-slider-1, #auto-slider-3 {
+        height: 70px;
+    }
+    
+    #auto-slider-2 {
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    #auto-slider-1, #auto-slider-3 {
+        height: 60px;
+    }
+    
+    #auto-slider-2 {
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    #auto-slider-1, #auto-slider-3 {
+        height: 50px;
+    }
+    
+    #auto-slider-2 {
+        height: 70px;
+    }
+}
+
+/* ===================================================================
+   CUSTOM STYLING OVERRIDES
+   =================================================================== */
+
+/* These can be overridden by the config styling options */
+.auto-slider-container[data-custom-bg] {
+    background: var(--slider-bg-color);
+}
+
+.auto-slider-container[data-custom-border] {
+    border: var(--slider-border);
+    border-radius: var(--slider-border-radius);
+}
+
+.auto-slider-container[data-custom-shadow] {
+    box-shadow: var(--slider-box-shadow);
+}
+
+.auto-slider-container[data-custom-padding] {
+    padding: var(--slider-padding);
+}
+
+.auto-slider-container[data-custom-margin] {
+    margin: var(--slider-margin);
+}
