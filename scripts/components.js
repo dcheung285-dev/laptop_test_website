@@ -257,6 +257,18 @@ class FormValidator {
     showError(field, message) {
         this.clearError(field);
         
+        // If this field is inside the newsletter form, show the error in the newsletter error container (below the input)
+        const newsletterForm = field.closest('form.newsletter-form');
+        if (newsletterForm) {
+            const newsletterError = newsletterForm.querySelector('.newsletter-error');
+            if (newsletterError) {
+                newsletterError.textContent = message;
+                newsletterError.style.display = 'block';
+            }
+            field.classList.add('error');
+            return;
+        }
+        
         field.classList.add('error');
         
         const errorElement = document.createElement('div');
@@ -275,6 +287,16 @@ class FormValidator {
         const existingError = field.parentNode.querySelector('.field-error');
         if (existingError) {
             existingError.remove();
+        }
+        
+        // Also clear the newsletter error container if present
+        const newsletterForm = field.closest('form.newsletter-form');
+        if (newsletterForm) {
+            const newsletterError = newsletterForm.querySelector('.newsletter-error');
+            if (newsletterError) {
+                newsletterError.style.display = 'none';
+                newsletterError.textContent = '';
+            }
         }
     }
 }
@@ -842,16 +864,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize form validation for all forms
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
+        // Skip newsletter/optional forms to avoid showing required errors on blur
+        if (form.classList.contains('newsletter-form') || form.dataset.optional === 'true') {
+            return;
+        }
+
         const validator = new FormValidator(form);
         
         // Add common validation rules
         const emailInputs = form.querySelectorAll('input[type="email"]');
         emailInputs.forEach(input => {
+            // Only add rules when the input has a non-empty name
+            if (!input.name) return;
             validator.addRule(input.name, ValidationRules.email, 'Please enter a valid email address');
         });
         
         const requiredInputs = form.querySelectorAll('input[required], textarea[required], select[required]');
         requiredInputs.forEach(input => {
+            // Only add rules when the input has a non-empty name
+            if (!input.name) return;
             validator.addRule(input.name, ValidationRules.required, 'This field is required');
         });
     });

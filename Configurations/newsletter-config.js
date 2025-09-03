@@ -178,9 +178,9 @@ class NewsletterLoader {
                         <h2 class="section-title">${config.content.title}</h2>
                         <p class="section-subtitle">${config.content.subtitle}</p>
                         
-                        <form class="newsletter-form" action="${config.form.action}" method="${config.form.method}" data-type="email">
+                        <form class="newsletter-form" action="${config.form.action}" method="${config.form.method}" data-type="email" data-optional="true">
                             <div class="form-inline">
-                                <input type="email" class="form-input" placeholder="${config.content.placeholder}" required>
+                                <input type="email" class="form-input" placeholder="${config.content.placeholder}">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="${config.styling.buttonIcon}"></i>
                                     ${config.content.buttonText}
