@@ -13,7 +13,7 @@ const NEWSLETTER_PLACEHOLDER = "Enter your email address";                  // �
 const NEWSLETTER_BONUS_TEXT = "Plus, get instant access to our <a href='./index.html#top10' class='text-primary'>Top 10 {{NICHE}} Guide</a>!";  // ← Bonus text with link
 
 // ========== NEWSLETTER FORM CONFIGURATION ==========
-const NEWSLETTER_FORM_ACTION = "";                                          // ← Legacy endpoint (optional). Leave blank when using destinations.mode below
+const NEWSLETTER_FORM_ACTION = "";                                          // ← Legacy endpoint (optional). Leave blank when using destinations.mode below or for eg. "https://formspree.io/f/YOUR_FORM_ID";
 const NEWSLETTER_FORM_METHOD = "POST";                                      // ← Form submission method
 const NEWSLETTER_SUCCESS_MESSAGE = "Thank you for subscribing!";            // ← Success message
 const NEWSLETTER_ERROR_MESSAGE = "Something went wrong. Please try again."; // ← Error message
@@ -75,7 +75,7 @@ const NEWSLETTER_CONFIG = {
         // Google Sheets (via Apps Script Web App)
         sheets: {
             // Paste your Apps Script Web App URL here (see guide at bottom of this file)
-            webAppUrl: 'https://script.google.com/macros/s/AKfycbw92dS9L1hnl9r8b-es4PU684e4U-VFyLxsWl33Tsp5HxJOwq8WzZjsz706V4kpg5rphQ/exec',
+            webAppUrl: 'https://script.google.com/macros/s/AKfycbw92dS9L1hnl9r8b-es4PU684e4U-VFyLxsWl33Tsp5HxJOwq8WzZjsz706V4kpg5rphQ/exec', // https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec
             sheetName: 'Sheet1'
         },
 
@@ -414,7 +414,7 @@ window.NewsletterManager = {
         return NEWSLETTER_CONFIG;
     },
     
-    // Export locally saved subscribers as CSV
+    // Export locally saved subscribers as CSV (matches Google Sheets columns/order)
     exportCsv: function() {
         const key = NEWSLETTER_CONFIG.destinations?.file?.storageKey || 'newsletter_subscribers';
         const filename = NEWSLETTER_CONFIG.destinations?.file?.csvFilename || 'newsletter-subscribers.csv';
@@ -423,10 +423,27 @@ window.NewsletterManager = {
             console.warn('No locally stored subscribers to export');
             return;
         }
-        const headers = Array.from(rows.reduce((set, row) => { Object.keys(row).forEach(k => set.add(k)); return set; }, new Set()));
-        const csv = [headers.join(',')]
-            .concat(rows.map(r => headers.map(h => JSON.stringify(r[h] ?? '')).join(',')))
-            .join('\n');
+        const headers = ['Email','Timestamp','Page','UserAgent','UTM Source','UTM Medium','UTM Campaign','UTM Term','UTM Content','Consent'];
+        const toCell = (v) => {
+            const s = v == null ? '' : String(v);
+            return /[",\n]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s;
+        };
+        const lines = rows.map(r => {
+            const utm = r.utm || {};
+            return [
+                r.email || r.emailAddress || '',
+                r.timestamp || '',
+                r.page || '',
+                r.userAgent || '',
+                utm.utm_source || '',
+                utm.utm_medium || '',
+                utm.utm_campaign || '',
+                utm.utm_term || '',
+                utm.utm_content || '',
+                (r.consent === false ? 'FALSE' : 'TRUE')
+            ].map(toCell).join(',');
+        });
+        const csv = [headers.join(',')].concat(lines).join('\n');
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
