@@ -681,7 +681,7 @@ const PRODUCTS_CONFIG = {
     product3: {
         name: "Microsoft Surface Laptop Studio 2",
         description: "The Surface Laptop Studio 2 offers versatile design perfect for digital artists with Intel Core i7-14800H and unique PixelSense Flow display.",
-        productLogo: "./assets/images/laptop_test/Microsoft_logo_grey.png",
+        productLogo: "./assets/images/laptop_test/microsoft_logo_grey.png",
         productImage: "./assets/images/laptop_test/Microsoft_Surface_Laptop_Studio_2.avif",
         logoScale: {
             grid: 4.0,
