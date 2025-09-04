@@ -31,7 +31,7 @@ const AUTO_SLIDER_CONFIG = {
                 gap: 70     // Manual gap after this image (in pixels)
             },
             {
-                src: 'assets/images/laptop_test/asus_logo_white.png',
+                src: 'assets/images/laptop_test/Asus_logo_white.png',
                 alt: 'Asus',
                 width: 'auto', // 'auto' or specific width like '120px'
                 height: '60px', // Height of individual images
@@ -39,7 +39,7 @@ const AUTO_SLIDER_CONFIG = {
                 gap: 50 // Manual gap after this image (in pixels)
             },
             {
-                src: 'assets/images/laptop_test/dell_logo.png',
+                src: 'assets/images/laptop_test/Dell_logo.png',
                 alt: 'Dell',
                 width: 'auto',
                 height: '60px',
@@ -71,7 +71,7 @@ const AUTO_SLIDER_CONFIG = {
                 gap: 100    // Larger gap for scaled image
             },
             {
-                src: 'assets/images/laptop_test/lenovo_logo.png',
+                src: 'assets/images/laptop_test/Lenovo_logo.png',
                 alt: 'Lenovo',
                 width: 'auto',
                 height: '60px',
