@@ -9,7 +9,7 @@
     background: var(--bg-card);
     border-top: 1px solid var(--border-color);
     padding: var(--spacing-lg);
-    z-index: 1000;
+    z-index: 2000; /* Above floating CTA and back-to-top */
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(10px);
     animation: slideUp 0.3s ease-out;

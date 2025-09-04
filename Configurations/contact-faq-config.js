@@ -345,7 +345,7 @@ class ContactPageManager {
         }
         
         if (CONTACT_INFO.socialMedia.x) {
-            socialLinks.push(`<a href="${CONTACT_INFO.socialMedia.x}" target="_blank" style="color: white; font-size: var(--font-size-lg); font-weight: bold; text-decoration: none;">𝕏</a>`);
+            socialLinks.push(`<a href="${CONTACT_INFO.socialMedia.x}" target="_blank" style="color: var(--primary-color); font-size: var(--font-size-lg); font-weight: bold; text-decoration: none;">𝕏</a>`);
         }
         
         if (CONTACT_INFO.socialMedia.instagram) {

@@ -328,7 +328,10 @@ const STREAMING_PLATFORMS = [
         name: 'X (Twitter)',
         url: 'https://x.com/dctop10laptops',
         icon: '𝕏',
-        color: '#000000',
+        color: '#ffffff',
+        // Allow per-platform color control for title and icon
+        titleColor: 'var(--text-primary)',
+        iconColor: 'var(--text-white)',
         followers: '22.9K followers',
         description: 'Daily gaming laptop news and deal alerts'
     }
@@ -1239,23 +1242,27 @@ class StreamingPageManager {
                         </div>
                     </div>
             <div class="platforms-grid">
-                ${this.platforms.map(platform => `
+                ${this.platforms.map(platform => {
+                    const iconStyle = platform.iconColor ? `color: ${platform.iconColor} !important;` : '';
+                    const titleStyle = platform.titleColor ? `color: ${platform.titleColor} !important;` : '';
+                    const textIconBase = 'font-size: 1.5em; font-weight: normal; font-style: normal;';
+                    return `
                     <a href="${platform.url}" class="platform-link" 
                        style="--platform-color: ${platform.color}" 
                        target="_blank" rel="noopener noreferrer">
                         <div class="platform-icon">
                             ${platform.icon.startsWith('fab ') || platform.icon.startsWith('fas ') ? 
-                                `<i class="${platform.icon}"></i>` : 
-                                `<span class="platform-text-icon" style="font-size: 1.5em; font-weight: normal; font-style: normal;">${platform.icon}</span>`
+                                `<i class=\"${platform.icon}\" style=\"${iconStyle}\"></i>` : 
+                                `<span class=\"platform-text-icon\" style=\"${textIconBase} ${iconStyle}\">${platform.icon}</span>`
                             }
                 </div>
                         <div class="platform-info">
-                            <h3>${platform.name}</h3>
+                            <h3 class=\"platform-name\" style=\"${titleStyle}\">${platform.name}</h3>
                             <div class="platform-followers">${platform.followers}</div>
                             <p>${platform.description}</p>
             </div>
-                    </a>
-                `).join('')}
+                    </a>`;
+                }).join('')}
                 </div>
             <div class="section-divider"></div>
         `;

@@ -2002,14 +2002,14 @@ html {
 }
 
 /* Special handling for X (Twitter) logo to keep it black */
-.platform-link[data-platform="X"] .platform-logo-img,
-.platform-link[data-platform="X (Twitter)"] .platform-logo-img {
+.platform-link[data-platform="𝕏"] .platform-logo-img,
+.platform-link[data-platform="𝕏 (Twitter)"] .platform-logo-img {
     filter: none;
 }
 
 /* Adjust logo container for X to have white background */
-.platform-link[data-platform="X"] .platform-logo,
-.platform-link[data-platform="X (Twitter)"] .platform-logo {
+.platform-link[data-platform="𝕏"] .platform-logo,
+.platform-link[data-platform="𝕏 (Twitter)"] .platform-logo {
     background-color: #ffffff !important;
 }
 
