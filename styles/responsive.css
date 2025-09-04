@@ -134,6 +134,27 @@ Phones in portrait mode
         box-sizing: border-box !important;
     }
     
+    /* Add horizontal padding back to hero container for mobile */
+    .hero-container {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+
+    /* Ensure all hero pieces have horizontal padding on mobile */
+    .hero-section {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+    
+    .hero-content,
+    .hero-media,
+    .hero-image-box,
+    #hero-image-box {
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+        box-sizing: border-box !important;
+    }
+    
     /* Force single column mobile layout - extra small */
     .hero-container {
         display: flex !important;
@@ -392,6 +413,27 @@ Phones in landscape mode and small tablets
     
     .hero-subtitle {
         font-size: var(--font-size-lg);
+    }
+
+    /* Add horizontal padding back to hero container for mobile */
+    .hero-container {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+
+    /* Ensure all hero pieces have horizontal padding on mobile */
+    .hero-section {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+    
+    .hero-content,
+    .hero-media,
+    .hero-image-box,
+    #hero-image-box {
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+        box-sizing: border-box !important;
     }
     
     /* Section spacing adjustments */
@@ -1039,6 +1081,27 @@ Tablets and small laptops
     .trust-indicators {
         flex-wrap: wrap;
         gap: var(--spacing-md);
+    }
+
+    /* Add horizontal padding back to hero container for mobile */
+    .hero-container {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+
+    /* Ensure all hero pieces have horizontal padding on mobile */
+    .hero-section {
+        padding-left: var(--spacing-md) !important;
+        padding-right: var(--spacing-md) !important;
+    }
+    
+    .hero-content,
+    .hero-media,
+    .hero-image-box,
+    #hero-image-box {
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+        box-sizing: border-box !important;
     }
     
     /* Top pick section tablet */

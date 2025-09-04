@@ -721,7 +721,7 @@ const PRODUCTS_CONFIG = {
         // Detailed review scaling settings
         detailedReviewScale: {
             productImage: 1.0,  // Scale for product image in detailed reviews
-            productLogo: 4.0    // Scale for product logo in detailed reviews
+            productLogo: 2.0    // Scale for product logo in detailed reviews
         },
         
         // Detailed review positioning settings
