@@ -2416,7 +2416,7 @@ const TRACKING_CONFIG = {
     analytics: {
         googleAnalytics: {
             enabled: true,
-            trackingId: "GA_MEASUREMENT_ID", // REPLACE WITH YOUR GA4 MEASUREMENT ID
+            trackingId: "G-BQKJMHS9XZ", // REPLACE WITH YOUR GA4 MEASUREMENT ID
             anonymizeIp: true,
             cookieDomain: "auto"
         },
@@ -2429,8 +2429,9 @@ const TRACKING_CONFIG = {
         
         // Add other tracking services as needed
         customTracking: {
-            enabled: false,
-            endpointUrl: "https://your-tracking-endpoint.com/track"
+            enabled: true,
+            // Replace this with your Google Apps Script Web App URL after deployment
+            endpointUrl: "https://script.google.com/macros/s/AKfycbx36STHE0byk1X2HPKF-alEWYL4iakVnYygBT58A96Y5KpbKqOLfGb4VNnGaPKsemgEYA/exec"
         }
     },
     
