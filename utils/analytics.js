@@ -519,21 +519,36 @@ class AnalyticsManager {
      */
     async sendCustomEvent(eventType, data) {
         if (!this.customTrackingEndpoint) return;
+        const payload = JSON.stringify({
+            event_type: eventType,
+            data: data,
+            session_id: this.getSessionId(),
+            user_agent: navigator.userAgent,
+            url: window.location.href,
+            timestamp: Date.now()
+        });
         
+        // Prefer sendBeacon to avoid CORS preflight and allow background sending
+        try {
+            if (navigator.sendBeacon) {
+                const blob = new Blob([payload], { type: 'text/plain' });
+                const ok = navigator.sendBeacon(this.customTrackingEndpoint, blob);
+                if (ok) return; // Successfully queued
+            }
+        } catch (e) {
+            // fall through to fetch
+        }
+        
+        // Fallback: no-cors POST with a simple content-type to bypass preflight
         try {
             await fetch(this.customTrackingEndpoint, {
                 method: 'POST',
+                mode: 'no-cors',
+                keepalive: true,
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain'
                 },
-                body: JSON.stringify({
-                    event_type: eventType,
-                    data: data,
-                    session_id: this.getSessionId(),
-                    user_agent: navigator.userAgent,
-                    url: window.location.href,
-                    timestamp: Date.now()
-                })
+                body: payload
             });
         } catch (error) {
             console.error('Custom tracking error:', error);
@@ -548,7 +563,7 @@ class AnalyticsManager {
         
         this.trackEvent('session', 'end', 'duration', Math.round(sessionDuration / 1000));
         
-        // Send session summary
+        // Send session summary (sendBeacon-friendly)
         this.sendCustomEvent('session_summary', {
             duration: sessionDuration,
             page_views: this.sessionData.pageViews,

@@ -2429,7 +2429,7 @@ const TRACKING_CONFIG = {
         
         // Add other tracking services as needed
         customTracking: {
-            enabled: true,
+            enabled: false,
             // Replace this with your Google Apps Script Web App URL after deployment
             endpointUrl: "https://script.google.com/macros/s/AKfycbx36STHE0byk1X2HPKF-alEWYL4iakVnYygBT58A96Y5KpbKqOLfGb4VNnGaPKsemgEYA/exec"
         }
