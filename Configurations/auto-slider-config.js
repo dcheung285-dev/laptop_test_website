@@ -31,7 +31,7 @@ const AUTO_SLIDER_CONFIG = {
                 gap: 70     // Manual gap after this image (in pixels)
             },
             {
-                src: 'assets/images/laptop_test/Asus_logo_white.png',
+                src: 'assets/images/laptop_test/ASUS_logo_white.png',
                 alt: 'Asus',
                 width: 'auto', // 'auto' or specific width like '120px'
                 height: '60px', // Height of individual images
