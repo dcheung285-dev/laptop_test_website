@@ -66,6 +66,7 @@ const PODCAST_CATEGORIES = [
         description: "Interviews with the most interesting leaders, founders and innovators in gaming laptop technology, hardware development, and the future of mobile gaming.",
         icon: "🎤",
         color: "#ff9800", // This color is used for the category badge background
+        viewAllUrl: "https://www.youtube.com/watch?v=ZZ5LpwO-An4&list=PLV2ewAgCPCq0DVamOw2sQSAVdFVjA6x78",
         episodes: [
             {
                 id: "interview-001",
@@ -153,6 +154,7 @@ const PODCAST_CATEGORIES = [
         description: "Join our tech experts as they discuss the latest innovations, benchmarks, and trends in gaming laptop technology.",
         icon: "🏆",
         color: "#00bcd4", // This color is used for the category badge background
+        viewAllUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         episodes: [
             {
                 id: "token-001",
@@ -222,6 +224,7 @@ const PODCAST_CATEGORIES = [
         description: "Stay in the know with the latest gaming laptop releases, reviews, and industry news in an easy-to-digest summary published every week.",
         icon: "📅",
         color: "#2196f3", // This color is used for the category badge background
+        viewAllUrl: "https://www.youtube.com/watch?v=uPudE8nDog0",
         episodes: [
             {
                 id: "weekly-001",
@@ -672,9 +675,9 @@ class PodcastPageManager {
                         <span class="category-icon">${category.icon}</span>
                         <span class="category-title">${category.title}</span>
                     </div>
-                    <button class="view-all-btn" onclick="podcastManager.viewAllEpisodes('${category.id}')">
+                    <a class="view-all-btn" href="${category.viewAllUrl || defaultViewAll}" target="_blank" rel="noopener">
                         View all episodes
-                    </button>
+                    </a>
                 </div>
                 <p class="category-description">${category.description}</p>
                 <div class="episodes-grid">
@@ -1144,9 +1147,9 @@ class PodcastPageManager {
     }
 
     viewAllEpisodes(categoryId) {
-        console.log(`📺 Viewing all episodes for category: ${categoryId}`);
-        // Add category filtering logic here
-        alert(`Viewing all ${categoryId} episodes\n(Category filtering would be implemented here)`);
+        const category = (this.config.categories || []).find(c => c.id === categoryId);
+        const url = (category && category.viewAllUrl) || defaultViewAll;
+        window.open(url, '_blank', 'noopener');
     }
 }
 

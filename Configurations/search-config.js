@@ -397,7 +397,7 @@ window.SEARCH_DATABASE = {
     ],
 
     // Navigation and menu items
-    navigation: [
+/*    navigation: [
         {
             title: "Menu - Site Navigation",
             description: "Access all website sections including laptop reviews, blog, streaming, podcasts, and contact information.",
@@ -412,7 +412,7 @@ window.SEARCH_DATABASE = {
             url: "#",
             keywords: ["search", "find", "content", "quickly", "laptop", "reviews", "guides", "information"]
         }
-    ]
+    ] */
 };
 
 // ==========================================
