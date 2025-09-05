@@ -216,7 +216,7 @@ const HOME_CONFIG = {
             },
             {
                 name: "matrix-rain", 
-                characters: ["💻", "⚡", "🖥️", "🔋", "⚙️", "📱"],
+                characters: ["💻", "⚡", "🖥️", "🔋", "⚙️", "📱"], //crypto symbols: ₿, Ξ, Ł, Ð, ₳, ○, ◊, △, ฿, ₮, ɱ, ꜩ, Ƀ
                 density: "medium",
                 speed: "medium",
                 color: "var(--primary-color)"
