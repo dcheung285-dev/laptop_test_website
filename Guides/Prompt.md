@@ -230,6 +230,18 @@ Order and scope:
 14) Configurations/footer-loader.js
     - Footer column titles, about text, link labels, short legal summary to {NICHE} wording.
 
+16) All of these HTML files:
+    - Blog.html
+    - blogpost1.html
+    - blogpost2.html
+    - blogpost3.html
+    - home.html
+    - index.html
+    -podcast.html
+    - streaming.html
+    All needs the meta content to be changed to the niche chosen and not use placeholders 
+    In all HTML pages we need to make sure that the correct niche is being used 
+
 15) Configurations/menu-config.js (DO SECOND LAST)
     - Full-screen menu headings, section blurbs, social block heading; short CTA lines.
     - MENU_CONFIG - promotional, ctaButton, reviewButton, columns, links, titles, text, urls, descriptions, etc
@@ -277,3 +289,12 @@ Optionals:
 
 5) Configurations/theme-config.js (optional)
     - Only change GLOBAL_THEME if needed; do not overhaul palettes here.    
+
+------------------------------------------------------------------------------------------------------------------------
+
+Manual tasks:
+
+1) change all images and videos on all config pages
+2) make sure the meta on all the html pages have been updated
+3) adjust where needed
+4) set up different gsheets for different websites - 1 gsheet file per website - as many sheets as required (1 - tracking, 2 - email addresses storage (or have it on mailchip or something like that), 3 - contact form data)
