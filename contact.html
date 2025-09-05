@@ -359,6 +359,33 @@
                 submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${loadingText}`;
                 submitBtn.disabled = true;
                 
+                function sendToSheets(payloadData) {
+                    if (window.CONTACT_FORM && window.CONTACT_FORM.sheetsWebhookUrl && !window.CONTACT_FORM.sheetsWebhookUrl.includes('YOUR_APPS_SCRIPT_DEPLOYMENT_ID')) {
+                        const payload = {
+                            event_type: 'contact_form',
+                            data: payloadData,
+                            session_id: (window.analytics && analytics.getSessionId) ? analytics.getSessionId() : undefined,
+                            user_agent: navigator.userAgent,
+                            url: window.location.href,
+                            timestamp: Date.now()
+                        };
+                        try {
+                            if (navigator.sendBeacon) {
+                                const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+                                navigator.sendBeacon(window.CONTACT_FORM.sheetsWebhookUrl, blob);
+                            } else {
+                                fetch(window.CONTACT_FORM.sheetsWebhookUrl, {
+                                    method: 'POST',
+                                    mode: 'no-cors',
+                                    keepalive: true,
+                                    headers: { 'Content-Type': 'text/plain' },
+                                    body: JSON.stringify(payload)
+                                });
+                            }
+                        } catch (e) { /* ignore */ }
+                    }
+                }
+
                 // If using a real form service, submit the data
                 if (window.CONTACT_FORM && window.CONTACT_FORM.actionUrl && !window.CONTACT_FORM.actionUrl.includes('YOUR_FORM_ID')) {
                     // Submit to actual form service
@@ -376,30 +403,7 @@
                             submitBtn.style.background = 'var(--success-color)';
                             this.reset();
                             // Also send to Google Sheets if configured
-                            if (window.CONTACT_FORM.sheetsWebhookUrl && !window.CONTACT_FORM.sheetsWebhookUrl.includes('YOUR_APPS_SCRIPT_DEPLOYMENT_ID')) {
-                                const payload = {
-                                    event_type: 'contact_form',
-                                    data: data,
-                                    session_id: (window.analytics && analytics.getSessionId) ? analytics.getSessionId() : undefined,
-                                    user_agent: navigator.userAgent,
-                                    url: window.location.href,
-                                    timestamp: Date.now()
-                                };
-                                try {
-                                    if (navigator.sendBeacon) {
-                                        const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
-                                        navigator.sendBeacon(window.CONTACT_FORM.sheetsWebhookUrl, blob);
-                                    } else {
-                                        fetch(window.CONTACT_FORM.sheetsWebhookUrl, {
-                                            method: 'POST',
-                                            mode: 'no-cors',
-                                            keepalive: true,
-                                            headers: { 'Content-Type': 'text/plain' },
-                                            body: JSON.stringify(payload)
-                                        });
-                                    }
-                                } catch (e) { /* ignore */ }
-                            }
+                            sendToSheets(data);
                         } else {
                             throw new Error('Form submission failed');
                         }
@@ -418,11 +422,13 @@
                         }, 3000);
                     });
                 } else {
-                    // Demo mode - simulate form submission
+                    // Demo mode - simulate form submission and still log to Google Sheets
                     setTimeout(() => {
                         // Show success message
                         submitBtn.innerHTML = `<i class="fas fa-check"></i> ${successText}`;
                         submitBtn.style.background = 'var(--success-color)';
+                        // Send to Google Sheets in demo mode
+                        sendToSheets(data);
                         
                         // Reset form
                         this.reset();
