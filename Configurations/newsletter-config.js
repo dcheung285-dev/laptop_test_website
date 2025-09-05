@@ -75,7 +75,7 @@ const NEWSLETTER_CONFIG = {
         // Google Sheets (via Apps Script Web App)
         sheets: {
             // Paste your Apps Script Web App URL here (see guide at bottom of this file)
-            webAppUrl: 'https://script.google.com/macros/s/AKfycbw92dS9L1hnl9r8b-es4PU684e4U-VFyLxsWl33Tsp5HxJOwq8WzZjsz706V4kpg5rphQ/exec', // https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec
+            webAppUrl: 'https://script.google.com/macros/s/AKfycbwjQ8fSS3KgC1TC6fd1UUZKu0JdaUtszh61xjBR0Ie9F2vRiIEjJPVziYdSDm63CbWAMA/exec', // https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec
             sheetName: 'Sheet1'
         },
 
