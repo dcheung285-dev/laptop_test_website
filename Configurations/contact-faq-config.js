@@ -19,6 +19,9 @@ const CONTACT_FORM = {
     // Where the form gets sent (replace with your actual form handler)
     actionUrl: "https://formspree.io/f/YOUR_FORM_ID",          // ← Your form submission URL
     method: "POST",                                            // ← Form method
+    // Optional: Google Apps Script Web App endpoint for Google Sheets logging
+    // Deploy a Web App from your sheet and paste the URL below
+    sheetsWebhookUrl: "https://script.google.com/macros/s/AKfycbxFloEeIjwlJNDFRtg8NOXASsM1rbW4bz_aQHf6epjz4hvdi_TOMBDcgKIUfVy_xJriaQ/exec",
     
     // Subject dropdown options
     subjectOptions: [
