@@ -300,3 +300,4 @@ Manual tasks:
 3) adjust where needed
 4) set up different gsheets for different websites - 1 gsheet file per website - as many sheets as required (1 - tracking, 2 - email addresses storage (or have it on mailchip or something like that), 3 - contact form data)
 5) attach notifications using slack bot or emails or both? already attached to test version atm
+slack connection url https://api.slack.com/apps?
