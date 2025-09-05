@@ -20,6 +20,8 @@ SETUP INSTRUCTIONS:
 2. Configure your tracking goals and events
 3. Set up conversion values for ROI tracking
 4. Test all tracking in development before going live
+
+tracking turn on/off in config.js
 */
 
 // ===========================================

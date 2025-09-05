@@ -4,6 +4,7 @@ LIGHTWEIGHT TRACKING WRAPPER
 ===========================================
 Bridges legacy calls to the unified AnalyticsManager in utils/analytics.js
 Safe to include before/after analytics.js; it buffers calls until analytics initializes.
+tracking turn on/off in config.js
 */
 
 (function(){
