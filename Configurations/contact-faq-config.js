@@ -21,7 +21,7 @@ const CONTACT_FORM = {
     method: "POST",                                            // ← Form method
     // Optional: Google Apps Script Web App endpoint for Google Sheets logging
     // Deploy a Web App from your sheet and paste the URL below
-    sheetsWebhookUrl: "https://script.google.com/macros/s/AKfycbxFloEeIjwlJNDFRtg8NOXASsM1rbW4bz_aQHf6epjz4hvdi_TOMBDcgKIUfVy_xJriaQ/exec",
+    sheetsWebhookUrl: "https://script.google.com/macros/s/AKfycbxFloEeIjwlJNDFRtg8NOXASsM1rbW4bz_aQHf6epjz4hvdi_TOMBDcgKIUfVy_xJriaQ/exec", 
     
     // Subject dropdown options
     subjectOptions: [
