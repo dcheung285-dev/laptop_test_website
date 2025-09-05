@@ -241,6 +241,7 @@ Order and scope:
     - streaming.html
     All needs the meta content to be changed to the niche chosen and not use placeholders 
     In all HTML pages we need to make sure that the correct niche is being used 
+    for all meta data can be checked by putting link in Slack to yourself and it will show you the link preview
 
 15) Configurations/menu-config.js (DO SECOND LAST)
     - Full-screen menu headings, section blurbs, social block heading; short CTA lines.

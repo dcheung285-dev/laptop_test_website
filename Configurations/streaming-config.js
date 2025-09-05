@@ -10,10 +10,10 @@ const STREAMING_PAGE_TITLE = "Live Streams | {{BRAND_NAME}}";
 const STREAMING_HERO = {
     logo: {
         type: 'text', // Options: 'text', 'image', 'combined'
-        text: 'DC\'s Top 10 Streams',
+        text: 'Laptop World Streams',
         image: {
             src: './assets/images/Test_Logo1.png',
-            alt: 'DC\'s Top 10 Logo',
+            alt: 'Laptop World Logo',
             scale: 3.0,
             left: 0 // Individual positioning for image (pixels) - positive moves right, negative moves left
         },
