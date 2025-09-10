@@ -1172,16 +1172,25 @@ window.PODCAST_ENABLED = PODCAST_ENABLED;
 function renderPodcast404() {
     const title = document.querySelector('title');
     if (title) title.textContent = '404 | Page Not Found';
-    document.body.innerHTML = `
-        <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--background-color,#0b0f1a);color:var(--text-color,#e5e7eb);padding:2rem;">
-            <div style="text-align:center;max-width:720px;">
-                <div style="font-size:4rem;line-height:1;margin-bottom:1rem;">404</div>
-                <h1 style="margin:0 0 0.75rem 0;font-size:1.75rem;color:var(--primary-color,#60a5fa);">Podcast page is disabled</h1>
-                <p style="opacity:0.8;margin:0 0 1.25rem 0;">This page is currently unavailable. Please return to the home page to continue browsing.</p>
-                <a href="./home.html" style="display:inline-block;padding:0.75rem 1.25rem;border-radius:999px;background:linear-gradient(45deg,var(--primary-color,#3b82f6),var(--secondary-color,#9333ea));color:#fff;text-decoration:none;">Go Home</a>
-            </div>
-        </div>
-    `;
+    // Preserve top navigation if present, remove other siblings
+    const keepSelectors = ['header', '.sticky-nav', '.nav-container', '.navigation', '.nav-wrapper', '#nav', '#top-nav'];
+    const shouldKeep = (el) => keepSelectors.some(sel => el.matches && el.matches(sel));
+    Array.from(document.body.children).forEach(child => {
+        if (!shouldKeep(child)) {
+            child.remove();
+        }
+    });
+
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--background-color,#0b0f1a);color:var(--text-color,#e5e7eb);padding:2rem;';
+    wrapper.innerHTML = `
+        <div style="text-align:center;max-width:720px;">
+            <div style="font-size:4rem;line-height:1;margin-bottom:1rem;">404</div>
+            <h1 style="margin:0 0 0.75rem 0;font-size:1.75rem;color:var(--primary-color,#60a5fa);">Podcast page is disabled</h1>
+            <p style="opacity:0.8;margin:0 0 1.25rem 0;">This page is currently unavailable. Please return to the home page to continue browsing.</p>
+            <a href="./home.html" style="display:inline-block;padding:0.75rem 1.25rem;border-radius:999px;background:linear-gradient(45deg,var(--primary-color,#3b82f6),var(--secondary-color,#9333ea));color:#fff;text-decoration:none;">Go Home</a>
+        </div>`;
+    document.body.appendChild(wrapper);
 }
 
 // Initialize the podcast page manager or show 404
