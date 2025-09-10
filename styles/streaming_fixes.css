@@ -4,6 +4,7 @@
 .streaming-hero {
     position: relative !important;
     overflow: hidden !important;
+    min-height: 800px !important;
 }
 
 /* Extend hero background to cover stats section */
@@ -23,7 +24,7 @@
     left: 0 !important;
     right: 0 !important;
     height: 800px !important;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff"><polygon points="0,0 1000,20 1000,100 0,100"/></svg>') !important;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 40" fill="%23ffffff"><polygon points="0,0 1000,20 1000,100 0,100"/></svg>') !important;
     background-size: cover !important;
     background-position: bottom !important;
     z-index: 1 !important;

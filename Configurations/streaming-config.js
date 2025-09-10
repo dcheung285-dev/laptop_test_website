@@ -3,6 +3,9 @@
  * Dynamic content management for streaming and video content
  */
 
+// Master enable/disable for the Streaming page
+const STREAMING_ENABLED = false; // Set to true to enable page
+
 // Page title configuration
 const STREAMING_PAGE_TITLE = "Live Streams | {{BRAND_NAME}}";
 
@@ -1458,6 +1461,7 @@ class StreamingPageManager {
 
 // Export configurations to window object for global access
 if (typeof window !== 'undefined') {
+    window.STREAMING_ENABLED = STREAMING_ENABLED;
     window.STREAMING_PAGE_TITLE = STREAMING_PAGE_TITLE;
     window.STREAMING_HERO = STREAMING_HERO;
     window.STREAMING_CATEGORIES = STREAMING_CATEGORIES;
@@ -1470,12 +1474,32 @@ if (typeof window !== 'undefined') {
     console.log('🎬 Streaming configuration loaded globally');
 }
 
+// Simple 404 renderer for disabled page
+function renderStreaming404() {
+    const title = document.querySelector('title');
+    if (title) title.textContent = '404 | Page Not Found';
+    document.body.innerHTML = `
+        <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--background-color,#0b0f1a);color:var(--text-color,#e5e7eb);padding:2rem;">
+            <div style="text-align:center;max-width:720px;">
+                <div style="font-size:4rem;line-height:1;margin-bottom:1rem;">404</div>
+                <h1 style="margin:0 0 0.75rem 0;font-size:1.75rem;color:var(--primary-color,#60a5fa);">Streaming page is disabled</h1>
+                <p style="opacity:0.8;margin:0 0 1.25rem 0;">This page is currently unavailable. Please return to the home page to continue browsing.</p>
+                <a href="./home.html" style="display:inline-block;padding:0.75rem 1.25rem;border-radius:999px;background:linear-gradient(45deg,var(--primary-color,#3b82f6),var(--secondary-color,#9333ea));color:#fff;text-decoration:none;">Go Home</a>
+            </div>
+        </div>
+    `;
+}
+
 // Auto-initialize if on streaming page
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.classList.contains('streaming-page') || 
-        window.location.pathname.includes('streaming.html')) {
-        const manager = new StreamingPageManager();
-        window.streamingPageManager = manager;
-        manager.init();
+    const isStreamingPage = document.body.classList.contains('streaming-page') || 
+        window.location.pathname.includes('streaming.html');
+    if (!isStreamingPage) return;
+    if (!STREAMING_ENABLED) {
+        renderStreaming404();
+        return;
     }
-}); 
+    const manager = new StreamingPageManager();
+    window.streamingPageManager = manager;
+    manager.init();
+});

@@ -5,6 +5,10 @@
 // Edit this file to customize podcasts, episodes, categories, and styling
 
 // Page Title & Hero Configuration
+// Master enable/disable for the Podcast page
+// when disabled, title will be set to 404
+const PODCAST_ENABLED = false; // Set to true to enable page
+
 const PODCAST_PAGE_TITLE = "Podcast | {{BRAND_NAME}}";
 
 const PODCAST_HERO = {
@@ -1163,10 +1167,35 @@ window.FEATURED_EPISODES = FEATURED_EPISODES;
 window.PODCAST_DISPLAY_CONFIG = PODCAST_DISPLAY_CONFIG;
 window.PODCAST_STYLING = PODCAST_STYLING;
 window.PODCAST_PAGE_TITLE = PODCAST_PAGE_TITLE;
+window.PODCAST_ENABLED = PODCAST_ENABLED;
 
-// Initialize the podcast page manager
-const podcastManager = new PodcastPageManager();
-window.podcastManager = podcastManager;
+function renderPodcast404() {
+    const title = document.querySelector('title');
+    if (title) title.textContent = '404 | Page Not Found';
+    document.body.innerHTML = `
+        <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--background-color,#0b0f1a);color:var(--text-color,#e5e7eb);padding:2rem;">
+            <div style="text-align:center;max-width:720px;">
+                <div style="font-size:4rem;line-height:1;margin-bottom:1rem;">404</div>
+                <h1 style="margin:0 0 0.75rem 0;font-size:1.75rem;color:var(--primary-color,#60a5fa);">Podcast page is disabled</h1>
+                <p style="opacity:0.8;margin:0 0 1.25rem 0;">This page is currently unavailable. Please return to the home page to continue browsing.</p>
+                <a href="./home.html" style="display:inline-block;padding:0.75rem 1.25rem;border-radius:999px;background:linear-gradient(45deg,var(--primary-color,#3b82f6),var(--secondary-color,#9333ea));color:#fff;text-decoration:none;">Go Home</a>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize the podcast page manager or show 404
+document.addEventListener('DOMContentLoaded', () => {
+    const isPodcastPage = document.body.classList.contains('podcast-page') || 
+        window.location.pathname.includes('podcast.html');
+    if (!isPodcastPage) return;
+    if (!PODCAST_ENABLED) {
+        renderPodcast404();
+        return;
+    }
+    const manager = new PodcastPageManager();
+    window.podcastManager = manager;
+});
 
 /*
 ===========================================
