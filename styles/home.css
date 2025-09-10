@@ -1030,30 +1030,30 @@
 /* Ad Banner specific pulse glow animation - Force green glow */
 .ad-banner.pulse-glow {
     animation: pulse-glow-slide 2s ease-in-out infinite !important;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary-color) 50%, transparent) !important;
 }
 
 .ad-banner.pulse-glow:hover {
     animation: pulse-glow-slide 1.5s ease-in-out infinite !important;
     transform: translateY(-5px) !important;
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.8), 0 0 60px rgba(16, 185, 129, 0.6) !important;
+    box-shadow: 0 0 40px color-mix(in srgb, var(--primary-color) 80%, transparent), 0 0 60px color-mix(in srgb, var(--secondary-color) 60%, transparent) !important;
 }
 
 /* Maximum specificity override for green glow */
 .home-page .ad-banner.pulse-glow {
     animation: pulse-glow-slide 2s ease-in-out infinite !important;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary-color) 50%, transparent) !important;
 }
 
 .home-page .ad-banner.pulse-glow:hover {
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.8), 0 0 60px rgba(16, 185, 129, 0.6) !important;
+    box-shadow: 0 0 40px color-mix(in srgb, var(--primary-color) 80%, transparent), 0 0 60px color-mix(in srgb, var(--secondary-color) 60%, transparent) !important;
     animation: pulse-glow-slide 1.5s ease-in-out infinite !important;
     transform: translateY(-5px) !important;
 }
 
 /* Test rule - Force visible green glow on ANY ad banner hover */
 .ad-banner:hover {
-    box-shadow: 0 0 50px rgba(16, 185, 129, 1.0) !important;
+    box-shadow: 0 0 50px color-mix(in srgb, var(--primary-color) 100%, transparent) !important;
     animation: pulse-glow-slide 1s ease-in-out infinite !important;
     transform: translateY(-5px) !important;
 }
