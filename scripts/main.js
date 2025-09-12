@@ -2296,6 +2296,10 @@ class ProductManager {
                     // Update logo scaling for the new view (with a small delay to let DOM update)
                     setTimeout(() => {
                         this.updateLogoScaling(view);
+                        // Run a second pass next frame to catch late DOM swaps
+                        if (window.requestAnimationFrame) {
+                            requestAnimationFrame(() => this.updateLogoScaling(view));
+                        }
                     }, 100);
                 }
                 
@@ -2317,8 +2321,10 @@ class ProductManager {
     updateLogoScaling(view) {
         if (!this.productsGrid) return;
         
-        // Detect if we're on tablet (767px - 1023px)
-        const isTablet = window.innerWidth >= 767 && window.innerWidth <= 1023;
+        // Detect if we're on tablet (match CSS breakpoints 768px - 1024px)
+        const isTablet = window.matchMedia
+            ? window.matchMedia('(min-width: 768px) and (max-width: 1024px)').matches
+            : (window.innerWidth >= 768 && window.innerWidth <= 1024);
         
         const productCards = this.productsGrid.querySelectorAll('.product-card');
         productCards.forEach(card => {
@@ -2426,6 +2432,10 @@ class ProductManager {
                     } else {
                         logoElement.style.transform = `scale(${scale})`;
                     }
+
+                    // Ensure CSS vars align with current grid scale
+                    logoElement.style.setProperty('--logo-scale-current', scale, 'important');
+                    logoElement.style.setProperty('--logo-scale-grid', scale, 'important');
                 }
                 
                 logoElement.style.position = 'relative';
@@ -3232,8 +3242,10 @@ class ProductRenderer {
             productLogo.alt = product.name + ' Logo';
             // Apply logo scaling and positioning if defined
             if (product.logoScale?.grid || product.logoPositioning?.grid) {
-                // Detect if we're on tablet for initial scaling
-                const isTablet = window.innerWidth >= 767 && window.innerWidth <= 1023;
+                // Detect if we're on tablet for initial scaling (768px - 1024px)
+                const isTablet = window.matchMedia
+                    ? window.matchMedia('(min-width: 768px) and (max-width: 1024px)').matches
+                    : (window.innerWidth >= 768 && window.innerWidth <= 1024);
                 
                 let scale;
                 if (isTablet && product.logoScale.tablet) {
