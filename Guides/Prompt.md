@@ -247,7 +247,9 @@ Order and scope:
     - Full-screen menu headings, section blurbs, social block heading; short CTA lines.
     - MENU_CONFIG - promotional, ctaButton, reviewButton, columns, links, titles, text, urls, descriptions, etc
 
-16) Configurations/search-config.js (DO LAST)
+16) Update the nav.loader.js file too for the search bar popular searchs section and the quick navigation section   
+
+17) Configurations/search-config.js (DO LAST)
     - Update searchable titles, synonyms, keywords, and quick links to match new sections/posts.
     - Update category/type tags so search results map correctly.
     - Keep URLs that are anchors (e.g., index sections) but rename display text.
