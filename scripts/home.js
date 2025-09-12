@@ -383,38 +383,61 @@ class HomePage {
         }
     }
 
-    createCryptoRain(container) {
-        const symbols = ['₿', 'Ξ', 'Ł', 'Ð', '₳', '○', '◊', '△'];
-        
+    createCryptoRain(container, backgroundConfig) {
+        // Pull config from HOME_CONFIG.cryptoAnimations where name === 'crypto-rain',
+        // then fall back to any characters/speed/density provided on backgroundConfig,
+        // then finally fall back to a sensible default.
+        const animList = (window.HOME_CONFIG && window.HOME_CONFIG.cryptoAnimations && window.HOME_CONFIG.cryptoAnimations.animations) || [];
+        const animCfg = animList.find(a => (a.name || '').toLowerCase() === 'crypto-rain');
+
+        const defaultSymbols = ['₿', 'Ξ', 'Ł', 'Ð', '₳', '○', '◊', '△'];
+        const symbols = (animCfg && Array.isArray(animCfg.characters) && animCfg.characters.length)
+            ? animCfg.characters
+            : (backgroundConfig && Array.isArray(backgroundConfig.characters) && backgroundConfig.characters.length)
+                ? backgroundConfig.characters
+                : defaultSymbols;
+
+        const speedSetting = (animCfg && animCfg.speed) || (backgroundConfig && backgroundConfig.speed) || 'medium';
+        const densitySetting = (animCfg && animCfg.density) || (backgroundConfig && backgroundConfig.density) || 'medium';
+
+        const baseDuration = this.getSpeedValue(speedSetting); // seconds baseline
+        const intervalMs = this.getDensityValue(densitySetting); // ms between drops
+
+        const resolvedColor = (() => {
+            // Prefer explicit color from config if present
+            const color = (animCfg && animCfg.color) || (backgroundConfig && backgroundConfig.color);
+            if (color && !color.includes('var(--')) return color;
+            // Resolve CSS variable to concrete color
+            return getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+        })();
+
         const createRainDrop = () => {
             const drop = document.createElement('div');
             drop.className = 'matrix-char';
             drop.textContent = symbols[Math.floor(Math.random() * symbols.length)];
             drop.style.left = Math.random() * 100 + '%';
-            drop.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            // Add small randomization around base duration
+            drop.style.animationDuration = (Math.random() * 2 + baseDuration) + 's';
             drop.style.opacity = Math.random() * 0.5 + 0.2;
             drop.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            
-            // Use resolved theme color instead of CSS variable
-            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
-            drop.style.color = primaryColor;
-            
+            drop.style.color = resolvedColor;
+
             container.appendChild(drop);
-            
+
             setTimeout(() => {
                 if (drop.parentNode) {
                     drop.parentNode.removeChild(drop);
                 }
-            }, 8000);
+            }, (baseDuration + 4) * 1000);
         };
 
-        // Create rain drops continuously
+        // Create rain drops continuously with density-based interval
         const rainInterval = setInterval(() => {
             if (this.isLoaded) {
                 createRainDrop();
             }
-        }, 200);
-        
+        }, intervalMs);
+
         this.cryptoAnimationIntervals.push(rainInterval);
     }
 
@@ -765,8 +788,6 @@ class HomePage {
             
             // Initialize ad-specific animations
             this.initializeAdAnimations(adElement, ad);
-            // Apply customizable glow if provided
-            this.applyAdGlow(adElement, ad);
             
             console.log(`✅ Created animated ad: ${ad.title}`);
         });
@@ -779,13 +800,6 @@ class HomePage {
             case 'animated-gradient':
                 element.style.background = ad.backgroundConfig.gradient;
                 element.classList.add('animated-gradient', ad.backgroundConfig.animationStyle);
-                // Allow CSS keyframes to pick up card-specific glow colors
-                if (ad.glow && ad.glow.color) {
-                    element.style.setProperty('--ad-glow-1', this.resolveGlow(ad.glow.color, 0.6));
-                    element.style.setProperty('--ad-glow-2', this.resolveGlow(ad.glow.hoverColor || ad.glow.color, 0.8));
-                    element.style.setProperty('--ad-glow-3', this.resolveGlow(ad.glow.color, 0.7));
-                    element.style.setProperty('--ad-glow-4', this.resolveGlow(ad.glow.hoverColor || ad.glow.color, 0.9));
-                }
                 break;
             case 'animated-pattern':
                 element.classList.add('animated-pattern', ad.backgroundConfig.pattern);
@@ -982,46 +996,6 @@ class HomePage {
                 setTimeout(() => ripple.remove(), 600);
             });
         }
-    }
-
-    applyAdGlow(adElement, adConfig) {
-        // Support customizable glow from HOME_CONFIG.adSections[n].glow
-        if (!adConfig || !adConfig.glow) return;
-        const glow = adConfig.glow;
-        const baseColor = glow.color || 'var(--primary-color)';
-        const hoverColor = glow.hoverColor || 'var(--secondary-color)';
-        const baseBlur = glow.blur || '20px';
-        const hoverBlur = glow.hoverBlur || '40px';
-
-        // Apply base glow
-        adElement.style.boxShadow = `0 0 ${baseBlur} ${baseColor}`;
-        // Also set CSS vars used by keyframes
-        adElement.style.setProperty('--ad-glow-1', this.resolveGlow(baseColor, 0.6));
-        adElement.style.setProperty('--ad-glow-2', this.resolveGlow(hoverColor, 0.8));
-        adElement.style.setProperty('--ad-glow-3', this.resolveGlow(baseColor, 0.7));
-        adElement.style.setProperty('--ad-glow-4', this.resolveGlow(hoverColor, 0.9));
-
-        // Enhance hover glow
-        adElement.addEventListener('mouseenter', () => {
-            adElement.style.boxShadow = `0 0 ${hoverBlur} ${hoverColor}, 0 0 calc(${hoverBlur} * 1.5) ${baseColor}`;
-        });
-        adElement.addEventListener('mouseleave', () => {
-            adElement.style.boxShadow = `0 0 ${baseBlur} ${baseColor}`;
-        });
-    }
-
-    resolveGlow(color, alphaFallback) {
-        // If a hex color is provided, convert to rgba with provided alpha
-        if (typeof color === 'string' && color.startsWith('#')) {
-            const hex = color.replace('#', '');
-            const bigint = parseInt(hex.length === 3 ? hex.split('').map(c => c + c).join('') : hex, 16);
-            const r = (bigint >> 16) & 255;
-            const g = (bigint >> 8) & 255;
-            const b = bigint & 255;
-            return `rgba(${r}, ${g}, ${b}, ${alphaFallback ?? 0.7})`;
-        }
-        // If already rgba or css var, pass through
-        return color;
     }
 
     initializeCryptoAnimations() {

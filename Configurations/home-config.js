@@ -233,7 +233,14 @@ const HOME_CONFIG = {
                 connectionDistance: 100,
                 speed: "slow",
                 color: "var(--accent-color)"
-            }
+            },
+            {
+                name: "crypto-rain", 
+                characters: ["₿", "♠", "Ξ", "♥", "Ł", "♦", "Ð", "♣", "₳", "♤", "○", "♡", "◊", "🎲", "△", "฿", "♧", "₮", "♢", "ɱ", "🎰", "ꜩ", "🍀", "Ƀ"],
+                density: "medium",
+                speed: "medium",
+                color: "var(--primary-color)"
+            },
         ]
     },
 
