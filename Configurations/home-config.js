@@ -192,6 +192,12 @@ const HOME_CONFIG = {
                 animationStyle: "rotating-gradient",
                 sparkleEffect: true
             },
+            glow: {
+                color: "#10b981",           // Base glow color (emerald)
+                hoverColor: "#34d399",      // Hover glow color (lighter green)
+                blur: "28px",               // Base blur radius
+                hoverBlur: "56px"           // Hover blur radius
+            },
             position: "left",
             size: "medium",
             movingElements: {
