@@ -24,7 +24,7 @@ class NavigationLoader {
         
         // Map filenames to page identifiers
         const pageMap = {
-            'index.html': 'home',
+            'index.html': 'reviews',
             'blog.html': 'blog',
             'privacy.html': 'privacy',
             'disclaimer.html': 'disclaimer',
@@ -33,7 +33,7 @@ class NavigationLoader {
             'podcast.html': 'podcast',
             'streaming.html': 'streaming',
             'top10.html': 'top10',
-            '': 'home' // For root path
+            'home.html': 'home' // For root path
         };
         
         return pageMap[filename] || 'home';
@@ -104,7 +104,7 @@ Brand settings are managed by Configurations/brand-config.js
                             <span>MacBook Pro M4 Max</span>
                         </a>
                         
-                        <a href="index.html#compare" class="search-option">
+                        <a href="index.html#comparison" class="search-option">
                             <span class="icon">⚖️</span>
                             <span>Compare Laptops</span>
                         </a>
