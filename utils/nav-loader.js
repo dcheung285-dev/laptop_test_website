@@ -95,7 +95,7 @@ Brand settings are managed by Configurations/brand-config.js
                             <span class="icon">💻</span>
                             <span>Best Gaming Laptops</span>
                         </a>
-                        <a href="index.html##editors-choice-review" class="search-option">
+                        <a href="index.html#editors-choice-review" class="search-option">
                             <span class="icon">👑</span>
                             <span>Editor's Pick</span>
                         </a>
