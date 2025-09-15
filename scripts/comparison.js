@@ -1320,10 +1320,12 @@ class ProductComparison {
         // Regenerate product options in all select dropdowns
         const selects = document.querySelectorAll('.product-select');
         const newOptions = this.generateProductOptions();
+        const comparisonConfig = window.SECTION_TITLES?.comparisonSection || {};
+        const placeholder = comparisonConfig.dropdownPlaceholder || 'Select a product...';
         
         selects.forEach(select => {
             const currentValue = select.value;
-            select.innerHTML = `<option value="">Select a product...</option>${newOptions}`;
+            select.innerHTML = `<option value="">${placeholder}</option>${newOptions}`;
             
             // Restore previous selection if it still exists
             if (currentValue && this.productData[currentValue]) {
