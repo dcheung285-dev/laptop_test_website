@@ -1149,23 +1149,98 @@ class ProductComparison {
      * Find best value product
      */
     findBestValue(products) {
-        // Simple heuristic: highest rating with lowest price
+        const templateType = (window.TEMPLATE_TYPE || 'physical_products').toLowerCase();
+
+        // Website-review templates: score based on universal template fields
+        if (templateType === 'sports_betting' || templateType === 'casino_websites') {
+            const scored = products.map(p => ({ product: p, score: this.computeWebsiteValueScore(p.data, templateType) }));
+            if (scored.length === 0) return { name: 'Unable to determine', key: null };
+            const bestEntry = scored.reduce((best, curr) => (curr.score > best.score ? curr : best), scored[0]);
+            const best = bestEntry.product;
+            return { name: best.data.name || best.key, key: best.key };
+        }
+
+        // Default: highest rating-to-price ratio
         const withPrices = products.filter(p => p.data.price);
         if (withPrices.length === 0) return { name: 'Unable to determine', key: null };
         
         const best = withPrices.reduce((best, current) => {
-            const currentPrice = parseFloat(current.data.price.replace(/[^0-9.]/g, ''));
-            const bestPrice = parseFloat(best.data.price.replace(/[^0-9.]/g, ''));
+            const currentPrice = parseFloat(String(current.data.price).replace(/[^0-9.]/g, '')) || Infinity;
+            const bestPrice = parseFloat(String(best.data.price).replace(/[^0-9.]/g, '')) || Infinity;
             const currentRating = current.data.rating || 0;
             const bestRating = best.data.rating || 0;
             
-            const currentValue = currentRating / currentPrice;
-            const bestValue = bestRating / bestPrice;
+            const currentValue = currentPrice > 0 ? currentRating / currentPrice : 0;
+            const bestValue = bestPrice > 0 ? bestRating / bestPrice : 0;
             
             return currentValue > bestValue ? current : best;
         });
         
         return { name: best.data.name || best.key, key: best.key };
+    }
+
+    /**
+     * Compute value score for website-review templates
+     */
+    computeWebsiteValueScore(productData, templateType) {
+        const rating = productData.rating || 0;
+        let fields = [];
+        if (templateType === 'sports_betting') {
+            fields = [productData.signupBonus, productData.oddsBoost, productData.freeBet];
+        } else {
+            fields = [productData.welcomeBonus, productData.welcomePackage, productData.addedBonus];
+        }
+
+        let score = rating * 10; // baseline influence from quality
+        const weights = [1.0, 0.8, 0.6];
+        fields.forEach((text, idx) => {
+            score += this.parseOfferScore(String(text || ''), templateType) * weights[idx];
+        });
+        return score;
+    }
+
+    /**
+     * Parse offer string into a numeric score
+     */
+    parseOfferScore(text, templateType) {
+        if (!text) return 0;
+        let score = 0;
+
+        // Percentages
+        const percentMatches = text.match(/(\d{1,3})\s*%/g);
+        if (percentMatches) {
+            const percents = percentMatches.map(m => parseFloat(m));
+            score += Math.max(...percents);
+        }
+
+        // Currency or token amounts
+        const amountMatches = text.match(/(?:\$|€|£|USDT|USD|EUR|BTC|ETH|USDC)?\s*([0-9]{1,3}(?:,[0-9]{3})*|[0-9]+(?:\.[0-9]+)?)\s*(?:USDT|USD|EUR|BTC|ETH|USDC)?/gi);
+        if (amountMatches) {
+            const numeric = amountMatches
+                .map(m => parseFloat(m.replace(/[^0-9.]/g, '')))
+                .filter(n => !isNaN(n) && isFinite(n));
+            if (numeric.length) {
+                const maxAmount = Math.max(...numeric);
+                score += Math.sqrt(maxAmount); // dampen
+            }
+        }
+
+        // Free spins
+        const fsMatch = text.match(/(\d{1,4})\s*(?:FS|free\s*spins?)/i);
+        if (fsMatch) score += parseFloat(fsMatch[1]) * 0.2;
+
+        // Keywords
+        const keywords = [
+            { re: /(no\s*wager|no\s*wagering|low\s*rollover)/i, points: 25 },
+            { re: /(cash\s*out)/i, points: 10 },
+            { re: /(daily|weekly|monthly)\s*bonuses?/i, points: 12 },
+            { re: /(vip|loyalty|rewards?)/i, points: 8 },
+            { re: /(odds\s*boost|price\s*boost)/i, points: 14 }
+        ];
+        keywords.forEach(k => { if (k.re.test(text)) score += k.points; });
+
+        if (score === 0 && text.trim().length > 0) score += 5;
+        return score;
     }
 
     /**
