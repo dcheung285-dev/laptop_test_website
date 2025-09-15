@@ -167,46 +167,52 @@ class ProductComparison {
             console.log('✅ Manual editor\'s choice added to comparison options:', this.productData['editors-choice']);
             console.log('📊 Total products in comparison data:', Object.keys(this.productData).length);
         } else {
-            // If not using manual override, add the selected product as Editor's Choice
+            // If not using manual override: label the selected product itself, do not duplicate
             const selectedProductKey = editorsConfig.selectedProduct || 'product1';
             const selectedProduct = window.PRODUCTS_CONFIG?.[selectedProductKey];
-            
-            if (selectedProduct) {
-                // Add selected product as editor's choice with same structure as regular products
-                this.productData['editors-choice'] = {
+
+            if (selectedProduct && this.productData[selectedProductKey]) {
+                const currentName = this.productData[selectedProductKey].name || selectedProduct.name || selectedProductKey;
+                if (!/\(Editor\'s Choice\)/i.test(currentName)) {
+                    this.productData[selectedProductKey].name = `${currentName} (Editor's Choice)`;
+                }
+                this.productData[selectedProductKey].rank = "Editor's Choice";
+
+                // Ensure no separate 'editors-choice' ghost entry remains
+                if (this.productData['editors-choice']) {
+                    delete this.productData['editors-choice'];
+                }
+                console.log(`✅ Labeled ${selectedProductKey} as Editor's Choice without duplication.`);
+            } else if (selectedProduct) {
+                // Fallback: if for some reason the product wasn't loaded, add a single entry
+                this.productData[selectedProductKey] = {
                     name: `${selectedProduct.name} (Editor's Choice)`,
                     rating: selectedProduct.rating,
-                    // Physical Products fields
                     price: selectedProduct.price,
                     originalPrice: selectedProduct.originalPrice,
                     discount: selectedProduct.discount,
-                    // Casino Websites fields
-                    welcomeBonus: selectedProduct.welcomeBonus, 
+                    welcomeBonus: selectedProduct.welcomeBonus,
                     welcomePackage: selectedProduct.welcomePackage,
                     addedBonus: selectedProduct.addedBonus,
-                    // Sports Betting fields
                     signupBonus: selectedProduct.signupBonus,
                     oddsBoost: selectedProduct.oddsBoost,
                     freeBet: selectedProduct.freeBet,
-                    // Software/SaaS fields
                     monthlyPrice: selectedProduct.monthlyPrice,
                     yearlyPrice: selectedProduct.yearlyPrice,
                     trialPeriod: selectedProduct.trialPeriod,
-                    // Other fields
-                    features: selectedProduct.features || [], // Keep full feature objects with icons
-                    pros: selectedProduct.perks || [], // Full perk objects with text + icon for highlights
-                    perks: selectedProduct.perks || [], // Full perk objects with text + icon
+                    features: selectedProduct.features || [],
+                    pros: selectedProduct.perks || [],
+                    perks: selectedProduct.perks || [],
                     specifications: this.extractSpecifications(selectedProduct),
                     affiliateLink: selectedProduct.affiliateLink,
                     reviewCount: selectedProduct.reviewCount,
                     rank: "Editor's Choice"
                 };
-                
-                console.log('✅ Selected product editor\'s choice added to comparison options:', this.productData['editors-choice']);
+                console.log(`✅ Added fallback single entry for ${selectedProductKey} labeled as Editor's Choice.`);
             } else {
                 console.log('❌ Selected product not found for editor\'s choice:', selectedProductKey);
             }
-            
+
             console.log('❌ Manual editor\'s choice not added - useManualOverride:', editorsConfig.useManualOverride, 'manualOverride exists:', !!editorsConfig.manualOverride);
         }
     }
