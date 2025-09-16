@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Subscribe to SpinRated Newsletter</title>
+    <meta name="description" content="Subscribe for crypto slot reviews, RTP & volatility guides, feature breakdowns, and exclusive updates from SpinRated.">
+    <meta name="keywords" content="SpinRated newsletter, crypto slots, RTP, volatility, Megaways, scatter pays, cluster pays, slot guides">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Subscribe to SpinRated Newsletter">
+    <meta property="og:description" content="Get the latest crypto slot reviews and guides delivered to your inbox.">
+    <meta property="og:image" content="./assets/slot-games/slots-hero1.jpg">
+    <meta property="og:url" content="https://yoursite.com/newsletter.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css?v=2.3">
+    <link rel="stylesheet" href="./styles/components.css?v=2.3">
+    <link rel="stylesheet" href="./styles/responsive.css?v=2.3">
+    <link rel="stylesheet" href="./styles/cookie-consent.css">
+    <link rel="stylesheet" href="./styles/popup.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation will be loaded dynamically by nav-loader.js -->
+
+    <!--
+    ===========================================
+    NEWSLETTER PAGE CONTENT
+    ===========================================
+    -->
+    <section class="hero-section" id="newsletter-hero" style="display: flex; align-items: center; min-height: 20vh;">
+        <div class="hero-container" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: calc(var(--spacing-lg) * 4) var(--spacing-lg); display: flex; justify-content: center;">
+            <div class="hero-content" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h1 class="hero-title" id="newsletter-hero-title"></h1>
+                <p class="hero-subtitle" id="newsletter-hero-subtitle"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Banner Container -->
+    <div id="animated-banner-container"></div>
+
+    <!-- Main Middle Content (Populated by Configurations/newsletter-config.js) -->
+    <section id="newsletter-main" class="newsletter-main" style="padding: var(--spacing-2xl) 0;">
+        <div class="container" style="max-width: 900px; margin: 0 auto;">
+            <!-- Content populated dynamically -->
+        </div>
+    </section>
+
+    <!-- Newsletter Section (Populated by Configurations/newsletter-config.js) -->
+    <div id="newsletter-container"></div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Core Configuration Files -->
+    <script src="./Configurations/search-config.js"></script>
+    <script src="./Configurations/config.js"></script>
+    <script src="./utils/themes.js"></script>
+    <script src="./Configurations/component-colours.js"></script>
+    <script src="./Configurations/spacing-overrides.js"></script>
+    
+    <!-- Theme and Brand -->
+    <script src="./Configurations/theme-config.js"></script>
+    <script src="./Configurations/brand-config.js"></script>
+    
+    <!-- Navigation Configuration -->
+    <script src="./Configurations/nav-config.js"></script>
+
+    <script src="./Configurations/menu-config.js"></script>
+
+    <!-- Utilities -->
+    <script src="./Configurations/utilities.js"></script>
+
+    <!-- Newsletter Configuration (auto-loads into #newsletter-container) -->
+    <script src="./Configurations/newsletter-config.js"></script>
+    
+    <!-- Animated Banner & Popup Systems -->
+    <script src="./Configurations/animated-banner-config.js"></script>
+    <script src="./Configurations/popup-config.js"></script>
+    <script src="./scripts/popup.js"></script>
+    
+    <script src="./scripts/components.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/home.js"></script>
+
+    <!-- Navigation and Footer Loaders -->
+    <script src="./utils/nav-loader.js"></script>
+    <script src="./Configurations/footer-loader.js"></script>
+
+    <!-- Analytics (optional) -->
+    <script src="./utils/analytics.js"></script>
+    <script src="./utils/tracking.js"></script>
+    
+    <!-- Ensure body closes properly for script execution order -->
+</body>
+</html>
+

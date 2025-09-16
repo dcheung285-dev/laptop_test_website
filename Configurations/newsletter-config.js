@@ -32,6 +32,17 @@ NEWSLETTER SYSTEM CONFIGURATION
 */
 
 const NEWSLETTER_CONFIG = {
+    // Page-level content for newsletter.html (hero + main)
+    page: {
+        heroTitle: "Subscribe to Our Newsletter",
+        heroSubtitle: "Stay updated with new reviews, RTP/volatility explainers, and slot feature guides.",
+        mainTitle: "Why Subscribe?",
+        mainParagraphs: [
+            "Get concise, research-backed breakdowns of RTP variants and volatility so you can pick slots wisely.",
+            "See real feature explanations — scatter pays, tumbles, cluster multipliers, and Megaways — with examples.",
+            "Be first to know about big provider promos like Drops & Wins and evergreen picks to try in demo mode."
+        ]
+    },
     // Content settings
     content: {
         title: NEWSLETTER_TITLE,
@@ -133,12 +144,35 @@ class NewsletterLoader {
         // Insert newsletter
         container.innerHTML = newsletterHTML;
         
+        // Populate page hero and main content if present
+        this.populatePageContent(processedConfig);
+
         // Initialize form functionality
         this.initializeForm();
         
         // Add animations if enabled
         if (processedConfig.styling.enableAnimation) {
             this.addAnimations();
+        }
+    }
+
+    populatePageContent(config) {
+        // Hero text
+        const heroTitle = document.getElementById('newsletter-hero-title');
+        const heroSubtitle = document.getElementById('newsletter-hero-subtitle');
+        if (heroTitle) heroTitle.textContent = config.page?.heroTitle || '';
+        if (heroSubtitle) heroSubtitle.textContent = config.page?.heroSubtitle || '';
+
+        // Main middle content
+        const main = document.querySelector('#newsletter-main .container');
+        if (main) {
+            const title = config.page?.mainTitle || '';
+            const paras = Array.isArray(config.page?.mainParagraphs) ? config.page.mainParagraphs : [];
+            const content = `
+                <h2 class="section-title" style="text-align:center; margin-bottom: var(--spacing-lg);">${title}</h2>
+                ${paras.map(p => `<p style=\"margin-bottom: var(--spacing-md); color: var(--text-secondary); text-align:center;\">${p}</p>`).join('')}
+            `;
+            main.innerHTML = content;
         }
     }
     

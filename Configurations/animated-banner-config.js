@@ -64,6 +64,7 @@ const ANIMATED_BANNER_CONFIG = {
         'home.html': { enabled: true, useDefault: true },         // ← Home page settings
         'index.html': { enabled: true, useDefault: true },       // ← Index page settings
         'top10.html': { enabled: true, useDefault: true },       // ← Top 10 page settings
+        'newsletter.html': { enabled: true, useDefault: true },  // ← Newsletter page settings
         'blog.html': { 
             enabled: true, 
             useDefault: true,                                    // ← Use custom banner for blog
