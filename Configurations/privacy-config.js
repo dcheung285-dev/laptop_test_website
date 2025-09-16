@@ -222,7 +222,7 @@ const PRIVACY_CONFIG = {
             `
         },
         {
-            enabled: true,
+            enabled: false,
             title: "Contact Information",
             content: `
                 <p>If you have any questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:</p>

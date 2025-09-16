@@ -223,11 +223,11 @@ const DISCLAIMER_CONFIG = {
                 </ul>
                 
                 <h3>Continued Use</h3>
-                <p>Your continued use of {{SITE_URL}} after any changes constitutes acceptance of the updated disclaimer.</p>
+                <p>Your continued use of this website after any changes constitutes acceptance of the updated disclaimer.</p>
             `
         },
         {
-            enabled: true,
+            enabled: false,
             title: "Contact Information",
             content: `
                 <h3>Questions and Concerns</h3>
