@@ -133,7 +133,7 @@ const COOKIES_CONFIG = {
                 <p>We do not control these third-party cookies. Please refer to the respective privacy policies of these services for more information.</p>
             `
         },
-        {
+    /*    {
             id: "contact-information",
             title: "Contact Us About Cookies",
             content: `
@@ -146,7 +146,7 @@ const COOKIES_CONFIG = {
                 
                 <p>We will respond to your inquiry within 48 hours.</p>
             `
-        },
+        },*/
         {
             id: "policy-updates",
             title: "Updates to This Policy",
