@@ -249,6 +249,8 @@ Order and scope:
 
 16) Update the nav.loader.js file too for the search bar popular searchs section and the quick navigation section   
 
+17) Update the newsletter-config.js file for newsletter.html page
+
 17) Configurations/search-config.js (DO LAST)
     - Update searchable titles, synonyms, keywords, and quick links to match new sections/posts.
     - Update category/type tags so search results map correctly.
