@@ -90,6 +90,7 @@ const HOME_CONFIG = {
     },
 
     // Video sections
+    videoSectionsTitle: "Learn About Laptops", // eg. "Learn About Slots"
     videoSections: [
         {
             enabled: true,

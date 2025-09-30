@@ -93,6 +93,7 @@ class HomePage {
             this.initializeHeroSection();
             this.initializeScrollSections();
             this.initializeVideoSections();
+            this.initializeVideoSectionsTitle();
             this.initializeAdSections();
             this.initializeCryptoAnimations();
             this.initializeInteractiveElements();
@@ -114,6 +115,15 @@ class HomePage {
         } catch (error) {
             console.error('❌ Error initializing home page:', error);
             this.loadFallbackContent();
+        }
+    }
+
+    initializeVideoSectionsTitle() {
+        const titleEl = document.querySelector('#video-sections .section-title');
+        const configuredTitle = this.config.videoSectionsTitle;
+        if (titleEl && configuredTitle && typeof configuredTitle === 'string') {
+            titleEl.textContent = configuredTitle;
+            console.log('✅ Video sections title set:', configuredTitle);
         }
     }
 
