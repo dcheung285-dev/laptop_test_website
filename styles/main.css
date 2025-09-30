@@ -1,3 +1,7 @@
+/*
+Prevent template flash: hide content until app is ready */
+html:not(.app-ready) body { visibility: hidden; }
+
 /* 
 ===========================================
 AFFILIATE WEBSITE TEMPLATE - MAIN CSS

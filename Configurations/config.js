@@ -2915,6 +2915,11 @@ function initializeConfig() {
     console.log('🎨 Brand:', SITE_CONFIG.brand.name);
     console.log('📈 Tracking:', TRACKING_CONFIG.analytics.googleAnalytics.enabled ? 'Enabled' : 'Disabled');
     
+    // Mark app as loading immediately (in case this ran before DOMContentLoaded handler)
+    try {
+        document.documentElement.classList.add('app-loading');
+    } catch (e) {}
+
     // Apply configuration to page
     applyConfigToPage();
     
@@ -2922,6 +2927,14 @@ function initializeConfig() {
     replacePlaceholdersInDOM();
     
     console.log('✅ Configuration initialization complete');
+
+    // Toggle ready state to reveal UI
+    try {
+        const root = document.documentElement;
+        root.classList.remove('app-loading');
+        root.classList.add('app-ready');
+        document.dispatchEvent(new CustomEvent('app:ready'));
+    } catch (e) {}
 }
 
 // Make helpers available globally
@@ -2941,5 +2954,17 @@ if (typeof window !== 'undefined') {
 
 // Initialize when DOM is loaded
 if (typeof document !== 'undefined') {
+    // Ensure the root has loading class as early as possible
+    try { document.documentElement.classList.add('app-loading'); } catch (e) {}
     document.addEventListener('DOMContentLoaded', initializeConfig);
+    // Failsafe: if something blocks init, reveal after load/timeout
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const root = document.documentElement;
+            if (!root.classList.contains('app-ready')) {
+                root.classList.remove('app-loading');
+                root.classList.add('app-ready');
+            }
+        }, 1500);
+    });
 } 
