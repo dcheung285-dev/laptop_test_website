@@ -299,6 +299,9 @@ class HomePage {
         if (heroButton && (heroConfig.cta || heroConfig.ctaButton)) {
             const ctaConfig = heroConfig.cta || heroConfig.ctaButton;
             heroButton.href = ctaConfig.link;
+            // Open CTA in new tab by default unless explicitly overridden
+            heroButton.target = (ctaConfig.target && ctaConfig.target !== '') ? ctaConfig.target : '_blank';
+            heroButton.rel = 'noopener noreferrer';
             if (heroIcon) heroIcon.className = ctaConfig.icon;
             if (heroText) heroText.textContent = ctaConfig.text;
             console.log('✅ Hero CTA set:', ctaConfig.text);
@@ -333,6 +336,8 @@ class HomePage {
         
         if (heroButton) {
             heroButton.href = 'index.html';
+            heroButton.target = '_blank';
+            heroButton.rel = 'noopener noreferrer';
             if (heroIcon) heroIcon.className = 'fas fa-coins';
             if (heroText) heroText.textContent = 'View Our Top 10 Crypto Casinos';
         }
@@ -783,7 +788,7 @@ class HomePage {
                     <h3 class="ad-title">${ad.title}</h3>
                     <h4 class="ad-subtitle">${ad.subtitle}</h4>
                     <p class="ad-description">${ad.description}</p>
-                    <a href="${ad.ctaLink}" class="ad-cta-btn">${ad.ctaText}</a>
+                    <a href="${ad.ctaLink}" class="ad-cta-btn" target="_blank" rel="noopener noreferrer">${ad.ctaText}</a>
                 </div>
             `;
             
@@ -798,6 +803,13 @@ class HomePage {
             
             // Initialize ad-specific animations
             this.initializeAdAnimations(adElement, ad);
+            // Enforce opening in new tab for ad CTAs unless explicitly overridden
+            const ctaLinkEl = adElement.querySelector('.ad-cta-btn');
+            if (ctaLinkEl) {
+                const newTab = (typeof ad.openInNewTab === 'boolean') ? ad.openInNewTab : true;
+                ctaLinkEl.target = newTab ? '_blank' : '_self';
+                ctaLinkEl.rel = 'noopener noreferrer';
+            }
             // Apply customizable glow if provided
             this.applyAdGlow(adElement, ad);
             
@@ -1124,6 +1136,8 @@ class HomePage {
         const cta = document.createElement('a');
         cta.className = `floating-cta ${config.animation}`;
         cta.href = config.link;
+        cta.target = (config.target && config.target !== '') ? config.target : '_blank';
+        cta.rel = 'noopener noreferrer';
         cta.textContent = config.text;
         cta.style.position = 'fixed';
         
